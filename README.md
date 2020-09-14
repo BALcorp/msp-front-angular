@@ -1,3 +1,12 @@
+# MySweetParis
+AL34 / Benjamin - Axel - Lionel a.k.a B.A.L Corp
+
+Home rental and experience manager in Paris
+
+# msp-front-angular
+front-end for MySweetParis app, with Angular CLI.
+
+
 # MspFrontAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
