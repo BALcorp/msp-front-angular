@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from '../interfaces/product';
 
 @Component({
   selector: 'app-simple-search',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simple-search.component.css']
 })
 export class SimpleSearchComponent implements OnInit {
+  @Input() product: Product;
 
   constructor() { }
 
