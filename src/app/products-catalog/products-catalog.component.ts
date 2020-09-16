@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from '../mocks/mock-products';
+import { ProductService } from '../services/product.service';
 import {Product} from '../interfaces/product';
 
 @Component({
@@ -8,17 +8,26 @@ import {Product} from '../interfaces/product';
   styleUrls: ['./products-catalog.component.css']
 })
 export class ProductsCatalogComponent implements OnInit {
-
-  products = PRODUCTS;
-
+  products: Product[];
   selectedProduct: Product;
+
+
+
+
+  constructor(private productService: ProductService) { }
+
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
   onSelect(product: Product): void {
     this.selectedProduct = product;
   }
 
-  constructor() { }
 
-  ngOnInit(): void {
+  getProducts(): void {
+    this.productService.getProducts()
+      .subscribe(products => this.products = products);
   }
 
 }
