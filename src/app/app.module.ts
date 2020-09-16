@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,8 @@ import { MyPersoAccountClientComponent } from './my-perso-account-client/my-pers
 import { MyBookingsClientComponent } from './my-bookings-client/my-bookings-client.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ProductBackOfficeComponent } from './product-back-office/product-back-office.component';
+import { SimpleSearchComponent } from './simple-search/simple-search.component';
+import { MulticriteriaSearchComponent } from './multicriteria-search/multicriteria-search.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +39,16 @@ import { ProductBackOfficeComponent } from './product-back-office/product-back-o
     MyBookingsClientComponent,
     PaymentComponent,
     ProductBackOfficeComponent,
+    SimpleSearchComponent,
+    MulticriteriaSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

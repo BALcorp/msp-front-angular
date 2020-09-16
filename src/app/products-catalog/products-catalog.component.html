@@ -1,1 +1,7 @@
-<p>products-catalog works!</p>
+<ul class="products">
+  <li *ngFor="let product of products" [class.selected]="product === selectedProduct"(click)="onSelect(product)">
+    <span class="badge">{{product.idProduct}}</span> {{product.title}}
+  </li>
+</ul>
+
+<app-product [product]="selectedProduct"></app-product>

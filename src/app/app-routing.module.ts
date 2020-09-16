@@ -12,8 +12,7 @@ import {PaymentComponent} from './payment/payment.component';
 import {ProductBackOfficeComponent} from './product-back-office/product-back-office.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-  { path: 'welcome', component: WelcomeComponent },
+
   { path: 'product/:id', component: ProductComponent },
   { path: 'products-catalog', component: ProductsCatalogComponent },
   { path: 'authentication', component: AuthenticationComponent },
@@ -22,7 +21,10 @@ const routes: Routes = [
   { path: 'my-bookings-client', component: MyBookingsClientComponent},
   { path: 'my-perso-account-client', component: MyPersoAccountClientComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'product-back-office', component: ProductBackOfficeComponent }
+  { path: 'product-back-office', component: ProductBackOfficeComponent },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
 ];
 
 
