@@ -1,0 +1,9 @@
+header {
+  overflow: hidden !important;
+}
+
+header img {
+  width: 190rem !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+}
