@@ -15,6 +15,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
 import { ProductComponent } from './product/product.component';
 import { MyPersoAccountClientComponent } from './my-perso-account-client/my-perso-account-client.component';
+import { MyBookingsClientComponent } from './my-bookings-client/my-bookings-client.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ProductBackOfficeComponent } from './product-back-office/product-back-office.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { MyPersoAccountClientComponent } from './my-perso-account-client/my-pers
     ProductsCatalogComponent,
     ProductComponent,
     MyPersoAccountClientComponent,
+    MyBookingsClientComponent,
+    PaymentComponent,
+    ProductBackOfficeComponent,
   ],
   imports: [
     BrowserModule,
