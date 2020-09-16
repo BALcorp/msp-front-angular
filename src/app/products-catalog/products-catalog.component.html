@@ -1,7 +1,17 @@
-<ul class="products">
-  <li *ngFor="let product of products">
-    <a routerLink="/product/{{product.idProduct}}">
-    <span class="badge">{{product.idProduct}}</span> {{product.title}}
-    </a>
-  </li>
-</ul>
+<div class="container">
+  <div class="panel-group ">
+    <div class="he-panel-main panel panel-default">
+      <div class="he-padding-top-20 col-md-10 col-md-offset-1 col-xs-12 ">
+        <h1>Nos locations</h1>
+        <hr />
+      </div>
+    <ul class="products">
+      <li *ngFor="let product of products">
+        <a routerLink="/product/{{product.idProduct}}">
+          <span class="badge">{{product.idProduct}}</span> {{product.title}}
+        </a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>

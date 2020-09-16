@@ -9,12 +9,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
+
 import { ProductComponent } from './product/product.component';
 import { MyPersoAccountClientComponent } from './my-perso-account-client/my-perso-account-client.component';
 import { MyBookingsClientComponent } from './my-bookings-client/my-bookings-client.component';
@@ -30,10 +31,10 @@ import { MulticriteriaSearchComponent } from './multicriteria-search/multicriter
     FooterComponent,
     NavbarComponent,
     WelcomeComponent,
+    ProductsCatalogComponent,
     AuthenticationComponent,
     RegistrationComponent,
     ContactUsComponent,
-    ProductsCatalogComponent,
     ProductComponent,
     MyPersoAccountClientComponent,
     MyBookingsClientComponent,
