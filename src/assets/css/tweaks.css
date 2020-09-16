@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'Constantia';
-    src: url('../resources/fonts/Constantia.ttf');
+    src: url('../assets/fonts/Constantia.ttf');
 }
 
 
@@ -53,7 +53,7 @@ button:focus {
 */
 
 body {
-    background-image: url('../resources/pictures/sideBackground.jpeg') !important;
+    background-image: url('../assets/pictures/sideBackground.jpeg') !important;
     background-position: top !important;
     background-size: 100% !important;
     background-repeat: repeat !important;
