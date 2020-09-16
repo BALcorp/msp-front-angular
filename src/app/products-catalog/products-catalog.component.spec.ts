@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArkComponent } from './ark.component';
+import { ProductsCatalogComponent } from './products-catalog.component';
 
-describe('ArkComponent', () => {
-  let component: ArkComponent;
-  let fixture: ComponentFixture<ArkComponent>;
+describe('ProductsCatalogComponent', () => {
+  let component: ProductsCatalogComponent;
+  let fixture: ComponentFixture<ProductsCatalogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArkComponent ]
+      declarations: [ ProductsCatalogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArkComponent);
+    fixture = TestBed.createComponent(ProductsCatalogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
