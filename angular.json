@@ -24,9 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/slate.css",
+              "src/tweaks.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,7 +91,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/slate.css",
+              "src/tweaks.css"
             ],
             "scripts": []
           }
