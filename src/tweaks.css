@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'Constantia';
-    src: url('src/assets/fonts/Constantia.ttf');
+    src: url('./assets/fonts/Constantia.ttf');
 }
 
 
@@ -53,7 +53,7 @@ button:focus {
 */
 
 body {
-    background-image: url('src/assets/pictures/sideBackground.jpeg') !important;
+    background-image: url('./assets/pictures/sideBackground.jpeg') !important;
     background-position: top !important;
     background-size: 100% !important;
     background-repeat: repeat !important;
@@ -105,7 +105,6 @@ hr {
     border-top: 1px solid white !important;
 }
 
-
 .he-panel-main {
     min-height: 50vh !important;
     border: none !important;
@@ -116,6 +115,21 @@ hr {
 .he-border-radius-0 {
     border-radius: 0 !important;
 }
+
+/*!
+.he-display-visitor {
+    display: #{authenticationManagedBean.visitorConnected}
+}
+
+.he-display-client {
+    display: #{authenticationManagedBean.clientConnected}
+}
+
+.he-display-admin {
+    display: #{authenticationManagedBean.adminConnected}
+}
+
+ */
 
 /*!
  * Navbar
@@ -177,7 +191,7 @@ hr {
 }
 
 .he-bkg-medium {
-    background-color: #414549 !important;
+    background-color: #3A3F44 !important;
 }
 
 .he-txt-dark {
