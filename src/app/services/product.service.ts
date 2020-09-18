@@ -9,6 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ProductService {
 
+  private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api/public/product';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -16,10 +18,11 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return of(PRODUCTS);
+    return this.http.get<Product[]>(this.productsUrl);
   }
 
   getProduct(id: number): Observable<Product> {
-    return of(PRODUCTS.find(product => product.idProduct === id));
+    const url = `${this.productsUrl}/${id}`;
+    return this.http.get<Product>(url);
   }
 }
