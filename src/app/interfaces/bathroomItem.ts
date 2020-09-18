@@ -1,5 +1,5 @@
 export interface BathroomItem {
-  idBathroomItem: number;
+  idbathroomItem: number;
   name: string;
   icon: string;
 }

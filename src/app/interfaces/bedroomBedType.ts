@@ -1,6 +1,6 @@
 import {BedType} from './bedType';
 
 export interface BedroomBedType {
-idBedRoomBedType: number;
+idBedroomBedType: number;
 bedType: BedType;
 }

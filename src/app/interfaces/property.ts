@@ -1,7 +1,8 @@
-import {PropertyType} from './propertyType';
 import {PropertyState} from './propertyState';
 import {Bathroom} from './bathroom';
 import {Bedroom} from './bedroom';
+
+
 
 export interface Property {
   idProperty: number;
@@ -13,9 +14,13 @@ export interface Property {
   address: string;
   addressComplement: string;
   zipCode: string;
-  propertyType: PropertyType;
+  propertyType: string;
   propertyState: PropertyState;
   bathrooms: Bathroom[];
   bedrooms: Bedroom[];
 
 }
+
+
+
+

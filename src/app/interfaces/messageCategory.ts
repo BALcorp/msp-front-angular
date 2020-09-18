@@ -1,4 +1,4 @@
-export enum MessageCategory {
+enum MessageCategory {
   HEBERGEMENT,
   PAIEMENT,
   RECLAMATION,
