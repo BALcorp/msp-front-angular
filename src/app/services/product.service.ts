@@ -85,8 +85,8 @@ export class ProductService {
   }
 
   getBookmarkedProductsByUser(user: User): Observable<Product[]> {
-    return this.http.get<Product[]>(this.orchestratorUrl + '/private/bookmarks?idUser=' + user.idUser).pipe(
-      tap(_ => this.log('get bookmarked products of the user id : ' + user.idUser)),
+    return this.http.get<Product[]>(this.orchestratorUrl + '/private/bookmarks?username=' + user.username).pipe(
+      tap(_ => this.log('get bookmarked products of the user id : ' + user.username)),
       catchError(this.handleError<Product[]>('getBookmarkedProductsByUser', []))
     );
   }
