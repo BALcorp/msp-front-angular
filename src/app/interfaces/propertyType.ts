@@ -1,4 +1,4 @@
-enum PropertyType {
+export enum PropertyType {
   STUDIO = 'studio',
   APPARTMENT = 'appartement',
   HOUSE = 'maison',
