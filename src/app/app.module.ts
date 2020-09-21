@@ -32,6 +32,7 @@ import {AuthorizationService} from './services/authorization.service';
     NavbarComponent,
     WelcomeComponent,
     ProductsCatalogComponent,
+    LoginComponent,
     RegistrationComponent,
     ContactUsComponent,
     ProductComponent,
@@ -40,8 +41,7 @@ import {AuthorizationService} from './services/authorization.service';
     PaymentComponent,
     ProductBackOfficeComponent,
     SimpleSearchComponent,
-    MulticriteriaSearchComponent,
-    LoginComponent,
+    MulticriteriaSearchComponent
   ],
   imports: [
     BrowserModule,
