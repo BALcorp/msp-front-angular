@@ -3,109 +3,114 @@
     <h4>Trouvez dès maintenant un logement correspondant à vos envies :</h4>
     <div class="panel-group ">
       <div class="he-margin-bottom-40 panel panel-default">
-            <div class="row">
-              <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-12 ">
-                <label>Quel arrondissement de Paris ?</label>
-                <div class="form-group ">
-                  <select class="form-control">
-                    <option data-label="--Veuillez sélectionner--" value="">--Veuillez sélectionner--</option>
-                    <option data-label="75001" value="75001">75001</option>
-                    <option data-label="75002" value="75002">75002</option>
-                    <option data-label="75003" value="75003">75003</option>
-                    <option data-label="75004" value="75004">75004</option>
-                    <option data-label="75005" value="75005">75005</option>
-                    <option data-label="75006" value="75006">75006</option>
-                    <option data-label="75007" value="75007">75007</option>
-                    <option data-label="75008" value="75008">75008</option>
-                    <option data-label="75009" value="75009">75009</option>
-                    <option data-label="75010" value="75010">75010</option>
-                    <option data-label="75011" value="75011">75011</option>
-                    <option data-label="75012" value="75012">75012</option>
-                    <option data-label="75013" value="75013">75013</option>
-                    <option data-label="75014" value="75014">75014</option>
-                    <option data-label="75015" value="75015">75015</option>
-                    <option data-label="75016" value="75016">75016</option>
-                    <option data-label="75017" value="75017">75017</option>
-                    <option data-label="75018" value="75018">75018</option>
-                    <option data-label="75019" value="75019">75019</option>
-                    <option data-label="75020" value="75020">75020</option>
-                    <option data-label="Tous les arrondissements" value="Tous les arrondissements" selected="true">Tous les arrondissements</option></select>
-                </div>
-              </div>
-              <div class="he-padding-10 col-md-2 col-xs-6 ">
-                <label>Date d'arrivée :</label>
-                <div class="input-group date" id="arrivaldate">
-                  <input type="text" id="arrivaldate_Input" name="arrivaldate" class="form-control  bf-required" value="" />
-                  <span class="input-group-addon">
-                              <span><i id="arrivaldate_icon" class="glyphicon glyphicon-calendar"></i></span>
+        <div class="row">
+          <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-12 ">
+            <label>Quel arrondissement de Paris ?</label>
+            <div class="form-group ">
+              <select class="form-control">
+                <option data-label="--Veuillez sélectionner--" value="">--Veuillez sélectionner--</option>
+                <option data-label="75001" value="75001">75001</option>
+                <option data-label="75002" value="75002">75002</option>
+                <option data-label="75003" value="75003">75003</option>
+                <option data-label="75004" value="75004">75004</option>
+                <option data-label="75005" value="75005">75005</option>
+                <option data-label="75006" value="75006">75006</option>
+                <option data-label="75007" value="75007">75007</option>
+                <option data-label="75008" value="75008">75008</option>
+                <option data-label="75009" value="75009">75009</option>
+                <option data-label="75010" value="75010">75010</option>
+                <option data-label="75011" value="75011">75011</option>
+                <option data-label="75012" value="75012">75012</option>
+                <option data-label="75013" value="75013">75013</option>
+                <option data-label="75014" value="75014">75014</option>
+                <option data-label="75015" value="75015">75015</option>
+                <option data-label="75016" value="75016">75016</option>
+                <option data-label="75017" value="75017">75017</option>
+                <option data-label="75018" value="75018">75018</option>
+                <option data-label="75019" value="75019">75019</option>
+                <option data-label="75020" value="75020">75020</option>
+                <option data-label="Tous les arrondissements" selected="true" value="Tous les arrondissements">Tous les
+                  arrondissements
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="he-padding-10 col-md-2 col-xs-6 ">
+            <label>Date d'arrivée :</label>
+            <div class="input-group date" id="arrivaldate">
+              <input class="form-control  bf-required" id="arrivaldate_Input" name="arrivaldate" type="text" value=""/>
+              <span class="input-group-addon">
+                              <span><i class="glyphicon glyphicon-calendar" id="arrivaldate_icon"></i></span>
                             </span>
-                </div>
-              </div>
-              <div class="he-padding-10 col-md-2 col-xs-6 ">
-                <label>Date de départ :</label>
-                <div class="input-group date">
-                  <input type="text" class="form-control  bf-required" />
-                  <span class="input-group-addon">
+            </div>
+          </div>
+          <div class="he-padding-10 col-md-2 col-xs-6 ">
+            <label>Date de départ :</label>
+            <div class="input-group date">
+              <input class="form-control  bf-required" type="text"/>
+              <span class="input-group-addon">
                               <span><i class="glyphicon glyphicon-calendar"></i></span>
                             </span>
-                </div>
-              </div>
-              <div class="he-padding-10 col-md-3 col-xs-6 ">
-                <label>Nombre de personnes :</label>
-                <div class="form-group ">
-                  <div class="input-group">
+            </div>
+          </div>
+          <div class="he-padding-10 col-md-3 col-xs-6 ">
+            <label>Nombre de personnes :</label>
+            <div class="form-group ">
+              <div class="input-group">
                               <span class="input-group-addon">
                                 <span><i class="fa fa-group"></i>
                                 </span></span>
-                    <input type="text" class="form-control" value="1" />
-                  </div>
-                </div>
+                <input class="form-control" type="text" value="1"/>
               </div>
-              <div class="he-padding-10 col-md-2 col-md-offset-1 col-xs-6 ">
-                <label>Taille minimum (m²):</label>
-                <div class="form-group ">
-                  <div class="input-group">
+            </div>
+          </div>
+          <div class="he-padding-10 col-md-2 col-md-offset-1 col-xs-6 ">
+            <label>Taille minimum (m²):</label>
+            <div class="form-group ">
+              <div class="input-group">
                               <span class="input-group-addon">
                                 <span><i class="fa fa-arrows-alt"></i></span></span>
-                    <input type="text" class="form-control  bf-required" />
-                  </div>
-                </div>
+                <input class="form-control  bf-required" type="text"/>
               </div>
-              <div class="he-padding-10 col-md-3 col-xs-6 ">
-                <label>Prix journalier minimum :</label>
-                <div class="form-group ">
-                  <div class="input-group">
+            </div>
+          </div>
+          <div class="he-padding-10 col-md-3 col-xs-6 ">
+            <label>Prix journalier minimum :</label>
+            <div class="form-group ">
+              <div class="input-group">
                               <span class="input-group-addon">
                                 <span><i class="fa fa-calculator"></i></span>
-                              </span><input type="text" class="form-control  bf-required" />
-                  </div>
-                </div>
-              </div>
-              <div class="he-padding-10 col-md-3 col-xs-6 ">
-                <label>Prix journalier maximum :</label>
-                <div class="form-group ">
-                  <div class="input-group">
-                    <span class="input-group-addon"><span><i class="fa fa-calculator"></i></span></span>
-                    <input type="text" class="form-control  bf-required" />
-                  </div>
-                </div>
-              </div>
-              <div class="he-padding-10 he-top-2-rem col-md-2 col-xs-12 ">
-                <div class="form-group ">
-                  <div class="checkbox">
-                    <label><input type="checkbox" /> Animaux autorisés</label>
-                  </div>
-                  <input value="on" checked="true" type="hidden" style="display:none" />
-                </div>
+                              </span><input class="form-control  bf-required" type="text"/>
               </div>
             </div>
-            <div class="row">
-              <div class="he-txt-center col-md-12 col-xs-12 ">
-                <button type="submit" class="btn btn-default he-margin-top-22 he-width-20-rem he-margin-bottom-10">
-                  <span><i class="fa fa-search"></i></span> Rechercher</button><br />
+          </div>
+          <div class="he-padding-10 col-md-3 col-xs-6 ">
+            <label>Prix journalier maximum :</label>
+            <div class="form-group ">
+              <div class="input-group">
+                <span class="input-group-addon"><span><i class="fa fa-calculator"></i></span></span>
+                <input class="form-control  bf-required" type="text"/>
               </div>
             </div>
+          </div>
+          <div class="he-padding-10 he-top-2-rem col-md-2 col-xs-12 ">
+            <div class="form-group ">
+              <div class="checkbox">
+                <label><input type="checkbox"/> Animaux autorisés</label>
+              </div>
+              <input checked="true" style="display:none" type="hidden" value="on"/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="he-txt-center col-md-12 col-xs-12 ">
+            <button class="btn btn-default he-margin-top-22 he-width-20-rem he-margin-bottom-10" type="submit">
+              <span><i class="fa fa-search"></i></span> Rechercher
+            </button>
+            <br/>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>

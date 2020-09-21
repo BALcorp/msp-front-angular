@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProductBackOfficeComponent } from './product-back-office.component';
+import {ProductBackOfficeComponent} from './product-back-office.component';
 
 describe('ProductBackOfficeComponent', () => {
   let component: ProductBackOfficeComponent;
@@ -8,9 +8,9 @@ describe('ProductBackOfficeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductBackOfficeComponent ]
+      declarations: [ProductBackOfficeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
