@@ -1,4 +1,4 @@
 export interface ProductPicture {
-idProductPicture: number;
-picture: string;
+  idProductPicture: number;
+  picture: string;
 }

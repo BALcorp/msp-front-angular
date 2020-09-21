@@ -1,5 +1,5 @@
 export interface BedType {
-idBedType: number;
-name: string;
-icon: string;
+  idBedType: number;
+  name: string;
+  icon: string;
 }

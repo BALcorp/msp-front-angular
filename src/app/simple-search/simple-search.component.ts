@@ -9,7 +9,8 @@ import {Product} from '../interfaces/product';
 export class SimpleSearchComponent implements OnInit {
   @Input() product: Product;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

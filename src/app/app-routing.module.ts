@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {ProductComponent} from './product/product.component';
 import {ProductsCatalogComponent} from './products-catalog/products-catalog.component';
@@ -13,17 +13,17 @@ import {ProductBackOfficeComponent} from './product-back-office/product-back-off
 
 const routes: Routes = [
 
-  { path: 'product/:id', component: ProductComponent },
-  { path: 'products-catalog', component: ProductsCatalogComponent },
-  { path: 'authentication', component: AuthenticationComponent },
-  { path: 'registration', component: RegistrationComponent},
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'my-bookings-client', component: MyBookingsClientComponent},
-  { path: 'my-perso-account-client', component: MyPersoAccountClientComponent },
-  { path: 'payment', component: PaymentComponent },
-  { path: 'product-back-office', component: ProductBackOfficeComponent },
-  { path: 'welcome', component: WelcomeComponent },
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  {path: 'product/:id', component: ProductComponent},
+  {path: 'products-catalog', component: ProductsCatalogComponent},
+  {path: 'authentication', component: AuthenticationComponent},
+  {path: 'registration', component: RegistrationComponent},
+  {path: 'contact-us', component: ContactUsComponent},
+  {path: 'my-bookings-client', component: MyBookingsClientComponent},
+  {path: 'my-perso-account-client', component: MyPersoAccountClientComponent},
+  {path: 'payment', component: PaymentComponent},
+  {path: 'product-back-office', component: ProductBackOfficeComponent},
+  {path: 'welcome', component: WelcomeComponent},
+  {path: '', redirectTo: '/welcome', pathMatch: 'full'},
   {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
 ];
 
@@ -32,4 +32,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

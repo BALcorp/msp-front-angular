@@ -3,7 +3,6 @@ import {Bathroom} from './bathroom';
 import {Bedroom} from './bedroom';
 
 
-
 export interface Property {
   idProperty: number;
   size: number;

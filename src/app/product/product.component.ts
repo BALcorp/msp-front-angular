@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Product} from '../interfaces/product';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {Product} from '../interfaces/product';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 import {ProductService} from '../services/product.service';
 
 @Component({
@@ -12,17 +12,18 @@ import {ProductService} from '../services/product.service';
 export class ProductComponent implements OnInit {
   product: Product;
 
-  constructor(    private route: ActivatedRoute,
-                  private productService: ProductService,
-                  private location: Location) { }
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService,
+              private location: Location) {
+  }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.getProduct();
   }
 
   getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.productService.getProduct(id)
+    this.productService.findProduct(id)
       .subscribe(product => this.product = product);
   }
 

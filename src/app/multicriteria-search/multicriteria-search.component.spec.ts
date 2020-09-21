@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MulticriteriaSearchComponent } from './multicriteria-search.component';
+import {MulticriteriaSearchComponent} from './multicriteria-search.component';
 
 describe('MulticriteriaSearchComponent', () => {
   let component: MulticriteriaSearchComponent;
@@ -8,9 +8,9 @@ describe('MulticriteriaSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MulticriteriaSearchComponent ]
+      declarations: [MulticriteriaSearchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
