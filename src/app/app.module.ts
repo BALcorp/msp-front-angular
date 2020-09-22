@@ -23,6 +23,7 @@ import {SimpleSearchComponent} from './simple-search/simple-search.component';
 import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria-search.component';
 import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
+import { LowerbarComponent } from './lowerbar/lowerbar.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {AuthorizationService} from './services/authorization.service';
     PaymentComponent,
     ProductBackOfficeComponent,
     SimpleSearchComponent,
-    MulticriteriaSearchComponent
+    MulticriteriaSearchComponent,
+    LowerbarComponent,
   ],
   imports: [
     BrowserModule,
