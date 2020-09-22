@@ -39,8 +39,8 @@ export class BookmarkService {
 
 
   fetchBookmarkByProductAndUser(product: Product, user: User): Observable<Bookmark[]> {
-    return this.http.get<Bookmark[]>(this.bookmarksUrl + '/private/bookmark/' + product.idProduct + '/' + user.idUser).pipe(
-      tap(_ => this.log('fetched bookmarks by Product ' + product.idProduct + ', ' + user.idUser)),
+    return this.http.get<Bookmark[]>(this.bookmarksUrl + '/private/bookmark/' + product.idProduct + '/' + user.username).pipe(
+      tap(_ => this.log('fetched bookmarks by Product ' + product.idProduct + ', ' + user.username)),
       catchError(this.handleError<Bookmark[]>('fetchBookmarkByProductAndUser', []))
     );
   }

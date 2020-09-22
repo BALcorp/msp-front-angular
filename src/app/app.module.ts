@@ -10,7 +10,6 @@ import {FooterComponent} from './footer/footer.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {ProductsCatalogComponent} from './products-catalog/products-catalog.component';
-import {AuthenticationComponent} from './authentication/authentication.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -22,6 +21,8 @@ import {PaymentComponent} from './payment/payment.component';
 import {ProductBackOfficeComponent} from './product-back-office/product-back-office.component';
 import {SimpleSearchComponent} from './simple-search/simple-search.component';
 import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria-search.component';
+import {LoginComponent} from './login/login.component';
+import {AuthorizationService} from './services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria
     NavbarComponent,
     WelcomeComponent,
     ProductsCatalogComponent,
-    AuthenticationComponent,
+    LoginComponent,
     RegistrationComponent,
     ContactUsComponent,
     ProductComponent,
@@ -40,7 +41,7 @@ import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria
     PaymentComponent,
     ProductBackOfficeComponent,
     SimpleSearchComponent,
-    MulticriteriaSearchComponent,
+    MulticriteriaSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,7 @@ import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
