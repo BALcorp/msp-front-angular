@@ -17,6 +17,7 @@ export class ProductService {
   private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
   private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
 
+
   constructor(private http: HttpClient) {
   }
 
