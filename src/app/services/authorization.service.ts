@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { CognitoUserPool, CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
+import {Injectable} from '@angular/core';
+import {AuthenticationDetails, CognitoUser, CognitoUserPool} from 'amazon-cognito-identity-js';
 import {Observable} from 'rxjs';
 
 
@@ -17,7 +17,8 @@ export class AuthorizationService {
 
   cognitoUser: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   register(email, password) {
     const atttibuteList = [];

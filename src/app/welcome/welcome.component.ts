@@ -9,7 +9,8 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class WelcomeComponent implements OnInit {
 
-  images = ['../assets/pictures/homes_pictures/home4/photo2.png', '../assets/pictures/homes_pictures/home3/photo2.png', '../assets/pictures/homes_pictures/home2/photo2.png', '../assets/pictures/homes_pictures/home4/photo1.png', '../assets/pictures/homes_pictures/home3/photo1.png', '../assets/pictures/homes_pictures/home2/photo1.png'];
+  images: string[];
+  images2: string[];
 
   constructor(config: NgbCarouselConfig) {
 
@@ -19,7 +20,8 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.images = ['../assets/pictures/homes_pictures/home1/photo2.png', '../assets/pictures/homes_pictures/home3/photo2.png', '../assets/pictures/homes_pictures/home2/photo2.png'];
+    this.images2 = ['../assets/pictures/homes_pictures/home4/photo1.png', '../assets/pictures/homes_pictures/home3/photo1.png', '../assets/pictures/homes_pictures/home2/photo1.png'];
   }
 
 }

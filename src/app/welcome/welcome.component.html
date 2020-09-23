@@ -10,9 +10,6 @@
         </div>
       </div>
       <div class="row">
-        <app-multicriteria-search></app-multicriteria-search>
-      </div>
-      <div class="row">
         <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
           <div class="  ">
             <ngb-carousel *ngIf="images">
@@ -20,27 +17,15 @@
                 <div class="wrapper">
                   <img [src]="images[0]" alt="Random first slide">
                 </div>
-                <div class="carousel-caption">
-                  <h3>First Slide</h3>
-                  <p> Angular 10 Carousel Example </p>
-                </div>
               </ng-template>
               <ng-template ngbSlide>
                 <div class="wrapper">
                   <img [src]="images[1]" alt="Random second slide">
                 </div>
-                <div class="carousel-caption">
-                  <h3>Second Slide</h3>
-                  <p> Check out Techiediaries</p>
-                </div>
               </ng-template>
               <ng-template ngbSlide>
                 <div class="wrapper">
                   <img [src]="images[2]" alt="Random third slide">
-                </div>
-                <div class="carousel-caption">
-                  <h3>Third Slide</h3>
-                  <p>for full tutorial...</p>
                 </div>
               </ng-template>
             </ngb-carousel>
@@ -68,32 +53,20 @@
         </div>
         <div class="col-md-4 col-xs-12">
           <div class="  ">
-            <ngb-carousel *ngIf="images">
+            <ngb-carousel *ngIf="images2">
               <ng-template ngbSlide>
                 <div class="wrapper">
-                  <img [src]="images[0]" alt="Random first slide">
-                </div>
-                <div class="carousel-caption">
-                  <h3>First Slide</h3>
-                  <p> Angular 10 Carousel Example </p>
+                  <img [src]="images2[0]" alt="Random first slide">
                 </div>
               </ng-template>
               <ng-template ngbSlide>
                 <div class="wrapper">
-                  <img [src]="images[1]" alt="Random second slide">
-                </div>
-                <div class="carousel-caption">
-                  <h3>Second Slide</h3>
-                  <p> Check out Techiediaries</p>
+                  <img [src]="images2[1]" alt="Random second slide">
                 </div>
               </ng-template>
               <ng-template ngbSlide>
                 <div class="wrapper">
-                  <img [src]="images[2]" alt="Random third slide">
-                </div>
-                <div class="carousel-caption">
-                  <h3>Third Slide</h3>
-                  <p>for full tutorial...</p>
+                  <img [src]="images2[2]" alt="Random third slide">
                 </div>
               </ng-template>
             </ngb-carousel>

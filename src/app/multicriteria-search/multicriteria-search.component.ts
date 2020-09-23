@@ -14,10 +14,10 @@ import {ProductService} from '../services/product.service';
 export class MulticriteriaSearchComponent implements OnInit {
 
   cities: string[];
-  productsList: Observable<Product[]> = null;
+  productsList: Observable<Product[]>;
   properties: Observable<Property[]> = null;
   productPictures: Observable<ProductPicture[]>;
-  selectedProducts: Observable<Product[]> = null;
+  selectedProducts: Observable<Product[]>;
   city;
   property: Property;
   product: Product;
@@ -41,7 +41,7 @@ export class MulticriteriaSearchComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.selectedProducts = [];
+    this.selectedProducts = null;
     this.guestsNumber = 1;
     this.id = 0;
     this.product = null;
