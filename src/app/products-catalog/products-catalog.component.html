@@ -15,16 +15,12 @@
         </div>
       </div>
       <ul>
-        <li *ngFor="let product of products">
+        <ol *ngFor="let product of products">
           <div class="row">
             <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
               <div class="he-flex-parent he-flex-overflow-hidden he-top-1-rem">
-                <ul>
-                  <li *ngFor="let productPicture of product.productPictures">
-                    <img alt="no picture found" height="280"
-                         src="../assets/pictures/homes_pictures/{{productPicture.picture}}"/>
-                  </li>
-                </ul>
+                <img alt="no picture found" height="280"
+                     src="../assets/pictures/homes_pictures/{{product.productPictures[0].picture}}"/>
               </div>
             </div>
             <div class="he-padding-10 col-md-6 col-xs-12 ">
@@ -50,7 +46,7 @@
               <hr/>
             </div>
           </div>
-        </li>
+        </ol>
       </ul>
     </div>
     <div class="row">

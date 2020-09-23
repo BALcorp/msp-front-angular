@@ -2,3 +2,208 @@
   <h2>{{product.title | uppercase}} Details</h2>
   <div><span>id: </span>{{product.idProduct}}</div>
 </div>
+
+
+<div class="row">
+  <b:column col-md="12" col-xs="12" styleClass="he-margin-bottom-22">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <div class="he-padding-2">
+          <img [src]="images[0].picture" alt="no picture found" height="280">
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="he-padding-2">
+          <img [src]="images[1].picture" alt="no picture found" height="280">
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="he-padding-2">
+          <img [src]="images[2].picture" alt="no picture found" height="280">
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </b:column>
+</div>
+<div class="row">
+  <b:column col-md="9" col-xs="12" offset-md="1" styleClass="he-margin-bottom-10">
+    <h2>
+      <{{product.title}}/>
+    </h2>
+  </b:column>
+  <b:column col-md="1" col-xs="12" style="display: #{authenticationManagedBean.clientConnected}"
+            styleClass="he-top-1-rem">
+    <b:commandButton action="#{productManagedBean.addBookmark()}"
+                     ajax="true"
+                     autoUpdate="true"
+                     icon-awesome="star-o"
+                     iconSize="2x"
+                     style="display: #{productManagedBean.isNotBookmarked}"
+                     style-class="he-margin-5 he-bkg-dark"
+                     tooltip="Ajouter aux Favoris"/>
+    <b:commandButton action="#{productManagedBean.removeBookmark()}"
+                     ajax="true"
+                     autoUpdate="true"
+                     icon-awesome="star"
+                     iconSize="2x"
+                     style="display: #{productManagedBean.isBookmarked}"
+                     style-class="he-margin-5 he-bkg-dark he-txt-gold"
+                     tooltip="Retirer des Favoris"/>
+  </b:column>
+</div>
+<b:row style-class="he-bottom-1-5-rem">
+  <b:column col-md="10" col-xs="12" offset-md="1">
+    <h4>
+      <{{product.property.address}} - {{product.property.addressComplement}} - {{product.property.zipCode}} Paris"/>
+    </h4>
+    <hr/>
+  </b:column>
+  </div>
+  <b:row style-class="he-bottom-2-rem">
+    <b:column col-md="10" col-xs="12" offset-md="1"
+              style-class="he-txt-right he-txt-20">
+      <{{product.property.size}}m² - "/>
+      <{{product.property.maxGuests}} personnes"/>
+      <{{petsAuthorized}}"/>
+    </b:column>
+    </div>
+    <b:row style-class="he-padding-top-20">
+      <b:column col-md="10" col-xs="12" offset-md="1">
+        <h4>
+          <{{product.description}}"/>
+        </h4>
+      </b:column>
+      </div>
+      <b:row style-class="he-padding-top-40">
+        <b:column col-md="10" col-xs="12" offset-md="1"
+                  style-class="he-margin-bottom-10">
+          <h3 class="he-txt-italic">Les chambres et salles d'eau</h3>
+          <hr/>
+        </b:column>
+        </div>
+        <div class="row">
+          <b:column col-md="1" style-class="he-margin-bottom-10">
+          </b:column>
+        </div>
+        <div class="row">
+          <b:column col-md="1" style-class="he-margin-bottom-10">
+          </b:column>
+          <b:column col-md="10" col-xs="12"
+                    style-class="he-margin-bottom-10 he-flex-parent he-flex-start he-wrap">
+            <ui:repeat value="{{product.property.bedrooms}}"
+                       var="b">
+              <b:panel
+                collapsible="false"
+                style-class="he-margin-5 he-border-light he-border-radius-0 he-txt-center he-min-width-15-rem"
+                title="Chambre">
+                <ui:repeat value="#{b.bedroomBedTypes}" var="bbt">
+                  <b:image height="32"
+                           value="..assets/pictures/icons/#{bbt.bedType.icon}"/>
+                  <h4>
+                    <h:outputText value="#{bbt.bedType.name}"/>
+                  </h4>
+                </ui:repeat>
+              </b:panel>
+            </ui:repeat>
+            <ui:repeat value="#{productManagedBean.product.property.bathrooms}"
+                       var="ba">
+              <b:panel
+                collapsible="false"
+                style-class="he-margin-5 he-border-light he-border-radius-0 he-txt-center he-min-width-15-rem"
+                title="Salle d'eau">
+                <ui:repeat value="#{ba.bathroomItemBathrooms}" var="bib">
+                  <b:image height="32"
+                           value="./resources/pictures/icons/#{bib.bathroomItem.icon}"/>
+                  <h4>
+                    <h:outputText value="#{bib.bathroomItem.name}"/>
+                  </h4>
+                </ui:repeat>
+              </b:panel>
+            </ui:repeat>
+          </b:column>
+        </div>
+        <b:row style-class="he-padding-top-40">
+          <b:column col-md="10" col-xs="12" offset-md="1"
+                    style-class="he-margin-bottom-10">
+            <h3 class="he-txt-italic">Les équipements</h3>
+            <hr/>
+          </b:column>
+          <b:column col-md="10" col-xs="12" offset-md="1"
+                    style-class="he-margin-bottom-10 he-flex-parent-column he-flex-start he-wrap">
+            <div class="row">
+              <ui:repeat value="#{productManagedBean.product.property.propertyState.propertyStateAmenities}"
+                         var="psa">
+                <b:column col-md="3" col-xs="6">
+                  <h4>
+                    <h:outputText value="- #{psa.amenity.name} (#{psa.quantity})"/>
+                  </h4>
+                </b:column>
+              </ui:repeat>
+            </div>
+          </b:column>
+          </div>
+
+
+          <!-- Location content bloc: Start -->
+          <b:row id="uneRow" prependId="false" style-class="he-padding-top-40">
+            <b:column col-md="10" col-xs="12" offset-md="1">
+              <h3 class="he-txt-italic">Localisation</h3>
+              <hr/>
+
+              <div id="mapid"></div>
+
+              <h:inputHidden id="hiddenId"
+                             value="#{productManagedBean.productSimpleAddress}"/>
+
+              <h:outputText id="fulladdr"
+                            value="#{productManagedBean.productFullAddress}"/>
+
+            </b:column>
+            </div>
+            <b:row style-class="he-padding-top-20">
+              <b:column col-md="5" col-xs="12" offset-md="1"
+                        style-class="he-txt-18">
+
+              </b:column>
+              </div>
+              <!-- Location content bloc: End -->
+
+
+              <b:row style-class="he-padding-top-40">
+                <b:column col-md="10" col-xs="12" offset-md="1">
+                  <h3 class="he-txt-italic">Les appréciations</h3>
+                  <hr/>
+                </b:column>
+                </div>
+                <ui:repeat value="#{productManagedBean.product.evaluations}" var="e">
+                  <div class="row">
+                    <b:column col-md="10" offset-md="1">
+                      <b:panel>
+                        <b:column col-md="4" col-xs="7" offset-md="2">
+                          <h4>
+                            <Résidence : {{e.residence}}
+                            /5/>
+                          </h4>
+                          <h4>
+                            <h:outputText value="Emplacement : #{e.location}/5"/>
+                          </h4>
+                          <h4>
+                            <h:outputText
+                              value="Rapport qualité/prix : #{e.valueForMoney}/5"/>
+                          </h4>
+                          <h4>
+                            <h:outputText value="Communication : #{e.communication}/5"/>
+                          </h4>
+                        </b:column>
+                        <b:column col-md="4" col-xs="12" styleClass="he-flex-parent-column he-flex-between">
+                          <h4>
+                            <h:outputText value="#{e.commentary}"/>
+                          </h4>
+                          <h4 class="he-txt-right">
+                            <h:outputText value="- #{e.username}"/>
+                          </h4>
+                        </b:column>
+                      </b:panel>
+                    </b:column>
+                  </div>
+                </ui:repeat>
