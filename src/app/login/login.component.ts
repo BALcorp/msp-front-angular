@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../services/authorization.service';
@@ -10,9 +10,10 @@ import {AuthorizationService} from '../services/authorization.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private auth: AuthorizationService, private _router: Router) { }
-
   emailVerificationMessage = false;
+
+  constructor(private auth: AuthorizationService, private _router: Router) {
+  }
 
   onSubmit(form: NgForm) {
 
