@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LowerbarComponent } from './lowerbar.component';
+import {LowerbarComponent} from './lowerbar.component';
 
 describe('LowerbarComponent', () => {
   let component: LowerbarComponent;
@@ -8,9 +8,9 @@ describe('LowerbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LowerbarComponent ]
+      declarations: [LowerbarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
