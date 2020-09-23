@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    this.auth.signIn(email,  password).subscribe(
+    this.auth.signIn(email, password).subscribe(
       (data) => {
         this._router.navigateByUrl('/');
       },
