@@ -1,4 +1,244 @@
-<div *ngIf="product">
-  <h2>{{product.title | uppercase}} Details</h2>
-  <div><span>id: </span>{{product.idProduct}}</div>
+<div class="container">
+  <div class="panel-group ">
+    <div class="he-panel-main panel panel-default">
+      <div class="row">
+        <div class="he-margin-bottom-22 col-md-12 col-xs-12 ">
+          <ngb-carousel *ngIf="product.productPictures">
+            <ng-template ngbSlide>
+              <div class="he-padding-2">
+                <img [src]="(imagePath + product.productPictures[0].picture)" alt="no picture found" height="280">
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="he-padding-2">
+                <img [src]="(imagePath + product.productPictures[1].picture)" alt="no picture found" height="280">
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="he-padding-2">
+                <img [src]="(imagePath + product.productPictures[2].picture)" alt="no picture found" height="280">
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
 </div>
+      <div class="row">
+        <div class="he-margin-bottom-10 col-md-9 col-md-offset-1 col-xs-12 ">
+          <h2>
+            {{product.title}}
+          </h2>
+        </div>
+        <div class="he-top-1-rem col-md-1 col-xs-12 ">
+          <!--    <b:commandButton action="#{productManagedBean.addBookmark()}"-->
+          <!--                     ajax="true"-->
+          <!--                     autoUpdate="true"-->
+          <!--                     icon-awesome="star-o"-->
+          <!--                     iconSize="2x"-->
+          <!--                     style="display: #{productManagedBean.isNotBookmarked}"-->
+          <!--                     style-class="he-margin-5 he-bkg-dark"-->
+          <!--                     tooltip="Ajouter aux Favoris"/>-->
+          <!--    <b:commandButton action="#{productManagedBean.removeBookmark()}"-->
+          <!--                     ajax="true"-->
+          <!--                     autoUpdate="true"-->
+          <!--                     icon-awesome="star"-->
+          <!--                     iconSize="2x"-->
+          <!--                     style="display: #{productManagedBean.isBookmarked}"-->
+          <!--                     style-class="he-margin-5 he-bkg-dark he-txt-gold"-->
+          <!--                     tooltip="Retirer des Favoris"/>-->
+        </div>
+      </div>
+      <div class="row he-bottom-1-5-rem">
+        <div class="col-md-10 col-md-offset-1 col-xs-12">
+          <h4>
+            {{product.property.address}} - {{product.property.addressComplement}} - {{product.property.zipCode}} Paris
+          </h4>
+          <hr/>
+        </div>
+      </div>
+      <div class="row he-bottom-2-rem">
+        <div class="he-txt-right he-txt-20 col-md-10 col-md-offset-1 col-xs-12 ">
+          {{product.property.size}}m² -
+          {{product.property.maxGuests}} personnes
+          {{petsAuthorized}}
+        </div>
+      </div>
+      <div class="row he-padding-top-20">
+        <div class="col-md-10 col-md-offset-1 col-xs-12">
+          <h4>
+            {{product.description}}
+          </h4>
+        </div>
+      </div>
+      <div class="row he-padding-top-40">
+        <div class="he-margin-bottom-10 col-md-10 col-md-offset-1 col-xs-12 ">
+          <h3 class="he-txt-italic">Les chambres et salles d'eau</h3>
+          <hr/>
+        </div>
+      </div>
+      <div class="row">
+        <div col-md="1" style-class="he-margin-bottom-10">
+        </div>
+      </div>
+      <div class="row">
+        <div class="he-margin-bottom-10 col-md-1 ">
+        </div>
+        <!--          <div col-md="10" col-xs="12"-->
+        <!--                    style-class="he-margin-bottom-10 he-flex-parent he-flex-start he-wrap">-->
+        <!--            <ui:repeat value="{{product.property.bedrooms}}"-->
+        <!--                       var="b">-->
+        <!--              <b:panel-->
+        <!--                collapsible="false"-->
+        <!--                style-class="he-margin-5 he-border-light he-border-radius-0 he-txt-center he-min-width-15-rem"-->
+        <!--                title="Chambre">-->
+        <!--                <ui:repeat value="#{b.bedroomBedTypes}" var="bbt">-->
+        <!--                  <b:image height="32"-->
+        <!--                           value="..assets/pictures/icons/#{bbt.bedType.icon}"/>-->
+        <!--                  <h4>-->
+        <!--                    <h:outputText value="#{bbt.bedType.name}"/>-->
+        <!--                  </h4>-->
+        <!--                </ui:repeat>-->
+        <!--              </b:panel>-->
+        <!--            </ui:repeat>-->
+        <!--            <ui:repeat value="#{productManagedBean.product.property.bathrooms}"-->
+        <!--                       var="ba">-->
+        <!--              <b:panel-->
+        <!--                collapsible="false"-->
+        <!--                style-class="he-margin-5 he-border-light he-border-radius-0 he-txt-center he-min-width-15-rem"-->
+        <!--                title="Salle d'eau">-->
+        <!--                <ui:repeat value="#{ba.bathroomItemBathrooms}" var="bib">-->
+        <!--                  <b:image height="32"-->
+        <!--                           value="./resources/pictures/icons/#{bib.bathroomItem.icon}"/>-->
+        <!--                  <h4>-->
+        <!--                    <h:outputText value="#{bib.bathroomItem.name}"/>-->
+        <!--                  </h4>-->
+        <!--                </ui:repeat>-->
+        <!--              </b:panel>-->
+        <!--            </ui:repeat>-->
+        <!--          </div>-->
+      </div>
+      <div class="row he-padding-top-40">
+        <div col-md="10" col-xs="12" offset-md="1"
+             style-class="he-margin-bottom-10">
+          <h3 class="he-txt-italic">Les équipements</h3>
+          <hr/>
+        </div>
+        <!--          <div col-md="10" col-xs="12" offset-md="1"-->
+        <!--                    style-class="he-margin-bottom-10 he-flex-parent-column he-flex-start he-wrap">-->
+        <!--            <div class="row">-->
+        <!--              <ui:repeat value="#{productManagedBean.product.property.propertyState.propertyStateAmenities}"-->
+        <!--                         var="psa">-->
+        <!--                <div col-md="3" col-xs="6">-->
+        <!--                  <h4>-->
+        <!--                    <h:outputText value="- #{psa.amenity.name} (#{psa.quantity})"/>-->
+        <!--                  </h4>-->
+        <!--                </div>-->
+        <!--              </ui:repeat>-->
+        <!--            </div>-->
+        <!--          </div>-->
+      </div>
+
+      <!-- Location content bloc: Start -->
+      <div class="row he-padding-top-40">
+        <div class="col-md-10 col-md-offset-1 col-xs-12">
+          <h3 class="he-txt-italic">Localisation</h3>
+          <hr/>
+
+          <div id="mapid"></div>
+          <input id="hiddenId" name="hiddenId" type="hidden" value="{{productSimpleAddress}}"/>
+          <span id="fulladdr">{{productFullAddress}}</span>
+        </div>
+      </div>
+      <div class="row he-padding-top-20">
+        <div class="he-txt-18 col-md-5 col-md-offset-1 col-xs-12 ">
+
+        </div>
+      </div>
+      <!-- Location content bloc: End -->
+
+
+      <div class="row he-padding-top-40">
+        <div class="col-md-10 col-md-offset-1 col-xs-12">
+          <h3 class="he-txt-italic">Les appréciations</h3>
+          <hr/>
+        </div>
+      </div>
+      <!--                <ui:repeat value="#{productManagedBean.product.evaluations}" var="e">-->
+      <!--                  <div class="row">-->
+      <!--                    <div class="col-md-10 col-md-offset-1">-->
+      <!--                      <div class="panel-group " >-->
+      <!--                        <div class="panel panel-default">-->
+      <!--&lt;!&ndash;                          <div class="panel-collapse collapse in">&ndash;&gt;-->
+      <!--&lt;!&ndash;                            <div class="panel-body ui-hidden-container">&ndash;&gt;-->
+      <!--                              <div class="col-md-4 col-md-offset-2 col-xs-7">-->
+      <!--                          <h4>-->
+      <!--                            <Résidence : {{e.residence}}-->
+      <!--                            /5/>-->
+      <!--                          </h4>-->
+      <!--                          <h4>-->
+      <!--                            <h:outputText value="Emplacement : #{e.location}/5"/>-->
+      <!--                          </h4>-->
+      <!--                          <h4>-->
+      <!--                            <h:outputText-->
+      <!--                              value="Rapport qualité/prix : #{e.valueForMoney}/5"/>-->
+      <!--                          </h4>-->
+      <!--                          <h4>-->
+      <!--                            <h:outputText value="Communication : #{e.communication}/5"/>-->
+      <!--                          </h4>-->
+      <!--                        </b:column>-->
+      <!--                        <div col-md="4" col-xs="12" styleClass="he-flex-parent-column he-flex-between">-->
+      <!--                          <h4>-->
+      <!--                            <h:outputText value="#{e.commentary}"/>-->
+      <!--                          </h4>-->
+      <!--                          <h4 class="he-txt-right">-->
+      <!--                            <h:outputText value="- #{e.username}"/>-->
+      <!--                          </h4>-->
+      <!--                        </div>-->
+      <!--                      </div>-->
+      <!--                    </div>-->
+      <!--                  </div>-->
+      <!--                </ui:repeat>-->
+
+    </div>
+  </div>
+</div>
+
+<script>
+  var address = document.getElementById('hiddenId').value;
+  var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
+    + address + '?format=json';
+
+  console.log(geocodeRes);
+
+  var lat = 0;
+  var lon = 0;
+
+  $.ajax({
+    url: geocodeRes,
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    async: false,
+    success: function (e) {
+      lat = e[0]['lat'];
+      lon = e[0]['lon'];
+      console.log("latitude : " + e[0]['lat']);
+      console.log("longitude : " + e[0]['lon']);
+      /* alert("sucess"); */
+    }
+  })
+
+  console.log(lat, lon);
+
+  var mymap = L.map('mapid').setView([lat, lon], 15);
+
+  L
+    .tileLayer(
+      '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+      {
+        attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+      }).addTo(mymap);
+
+  var marker = L.marker([lat, lon]).addTo(mymap);
+</script>

@@ -8,19 +8,23 @@ import {Bookmark} from '../interfaces/bookmark';
 import {User} from '../interfaces/user';
 import {BookmarkService} from '../services/bookmark.service';
 import {UserService} from '../services/user.service';
+import {Observable} from 'rxjs';
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import {ProductPicture} from '../interfaces/productPicture';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
+  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
 export class ProductComponent implements OnInit {
   product: Product;
   booking: Booking;
-  bookmark: Bookmark;
+  bookmark: Observable<Bookmark[]>;
   bookingCheckInDate: Date;
   bookingCheckOutDate: Date;
-  petsAuthorized = '';
+  petsAuthorized: string;
   productFullAddress: string;
   productSimpleAddress: string;
   user: User;
@@ -28,21 +32,95 @@ export class ProductComponent implements OnInit {
   isNotBookmarked = 'flex';
   bookmarkService: BookmarkService;
   userService: UserService;
+  imagePath = '../assets/pictures/homes_pictures/';
 
+  images: ProductPicture[];
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
-              private location: Location) {
+              private location: Location, config: NgbCarouselConfig) {
+
+    config.interval = 2000;
+    config.keyboard = true;
+    config.pauseOnHover = true;
   }
 
   ngOnInit(): void {
     this.getProduct();
+    this.getProductPictures();
+
+    this.images = this.product.productPictures;
+    // this.imagePath = '../assets/pictures/homes_pictures/';
+
+    if (this.product.property.petsAuthorized === true) {
+      this.petsAuthorized = ' - Animaux autorisés';
+    } else {
+      this.petsAuthorized = ' - Animaux non autorisés';
+    }
+
+    this.productFullAddress =
+      this.product.property.address
+      + ' - '
+      + this.product.property.zipCode
+      + ' Paris';
+
+    this.productSimpleAddress =
+      this.product.property.address + ' ' + this.product.property.zipCode;
+
+    try {
+      this.bookmark = this.bookmarkService.fetchBookmarkByProductAndUser(this.product, this.user);
+      if (null != this.bookmark) {
+        this.isBookmarked = 'flex';
+        this.isNotBookmarked = 'none';
+      } else {
+        this.isBookmarked = 'none';
+        this.isNotBookmarked = 'flex';
+      }
+    } catch (Error) {
+      this.isBookmarked = 'none';
+      this.isNotBookmarked = 'none';
+    }
+
+  }
+
+  bookProduct(): string {
+
+    // this.booking.idProduct === this.product.idProduct;
+    // this.booking.bookingDate === Date.now();
+    // this.booking.checkInDate === this.bookingCheckInDate;
+    // this.booking.checkOutDate === this.bookingCheckOutDate;
+    // this.booking.pets === this.product.property.petsAuthorized;
+    // this.booking.canceled === false;
+
+    return '/payment.html?faces-redirect=true';
+  }
+
+  editProduct(): string {
+    return '/productBackOffice.xhtml?faces-redirect=true';
+  }
+
+  addBookmark(): void {
+    this.isBookmarked = 'flex';
+    this.isNotBookmarked = 'none';
+    // this.bookmark = new Bookmark(Date.now(), this.product.idProduct, this.user);
+    // bookmarkService.addBookmark(this.bookmark);
+  }
+
+  removeBookmark(): void {
+    this.isBookmarked = 'none';
+    this.isNotBookmarked = 'flex';
+    // this.bookmarkService.removeBookmark(this.bookmark);
   }
 
   getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.findProduct(id)
       .subscribe(product => this.product = product);
+  }
+
+  getProductPictures(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.productService.findAllProductPicturesByProductId(id).subscribe(images => this.product.productPictures = images);
   }
 
 }

@@ -14,9 +14,10 @@ export class WelcomeComponent implements OnInit {
 
   constructor(config: NgbCarouselConfig) {
 
-    config.interval = 5000;
+    config.interval = 2000;
     config.keyboard = true;
     config.pauseOnHover = true;
+
   }
 
   ngOnInit(): void {
