@@ -32,6 +32,7 @@ export class ProductComponent implements OnInit {
   isNotBookmarked = 'flex';
   bookmarkService: BookmarkService;
   userService: UserService;
+  imagePath = '../assets/pictures/homes_pictures/';
 
   images: ProductPicture[];
 
@@ -46,9 +47,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
-
+    this.getProductPictures();
 
     this.images = this.product.productPictures;
+    // this.imagePath = '../assets/pictures/homes_pictures/';
 
     if (this.product.property.petsAuthorized === true) {
       this.petsAuthorized = ' - Animaux autorisés';
@@ -114,6 +116,11 @@ export class ProductComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.findProduct(id)
       .subscribe(product => this.product = product);
+  }
+
+  getProductPictures(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.productService.findAllProductPicturesByProductId(id).subscribe(images => this.product.productPictures = images);
   }
 
 }
