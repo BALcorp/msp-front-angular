@@ -48,8 +48,20 @@
               <div class="row">
                 <div class="col-md-12 col-xs-12">
 
-                  <pm-star [rating]='getTotalAverage(product.evaluations)' height="25"></pm-star>
+                  <!--                  <pm-star (ratingClicked)='onRatingClicked($event)'-->
+                  <!--                           [rating]='getTotalAverage(product.evaluations)'></pm-star>-->
 
+
+                  <ng-template #t let-fill="fill">
+  <span [class.full]="fill === 100" class="star">
+    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+  </span>
+                  </ng-template>
+
+                  <ngb-rating [(rate)]="currentRate" [max]="5" [readonly]="true" [starTemplate]="t"></ngb-rating>
+
+                  <hr>
+                  <pre>Rate: <b>{{currentRate}}</b></pre>
                 </div>
               </div>
             </div>
@@ -68,6 +80,53 @@
         <h2>{{message}}</h2>
       </div>
     </div>
+    <table *ngIf='products && products.length' class="table">
+
+      <thead>
+      <tr>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Price</th>
+        <th>5 star Rating</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <!-- Structural directive -->
+      <!-- <tr *ngFor='let product of products'> -->
+      <tr *ngFor='let product of products'>
+        <!-- Property binding -->
+        <!-- Interpolation -->
+        <td><a [routerLink]="['/products', product.idProduct]"> {{ product.title }}</a></td>
+        <td>{{ product.idProduct}}</td>
+        <td>{{ product.property.dailyrate | currency:'EUR':'symbol':'1.2-2' }}</td>
+        <!-- <td>{{ product.starRating }}</td> -->
+        <td>
+          <pm-star (ratingClicked)='onRatingClicked($event)' [rating]='product.idProduct'></pm-star>
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+    <div>
+      <p>Custom rating template provided via a variable. Shows fine-grained rating display</p>
+
+      <ng-template #t let-fill="fill">
+  <span [class.full]="fill === 100" class="star">
+    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+  </span>
+      </ng-template>
+
+      <ngb-rating [(rate)]="currentRate" [max]="5" [readonly]="true" [starTemplate]="t"></ngb-rating>
+
+      <hr>
+      <pre>Rate: <b>{{currentRate}}</b></pre>
+      <button (click)="currentRate = 1.35" class="btn btn-sm btn-outline-primary mr-2">1.35</button>
+      <button (click)="currentRate = 4.72" class="btn btn-sm btn-outline-primary mr-2">4.72</button>
+    </div>
   </div>
-</div>
+  </div>
+
 

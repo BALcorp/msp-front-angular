@@ -25,6 +25,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
 import {StarComponent} from './star/star.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {StarComponent} from './star/star.component';
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [AuthorizationService],
   bootstrap: [AppComponent]
