@@ -10,6 +10,25 @@ const NO_PRODUCT_FOUND = 'Aucune location disponible ne correspond à vos critè
 @Component({
   selector: 'app-products-catalog',
   templateUrl: './products-catalog.component.html',
+  styles: [`
+    .star {
+      position: relative;
+      display: inline-block;
+      font-size: 3rem;
+      color: #d3d3d3;
+    }
+
+    .full {
+      color: red;
+    }
+
+    .half {
+      position: absolute;
+      display: inline-block;
+      overflow: hidden;
+      color: red;
+    }
+  `],
   styleUrls: ['./products-catalog.component.css']
 })
 
@@ -20,6 +39,7 @@ export class ProductsCatalogComponent implements OnInit {
   errorMessage: string;
   product: Product;
 
+  currentRate: number;
 
   route: ActivatedRoute;
   message: string;
@@ -64,6 +84,8 @@ export class ProductsCatalogComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
 
+    // this.currentRate = this.getTotalAverage(this.product.evaluations);
+    this.currentRate = 3.14555555555555555555555555555;
 
     if (this.products == null || this.products.length === 0) {
       this.displayProducts = 'none';
@@ -189,6 +211,7 @@ export class ProductsCatalogComponent implements OnInit {
     for (const evaluation of evaluations) {
       total += (evaluation.valueForMoney + evaluation.residence + evaluation.location + evaluation.communication) / 4;
     }
+    // return Number((total / evaluations.length).toFixed(2));
     return total / evaluations.length;
   }
 
