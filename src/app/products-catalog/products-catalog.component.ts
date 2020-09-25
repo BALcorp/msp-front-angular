@@ -153,6 +153,10 @@ export class ProductsCatalogComponent implements OnInit {
     this.clickedProduct = product;
   }
 
+  onRatingClicked(message: string): void {
+    this.message = 'Product List : ' + message;
+  }
+
   replaceDotByComma(value: string): string {
     return value.replace('.', ',');
   }

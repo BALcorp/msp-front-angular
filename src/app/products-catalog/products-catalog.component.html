@@ -48,7 +48,8 @@
               <div class="row">
                 <div class="col-md-12 col-xs-12">
 
-                  <pm-star [rating]='getTotalAverage(product.evaluations)' height="25"></pm-star>
+                  <pm-star (ratingClicked)='onRatingClicked($event)'
+                           [rating]='getTotalAverage(product.evaluations)'></pm-star>
 
                 </div>
               </div>
@@ -68,6 +69,38 @@
         <h2>{{message}}</h2>
       </div>
     </div>
+    <table *ngIf='products && products.length' class="table">
+
+      <thead>
+      <tr>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Price</th>
+        <th>5 star Rating</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <!-- Structural directive -->
+      <!-- <tr *ngFor='let product of products'> -->
+      <tr *ngFor='let product of products'>
+        <!-- Property binding -->
+        <!-- Interpolation -->
+        <td><a [routerLink]="['/products', product.idProduct]"> {{ product.title }}</a></td>
+        <td>{{ product.idProduct}}</td>
+        <td>{{ product.property.dailyrate | currency:'EUR':'symbol':'1.2-2' }}</td>
+        <!-- <td>{{ product.starRating }}</td> -->
+        <td>
+          <pm-star (ratingClicked)='onRatingClicked($event)' [rating]='product.idProduct'></pm-star>
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
   </div>
-</div>
+  </div>
+
 
