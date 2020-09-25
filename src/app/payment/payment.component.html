@@ -1,1 +1,120 @@
-<p>payment works!</p>
+<div class="row">
+  <div col-md="5" col-xs="6" offset-md="1"
+       style-class="he-padding-top-20">
+    <h1>Réservation</h1>
+  </div>
+  <div col-md="5" col-xs="6"
+       style-class="he-padding-top-20 he-txt-right he-top-1-rem">
+    <h3>
+      {{bookingDate}}
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1">
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1" style-class="he-txt-center">
+    <h3>
+      {{bookedProduct.title}}
+    </h3>
+    <h4 class="he-margin-top-22">
+      {{bookedProduct.property.address}}
+    </h4>
+    <h4>
+      {{bookedProduct.property.addressComplement}}
+    </h4>
+    <h4>
+      {{bookedProduct.property.zipCode}} Paris
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div col-md="6" col-xs="12" offset-md="3">
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1" style-class="he-txt-center">
+    <h4>
+      Date d'arrivée : {{checkInDate}}
+    </h4>
+    <h4>
+      Date de départ : {{checkOutDate}}
+    </h4>
+    <h4>
+      Nombre de personnes : {{booking.guestsNumber}}
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div col-md="3" col-xs="12" offset-md="8">
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1" style-class="he-txt-right he-right-1-5-rem">
+    <h4>
+      {{petsAuthorized}}
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1">
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1" style-class="he-left-1-5-rem he-bottom-0-8-rem">
+    <h3>
+      Total à payer : {{totalToPay} €
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div col-md="3" col-xs="12" offset-md="1">
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1"
+       style-class="he-padding-top-20">
+    <h1>Paiement</h1>
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div col-md="10" col-xs="12" offset-md="1">
+    <!--        <b:panel title="Carte bancaire" collapsible="false">-->
+    <!--          <div offset-md="1" col-md="6" col-xs="12"-->
+    <!--                    style-class="he-padding-10">-->
+    <!--            <b:inputText placeholder="Numéro">-->
+    <!--              <f:facet name="prepend">-->
+    <!--                <b:iconAwesome name="credit-card"/>-->
+    <!--              </f:facet>-->
+    <!--            </b:inputText>-->
+    <!--          </div>-->
+    <!--          <div col-md="2" col-xs="6" style-class="he-padding-10">-->
+    <!--            <b:dateTimePicker mode="toggle-icon" show-time="false"-->
+    <!--                              showWeek="true" icon-position="left" placeholder="Expiration"/>-->
+    <!--          </div>-->
+    <!--          <div col-md="2" col-xs="6" style-class="he-padding-10">-->
+    <!--            <b:inputText placeholder="Code">-->
+    <!--              <f:facet name="prepend">-->
+    <!--                <b:iconAwesome name="key"/>-->
+    <!--              </f:facet>-->
+    <!--            </b:inputText>-->
+    <!--          </div>-->
+    <!--        </b:panel>-->
+  </div>
+</div>
+<div>
+  <div col-md="2" offset-md="5" style-class="he-padding-10 he-padding-bottom-40">
+    <!--        <b:commandButton value="Payer"-->
+    <!--                         action="#{paymentManagedBean.book()}"-->
+    <!--                         styleClass="he-btn-20 he-width-100"/>-->
+  </div>
+</div>
+

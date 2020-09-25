@@ -4,6 +4,6 @@ export interface Evaluation {
   residence: number;
   location: number;
   valueForMoney: number;
-  idUser: number;
+  username: string;
   communication: number;
 }

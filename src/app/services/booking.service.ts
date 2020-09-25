@@ -26,10 +26,11 @@ export class BookingService {
   }
 
   getBookingsByClient(user: User): Observable<Booking[]> {
-    return this.http.get<Booking[]>(this.bookingsUrl + '/private/bookings/' + user.idUser).pipe(
-      tap(_ => this.log('fetched bookings by client ' + user.firstname + user.lastname + ' , id :' + user.idUser)),
+    return this.http.get<Booking[]>(this.bookingsUrl + '/private/bookings/' + user.username).pipe(
+      tap(_ => this.log('fetched bookings by client ' + user.firstname + user.lastname)),
       catchError(this.handleError<Booking[]>('getBookingsByClient', []))
     );
+    // return null;
   }
 
 

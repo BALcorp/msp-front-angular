@@ -3,6 +3,7 @@ import {ProductService} from '../services/product.service';
 import {Product} from '../interfaces/product';
 import {User} from '../interfaces/user';
 import {ActivatedRoute} from '@angular/router';
+import {Evaluation} from '../interfaces/evaluation';
 
 const NO_PRODUCT_FOUND = 'Aucune location disponible ne correspond à vos critères de recherche.';
 
@@ -14,6 +15,11 @@ const NO_PRODUCT_FOUND = 'Aucune location disponible ne correspond à vos critè
 
 
 export class ProductsCatalogComponent implements OnInit {
+
+  filteredProducts: Product[];
+  errorMessage: string;
+  product: Product;
+
 
   route: ActivatedRoute;
   message: string;
@@ -36,12 +42,23 @@ export class ProductsCatalogComponent implements OnInit {
   filterPetsAuthorized: string;
   filterBookmarksUser: string;
   user: User;
-
-
+  totalAverage: number;
   products: Product[];
   clickedProduct: Product;
 
   constructor(private productService: ProductService) {
+  }
+
+  // tslint:disable-next-line:variable-name
+  _listFilter: string;
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this._listFilter ? this.performFilter(this.listFilter) : this.products;
   }
 
   ngOnInit(): void {
@@ -142,7 +159,33 @@ export class ProductsCatalogComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getAllProducts()
-      .subscribe(products => this.products = products);
+      .subscribe({
+        next: products => {
+          this.products = products;
+          this.filteredProducts = this.products;
+        },
+        error: err => this.errorMessage = err
+      });
+
+  }
+
+  performFilter(filter: string): any[] {
+    // En argument je récupère le filtre inséré dans l'input text
+    // je vais filtrer mon tableau products
+    // et je vais garder de products que les produits dont le nom en minuscule
+    // contient le caractère de mon filtre
+    // return this.products.filter( (product : any ) =>
+    // (<string>product.productName).toLocaleLowerCase().lastIndexOf(filter) !== -1 );
+    return this.products.filter((product: Product) =>
+      product.title.toLocaleLowerCase().lastIndexOf(filter) !== -1);
+  }
+
+  getTotalAverage(evaluations: Evaluation[]): number {
+    let total = 0;
+    for (const evaluation of evaluations) {
+      total += (evaluation.valueForMoney + evaluation.residence + evaluation.location + evaluation.communication) / 4;
+    }
+    return total / evaluations.length;
   }
 
 

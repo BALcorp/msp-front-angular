@@ -3,23 +3,25 @@
     <div class="he-panel-main panel panel-default">
       <div class="row">
         <div class="he-margin-bottom-22 col-md-12 col-xs-12 ">
-          <ngb-carousel *ngIf="product.productPictures">
-            <ng-template ngbSlide>
-              <div class="he-padding-2">
-                <img [src]="(imagePath + product.productPictures[0].picture)" alt="no picture found" height="280">
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="he-padding-2">
-                <img [src]="(imagePath + product.productPictures[1].picture)" alt="no picture found" height="280">
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="he-padding-2">
-                <img [src]="(imagePath + product.productPictures[2].picture)" alt="no picture found" height="280">
-              </div>
-            </ng-template>
-          </ngb-carousel>
+          <div class="  ">
+            <ngb-carousel *ngIf="product.productPictures">
+              <ng-template ngbSlide>
+                <div class="he-padding-2">
+                  <img [src]="(imagePath + product.productPictures[0].picture)" alt="no picture found">
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="he-padding-2">
+                  <img [src]="(imagePath + product.productPictures[1].picture)" alt="no picture found">
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="he-padding-2">
+                  <img [src]="(imagePath + product.productPictures[2].picture)" alt="no picture found">
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
         </div>
 </div>
       <div class="row">
@@ -60,6 +62,7 @@
           {{product.property.size}}m² -
           {{product.property.maxGuests}} personnes
           {{petsAuthorized}}
+          {{product.property.dailyrate}} EUR par nuitée.
         </div>
       </div>
       <div class="row he-padding-top-20">
@@ -162,50 +165,46 @@
           <hr/>
         </div>
       </div>
-      <!--                <ui:repeat value="#{productManagedBean.product.evaluations}" var="e">-->
-      <!--                  <div class="row">-->
-      <!--                    <div class="col-md-10 col-md-offset-1">-->
-      <!--                      <div class="panel-group " >-->
-      <!--                        <div class="panel panel-default">-->
-      <!--&lt;!&ndash;                          <div class="panel-collapse collapse in">&ndash;&gt;-->
-      <!--&lt;!&ndash;                            <div class="panel-body ui-hidden-container">&ndash;&gt;-->
-      <!--                              <div class="col-md-4 col-md-offset-2 col-xs-7">-->
-      <!--                          <h4>-->
-      <!--                            <Résidence : {{e.residence}}-->
-      <!--                            /5/>-->
-      <!--                          </h4>-->
-      <!--                          <h4>-->
-      <!--                            <h:outputText value="Emplacement : #{e.location}/5"/>-->
-      <!--                          </h4>-->
-      <!--                          <h4>-->
-      <!--                            <h:outputText-->
-      <!--                              value="Rapport qualité/prix : #{e.valueForMoney}/5"/>-->
-      <!--                          </h4>-->
-      <!--                          <h4>-->
-      <!--                            <h:outputText value="Communication : #{e.communication}/5"/>-->
-      <!--                          </h4>-->
-      <!--                        </b:column>-->
-      <!--                        <div col-md="4" col-xs="12" styleClass="he-flex-parent-column he-flex-between">-->
-      <!--                          <h4>-->
-      <!--                            <h:outputText value="#{e.commentary}"/>-->
-      <!--                          </h4>-->
-      <!--                          <h4 class="he-txt-right">-->
-      <!--                            <h:outputText value="- #{e.username}"/>-->
-      <!--                          </h4>-->
-      <!--                        </div>-->
-      <!--                      </div>-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                </ui:repeat>-->
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel-group ">
+            <div class="panel panel-default">
+              <div *ngFor='let evaluation of product.evaluations'>
+                <div class="col-md-4 col-md-offset-2 col-xs-7">
 
-    </div>
-  </div>
-</div>
+                  <h4>
+                    Résidence : {{evaluation.residence}}
+                    /5
+                  </h4>
+                  <h4>
+                    Emplacement : {{evaluation.location}}/5
+                  </h4>
+                  <h4>
+                    Rapport qualité/prix : {{evaluation.valueForMoney}}/5
+                  </h4>
+                  <h4>
+                    Communication : {{evaluation.communication}}/5
+                  </h4>
+                </div>
+                <div col-md="4" col-xs="12" styleClass="he-flex-parent-column he-flex-between">
+                  <h4>{{evaluation.commentary}}
+                  </h4>
+                  <h4 class="he-txt-right">
+                    {{evaluation.username}}
+                  </h4>
+                </div>
+              </div>
+            </div>
 
-<script>
-  var address = document.getElementById('hiddenId').value;
-  var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
-    + address + '?format=json';
+
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var address = document.getElementById('hiddenId').value;
+        var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
+          + address + '?format=json';
 
   console.log(geocodeRes);
 
