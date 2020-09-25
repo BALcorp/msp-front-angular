@@ -15,7 +15,7 @@
         </div>
       </div>
       <ul>
-        <ol *ngFor="let product of products">
+        <ol *ngFor="let product of filteredProducts">
           <div class="row">
             <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
               <div class="he-flex-parent he-flex-overflow-hidden he-top-1-rem">
@@ -36,6 +36,20 @@
                   <h4>
                     {{product.description}}
                   </h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <h4>
+                    <br/>  {{product.property.dailyrate}} EUR par nuitée.
+                  </h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+
+                  <pm-star [rating]='getTotalAverage(product.evaluations)' height="25"></pm-star>
+
                 </div>
               </div>
             </div>

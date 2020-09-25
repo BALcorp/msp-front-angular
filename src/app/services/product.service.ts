@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Product} from '../interfaces/product';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {ProductPicture} from '../interfaces/productPicture';
 import {User} from '../interfaces/user';
 
@@ -16,6 +16,7 @@ export class ProductService {
   };
   private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
   private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
+
 
 
   constructor(private http: HttpClient) {
@@ -33,6 +34,12 @@ export class ProductService {
     return this.http.get<Product>(url).pipe(
       tap(_ => this.log(`fetched product id=${id}`)),
       catchError(this.handleError<Product>(`findProduct id=${id}`))
+    );
+  }
+
+  findProduct2(id: number): Observable<Product> {
+    return this.getAllProducts().pipe(
+      map(data => data.find(product => product.idProduct === id))
     );
   }
 
@@ -91,6 +98,7 @@ export class ProductService {
       catchError(this.handleError<Product[]>('getBookmarkedProductsByUser', []))
     );
   }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -24,6 +24,7 @@ import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria
 import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
+import {StarComponent} from './star/star.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {LowerbarComponent} from './lowerbar/lowerbar.component';
     SimpleSearchComponent,
     MulticriteriaSearchComponent,
     LowerbarComponent,
+    StarComponent,
   ],
   imports: [
     BrowserModule,
