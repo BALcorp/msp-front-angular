@@ -11,7 +11,8 @@
         </div>
       </div>
       <div class="row">
-        <form class="he-padding-top-20 he-padding-bottom-40 col-md-6 col-md-offset-3 " (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)"
+              class="he-padding-top-20 he-padding-bottom-40 col-md-6 col-md-offset-3 ">
           <div class="he-border-light panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title"> Authentification</h4>
@@ -27,8 +28,8 @@
                             <i class="glyphicon glyphicon-user"></i>
                           </span>
                         </span>
-                        <input type="email" class="form-control  bf-required" id="email" name="email"
-                               ngModel="" placeholder="Identifiant ou e-mail" required=""/>
+                        <input class="form-control  bf-required" id="email" name="email" ngModel=""
+                               placeholder="Identifiant ou e-mail" required="" type="email"/>
                       </div>
                     </div>
                   </div>
@@ -44,8 +45,9 @@
                           <span><i class="fa fa-key"></i>
                           </span>
                         </span>
-                        <input type="password" class="form-control  bf-required" id="input_password" name="input_password"
-                               ngModel="" placeholder="Mot de passe" size="0" required=""/>
+                        <input class="form-control  bf-required" id="input_password" name="input_password"
+                               ngModel=""
+                               placeholder="Mot de passe" required="" size="0" type="password"/>
                       </div>
                     </div>
                   </div>

@@ -23,7 +23,7 @@
             </ngb-carousel>
           </div>
         </div>
-</div>
+      </div>
       <div class="row">
         <div class="he-margin-bottom-10 col-md-9 col-md-offset-1 col-xs-12 ">
           <h2>
@@ -147,8 +147,9 @@
           <hr/>
 
           <div id="mapid"></div>
-          <input id="hiddenId" name="hiddenId" type="hidden" value="{{productSimpleAddress}}"/>
-          <span id="fulladdr">{{productFullAddress}}</span>
+          <input id="hiddenId" name="hiddenId" type="hidden"
+                 value="{{product.property.address}} {{product.property.zipCode}}"/>
+          <span id="fulladdr">{{product.property.address}} - {{product.property.zipCode}} Paris</span>
         </div>
       </div>
       <div class="row he-padding-top-20">
@@ -173,30 +174,57 @@
                 <div class="col-md-4 col-md-offset-2 col-xs-7">
 
                   <h4>
-                    Résidence : {{evaluation.residence}}
-                    /5
+                    Résidence :
+                    <ng-template #t let-fill="fill">
+                  <span [class.full]="fill === 100" class="star">
+                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                  </span>
+                    </ng-template>
+                    <ngb-rating [max]="5" [rate]="evaluation.residence" [readonly]="true"
+                                [starTemplate]="t"></ngb-rating>
                   </h4>
                   <h4>
-                    Emplacement : {{evaluation.location}}/5
+                    Emplacement :
+                    <ng-template #t let-fill="fill">
+                  <span [class.full]="fill === 100" class="star">
+                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                  </span>
+                    </ng-template>
+                    <ngb-rating [max]="5" [rate]="evaluation.location" [readonly]="true"
+                                [starTemplate]="t"></ngb-rating>
                   </h4>
                   <h4>
-                    Rapport qualité/prix : {{evaluation.valueForMoney}}/5
+                    Rapport qualité/prix :
+                    <ng-template #t let-fill="fill">
+                  <span [class.full]="fill === 100" class="star">
+                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                  </span>
+                    </ng-template>
+                    <ngb-rating [max]="5" [rate]="evaluation.valueForMoney" [readonly]="true"
+                                [starTemplate]="t"></ngb-rating>
                   </h4>
                   <h4>
-                    Communication : {{evaluation.communication}}/5
+                    Communication :
+                    <ng-template #t let-fill="fill">
+                  <span [class.full]="fill === 100" class="star">
+                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                  </span>
+                    </ng-template>
+                    <ngb-rating [max]="5" [rate]="evaluation.communication" [readonly]="true"
+                                [starTemplate]="t"></ngb-rating>
                   </h4>
                 </div>
                 <div col-md="4" col-xs="12" styleClass="he-flex-parent-column he-flex-between">
-                  <h4>{{evaluation.commentary}}
+                  <h4>"{{evaluation.commentary}}"
                   </h4>
                   <h4 class="he-txt-right">
-                    {{evaluation.username}}
+                    <em> - {{evaluation.username}}</em>
                   </h4>
                 </div>
               </div>
             </div>
-
-
+          </div>
+        </div>
           </div>
         </div>
       </div>
@@ -206,38 +234,39 @@
         var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
           + address + '?format=json';
 
-  console.log(geocodeRes);
+        console.log(geocodeRes);
 
-  var lat = 0;
-  var lon = 0;
+        var lat = 0;
+        var lon = 0;
 
-  $.ajax({
-    url: geocodeRes,
-    type: "GET",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    async: false,
-    success: function (e) {
-      lat = e[0]['lat'];
-      lon = e[0]['lon'];
-      console.log("latitude : " + e[0]['lat']);
-      console.log("longitude : " + e[0]['lon']);
-      /* alert("sucess"); */
-    }
-  })
+        $.ajax({
+          url: geocodeRes,
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          async: false,
+          success: function (e) {
+            lat = e[0]['lat'];
+            lon = e[0]['lon'];
+            console.log("latitude : " + e[0]['lat']);
+            console.log("longitude : " + e[0]['lon']);
+            /* alert("sucess"); */
+          }
+        })
 
-  console.log(lat, lon);
+        console.log(lat, lon);
 
-  var mymap = L.map('mapid').setView([lat, lon], 15);
+        var mymap = L.map('mapid').setView([lat, lon], 15);
 
-  L
-    .tileLayer(
-      '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-      {
-        attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-      }).addTo(mymap);
+        L
+          .tileLayer(
+            '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+            {
+              attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+            }).addTo(mymap);
 
-  var marker = L.marker([lat, lon]).addTo(mymap);
-</script>
+        var marker = L.marker([lat, lon]).addTo(mymap);
+      </script>
+</div>
