@@ -84,8 +84,6 @@ export class ProductsCatalogComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
 
-    // this.currentRate = this.getTotalAverage(this.product.evaluations);
-    this.currentRate = 3.14555555555555555555555555555;
 
     if (this.products == null || this.products.length === 0) {
       this.displayProducts = 'none';
@@ -95,10 +93,6 @@ export class ProductsCatalogComponent implements OnInit {
       this.displayProducts = 'content';
       this.displayMessage = 'none';
 
-      // for (product of this.products) {
-      //   product.productPictures = this.productService.findAllProductPicturesByProductId(product.idProduct);
-      //
-      // }
     }
 
     this.checkIn = this.route.snapshot.paramMap.get('checkIn');
@@ -211,8 +205,7 @@ export class ProductsCatalogComponent implements OnInit {
     for (const evaluation of evaluations) {
       total += (evaluation.valueForMoney + evaluation.residence + evaluation.location + evaluation.communication) / 4;
     }
-    // return Number((total / evaluations.length).toFixed(2));
-    return total / evaluations.length;
+    return Number((total / evaluations.length).toFixed(2));
   }
 
 

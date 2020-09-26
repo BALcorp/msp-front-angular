@@ -24,8 +24,8 @@ import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria
 import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
-import {StarComponent} from './star/star.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +46,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     SimpleSearchComponent,
     MulticriteriaSearchComponent,
     LowerbarComponent,
-    StarComponent,
   ],
   imports: [
     BrowserModule,
