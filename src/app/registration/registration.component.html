@@ -10,7 +10,7 @@
           <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-6 ">
             Nom
             <div class="form-group ">
-              <input class="form-control" type="text" name="lastName" id="lastName"/>
+              <input class="form-control" [(ngModel)]="lastName" type="text" name="lastName" id="lastName"/>
             </div>
             <div>
 
@@ -19,13 +19,13 @@
           <div class="he-padding-10 col-md-3 col-xs-6 ">
             Prénom
             <div class="form-group ">
-              <input class="form-control" type="text"/>
+              <input class="form-control" [(ngModel)]="firstName" type="text" name="firstName" id="firstName"/>
             </div>
           </div>
           <div class="he-padding-10 col-md-2 col-xs-6 ">
             Date de naissance
             <div class="input-group date">
-              <input class="form-control" type="text" name="firstName" id="firstName"/>
+              <input class="form-control" type="text" />
               <span class="input-group-addon">
                   <span>
                     <i class="glyphicon glyphicon-calendar"></i>
@@ -58,13 +58,13 @@
           <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
             Email
             <div class="form-group ">
-              <input class="form-control" [(ngModel)]="email" type="email" name="email" id="email"/>
+              <input class="form-control" [(ngModel)]="email" type="email" name="email" id="email" required="true"/>
             </div>
           </div>
           <div class="he-padding-10 col-md-3 col-xs-6 ">
             Téléphone
             <div class="form-group ">
-              <input class="form-control" type="text" name="phone" id="phone"/>
+              <input class="form-control" [(ngModel)]="telephone" type="text" name="phone" id="phone"/>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
                           <span><i class="glyphicon glyphicon-user"></i>
                           </span>
                         </span>
-                        <input class="form-control" [(ngModel)]="username" placeholder="Identifiant" type="text" name="username" id="username"/>
+                        <input class="form-control" [(ngModel)]="username" placeholder="Identifiant" type="text" name="username" id="username" required="true"/>
                       </div>
                     </div>
                   </div>
@@ -94,7 +94,7 @@
                           <span><i class="fa fa-key"></i>
                           </span>
                         </span>
-                        <input class="form-control" [(ngModel)]="password" placeholder="Mot de passe" size="0" type="password" name="password" id="password"/>
+                        <input class="form-control" [(ngModel)]="password" placeholder="Mot de passe" size="0" type="password" name="password" id="password" required minlength="4"/>
                       </div>
                     </div>
                   </div>
@@ -105,7 +105,7 @@
                           <span><i class="fa fa-key"></i>
                           </span>
                         </span>
-                        <input class="form-control" placeholder="Confirmer le mot de passe" size="0" type="password" name="passwordConfirm" id="passwordConfirm"/>
+                        <input class="form-control" [(ngModel)]="passwordConfirm" placeholder="Confirmer le mot de passe" size="0" type="password" name="passwordConfirm" id="passwordConfirm"/>
                       </div>
                     </div>
                   </div>
