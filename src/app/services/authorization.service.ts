@@ -24,16 +24,36 @@ export class AuthorizationService {
   constructor() {
   }
 
-  register(username, password, email) {
+  register(username, password, email, lastName, firstName, phone) {
     const attributeList = [];
     const dataEmail = {
       Name: 'email',
       Value: email,
     };
+    const dataLastname = {
+      Name: 'family_name',
+      Value: lastName,
+    };
+    const dataFirstname = {
+      Name: 'given_name',
+      Value: firstName,
+    };
+    const dataPhone = {
+      Name: 'phone_number',
+      Value: phone,
+    };
+
     const attributeEmail = new CognitoUserAttribute(dataEmail);
     const attributeRole = new CognitoUserAttribute(this.dataRole);
+    const attributeLastname = new CognitoUserAttribute(dataLastname);
+    const attributeFirstname = new CognitoUserAttribute(dataFirstname);
+    const attributePhone = new CognitoUserAttribute(dataPhone);
+
     attributeList.push(attributeEmail);
+    attributeList.push(attributeLastname);
+    attributeList.push(attributeFirstname);
     attributeList.push(attributeRole);
+    attributeList.push(attributePhone);
 
     return new Observable<any>(observer => {
       userPool.signUp(username, password, attributeList, null, (err, result) => {
