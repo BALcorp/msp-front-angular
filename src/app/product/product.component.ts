@@ -16,6 +16,25 @@ import {ProductPicture} from '../interfaces/productPicture';
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
+  styles: [`
+    .star {
+      position: relative;
+      display: inline-block;
+      font-size: 3rem;
+      color: #d3d3d3;
+    }
+
+    .full {
+      color: red;
+    }
+
+    .half {
+      position: absolute;
+      display: inline-block;
+      overflow: hidden;
+      color: red;
+    }
+  `],
   providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
 export class ProductComponent implements OnInit {
