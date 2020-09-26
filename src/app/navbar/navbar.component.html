@@ -3,18 +3,20 @@
   <nav>
     <div class="he-flex-start he-margin-5 he-padding-5" style="display: flex">
       <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility"
-                                   class="btn btn-default he-btn-14 he-btn-visibility"
-                                   routerLink="/welcome">Accueil </a></div>
-      <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility" routerLink="/products-catalog">Locations</a>
-      </div>
-      <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility" routerLink="/login">Connexion</a>
-      </div>
-      <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility" routerLink="/registration">Inscription</a>
-      </div>
-      <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility" routerLink="contact-us">Nous
-        contacter</a></div>
+                                   routerLink="/welcome">Accueil</a></div>
+      <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility"
+                                   routerLink="/products-catalog">Locations</a></div>
+      <div class="he-padding-5" *ngIf="!_auth.isLoggedIn()"><a class="btn btn-default he-btn-14 he-btn-visibility"
+                                                               routerLink="/login">Connexion</a></div>
+      <div class="he-padding-5" *ngIf="!_auth.isLoggedIn()"><a class="btn btn-default he-btn-14 he-btn-visibility"
+                                                               routerLink="/registration">Inscription</a></div>
+      <div class="he-padding-5" *ngIf="_auth.isLoggedIn()"><a class="btn btn-default he-btn-14 he-btn-visibility"
+                                                              routerLink="/my-perso-account-client">Espace perso</a></div>
+      <div class="he-padding-5" *ngIf="_auth.isLoggedIn()"><a class="btn btn-default he-btn-14 he-btn-visibility"
+                                                              href="javascript:void(0)" (click)="doLogout()">Déconnexion</a></div>
+      <div class="he-padding-5"><a class="btn btn-default he-btn-14 he-btn-visibility"
+                                   routerLink="contact-us">Nous contacter</a></div>
     </div>
-
   </nav>
   <app-simple-search></app-simple-search>
 </div>
