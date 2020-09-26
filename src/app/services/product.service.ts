@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {Product} from '../interfaces/product';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
@@ -17,6 +17,9 @@ export class ProductService {
   private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
   private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
 
+
+  setGroupFilter$ = new Subject<any>();
+  getGroupFilter = this.setGroupFilter$.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -96,6 +99,10 @@ export class ProductService {
       tap(_ => this.log('get bookmarked products of the user id : ' + user.username)),
       catchError(this.handleError<Product[]>('getBookmarkedProductsByUser', []))
     );
+  }
+
+  fetchProducts(): Observable<any> {
+    return this.http.get<Product[]>(this.productsUrl + '/public/product');
   }
 
 

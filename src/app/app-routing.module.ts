@@ -10,6 +10,7 @@ import {MyBookingsClientComponent} from './my-bookings-client/my-bookings-client
 import {MyPersoAccountClientComponent} from './my-perso-account-client/my-perso-account-client.component';
 import {PaymentComponent} from './payment/payment.component';
 import {ProductBackOfficeComponent} from './product-back-office/product-back-office.component';
+import {ProductsearchComponent} from './productsearch/productsearch.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'my-bookings-client', component: MyBookingsClientComponent},
+  {path: 'productsearch', component: ProductsearchComponent},
   {path: 'my-perso-account-client', component: MyPersoAccountClientComponent},
   {path: 'payment', component: PaymentComponent},
   {path: 'product-back-office', component: ProductBackOfficeComponent},
