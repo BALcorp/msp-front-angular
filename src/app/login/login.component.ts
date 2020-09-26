@@ -10,17 +10,16 @@ import {AuthorizationService} from '../services/authorization.service';
 })
 export class LoginComponent implements OnInit {
 
+  username: string;
+  password: string;
   emailVerificationMessage = false;
 
   constructor(private auth: AuthorizationService, private _router: Router) {
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
 
-    const email = form.value.email;
-    const password = form.value.password;
-
-    this.auth.signIn(email, password).subscribe(
+    this.auth.signIn(this.username, this.password).subscribe(
       (data) => {
         this._router.navigateByUrl('/');
       },
