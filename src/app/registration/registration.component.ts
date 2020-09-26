@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../services/authorization.service';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -10,39 +9,28 @@ import {NgForm} from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
-  confirmCode = false;
-  codeWasConfirmed = false;
+  username: string;
+  email: string;
+  password: string;
+
+  registerSuccess = false;
   error = '';
 
   constructor(private auth: AuthorizationService, private _router: Router) {
   }
 
-  register(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    this.auth.register(email, password).subscribe(
+  register() {
+
+    this.auth.register(this.username, this.password, this.email).subscribe(
       (data) => {
-        this.confirmCode = true;
+        this.registerSuccess = true;
+        this.username = null;
+        this.password = null;
+        this.email = null;
       },
       (err) => {
         console.log(err);
         this.error = 'Registration Error has occured';
-      }
-    );
-  }
-
-  validateAuthCode(form: NgForm) {
-    const code = form.value.code;
-
-    this.auth.confirmAuthCode(code).subscribe(
-      (data) => {
-        // this._router.navigateByUrl('/');
-        this.codeWasConfirmed = true;
-        this.confirmCode = false;
-      },
-      (err) => {
-        console.log(err);
-        this.error = 'Confirm Authorization Error has occured';
       }
     );
   }
