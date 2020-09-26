@@ -1,0 +1,24 @@
+<form [formGroup]="form"
+      novalidate>
+  <h3>Group Filter</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <input class="form-control"
+             formControlName="guestNumber"
+             placeholder="Nombre d'invités"
+             type="text"
+      />
+    </div>
+    <div class="col-md-3">
+      <input class="form-control"
+             formControlName="size"
+             placeholder="Taille"
+             type="text"
+      />
+    </div>
+    <div class="col-md-3 col-sm-3">
+      <button (click)="search(form.value)"
+              class="btn btn-primary">Search
+      </button>
+    </div>
+  </div>

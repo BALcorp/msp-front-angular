@@ -101,9 +101,9 @@ export class ProductService {
     );
   }
 
-  fetchProducts(): Observable<any> {
-    return this.http.get<Product[]>(this.productsUrl + '/public/product');
-  }
+  // fetchProducts(): Observable<any> {
+  //   return this.http.get<Product[]>(this.productsUrl + '/public/product');
+  // }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
