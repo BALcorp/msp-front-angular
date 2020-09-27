@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {BedType} from '../interfaces/bedType';
@@ -18,6 +18,9 @@ export class PropertyService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
   private housingsUrl = 'http://localhost:8050/msp-product-housing/rest/housing-api';
+
+  setGroupFilter$ = new Subject<any>();
+  getGroupFilter = this.setGroupFilter$.asObservable();
 
   constructor(private http: HttpClient) {
   }

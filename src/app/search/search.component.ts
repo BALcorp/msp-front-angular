@@ -11,7 +11,9 @@ import {ProductService} from '../services/product.service';
 export class SearchComponent implements OnInit {
   form: FormGroup;
 
-  cities = ['75001', '75002', '75003', '75004', '75005'];
+  // zipCodes = ['75001', '75002', '75003', '75004', '75005'];
+  zipCodes = [];
+  zipCode: string;
   @Output() autoSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() groupFilters: EventEmitter<any> = new EventEmitter<any>();
   searchText = '';
@@ -21,6 +23,17 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    for (let i = 1; i < 10; i++) {
+      this.zipCode = '7500' + i;
+      this.zipCodes.push(this.zipCode);
+    }
+    for (let i = 10; i < 21; i++) {
+      this.zipCode = '750' + i;
+      this.zipCodes.push(this.zipCode);
+    }
+    this.zipCodes.push('Tous les arrondissements');
+
+    this.zipCode = 'Tous les arrondissements';
     this.buildForm();
   }
 
@@ -28,8 +41,8 @@ export class SearchComponent implements OnInit {
 
     this.form = this.fb.group({
       size: new FormControl(''),
-      guestNumber: new FormControl(''),
-      city: new FormControl(''),
+      maxGuests: new FormControl(''),
+      zipCode: new FormControl(''),
       title: new FormControl('')
 
     });
