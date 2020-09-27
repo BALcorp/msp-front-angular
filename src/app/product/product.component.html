@@ -141,21 +141,17 @@
       </div>
 
       <!-- Location content bloc: Start -->
-      <div class="row he-padding-top-40">
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
+      <div class="row he-padding-top-40" id="uneRow">
+        <div class="col-md-10 col-md-offset-1 col-xs-12" id="j_idt144">
           <h3 class="he-txt-italic">Localisation</h3>
           <hr/>
 
           <div id="mapid"></div>
-          <input id="hiddenId" name="hiddenId" type="hidden"
-                 value="{{product.property.address}} {{product.property.zipCode}}"/>
-          <span id="fulladdr">{{product.property.address}} - {{product.property.zipCode}} Paris</span>
-        </div>
+          <input id="hiddenId" name="hiddenId" type="hidden" value="234 rue de la Convention 75015"/><span
+          id="fulladdr">234 rue de la Convention - 75015 Paris</span></div>
       </div>
-      <div class="row he-padding-top-20">
-        <div class="he-txt-18 col-md-5 col-md-offset-1 col-xs-12 ">
-
-        </div>
+      <div class="row he-padding-top-20" id="j_idt146">
+        <div class="he-txt-18 col-md-5 col-md-offset-1 col-xs-12 " id="j_idt147"></div>
       </div>
       <!-- Location content bloc: End -->
 
@@ -225,21 +221,21 @@
             </div>
           </div>
         </div>
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
+</div>
+<script>
+  var address = document.getElementById('hiddenId').value;
+  var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
+    + address + '?format=json';
 
-      <script>
-        var address = document.getElementById('hiddenId').value;
-        var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
-          + address + '?format=json';
+  console.log(geocodeRes);
 
-        console.log(geocodeRes);
+  var lat = 0;
+  var lon = 0;
 
-        var lat = 0;
-        var lon = 0;
-
-        $.ajax({
+  $.ajax({
           url: geocodeRes,
           type: "GET",
           contentType: "application/json; charset=utf-8",
@@ -258,15 +254,15 @@
 
         var mymap = L.map('mapid').setView([lat, lon], 15);
 
-        L
-          .tileLayer(
-            '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-            {
-              attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
-              maxZoom: 18,
-              id: 'mapbox/streets-v11',
-            }).addTo(mymap);
+  L
+    .tileLayer(
+      '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+      {
+        attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+      }).addTo(mymap);
 
-        var marker = L.marker([lat, lon]).addTo(mymap);
-      </script>
-</div>
+  var marker = L.marker([lat, lon]).addTo(mymap)
+</script>
+

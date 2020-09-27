@@ -25,6 +25,10 @@ import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {FilterPipe} from './filter.pipe';
+import {SearchComponent} from './search/search.component';
+import {ProductListComponent} from './product-list/product-list.component';
+import {ProductsearchComponent} from './productsearch/productsearch.component';
 
 
 @NgModule({
@@ -46,6 +50,10 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     SimpleSearchComponent,
     MulticriteriaSearchComponent,
     LowerbarComponent,
+    FilterPipe,
+    SearchComponent,
+    ProductListComponent,
+    ProductsearchComponent,
   ],
   imports: [
     BrowserModule,

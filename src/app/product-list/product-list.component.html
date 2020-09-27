@@ -1,0 +1,17 @@
+<table class="table table-responsive">
+  <tr>
+    <th>Product title</th>
+    <th>Product zipcode</th>
+    <th>size</th>
+    <th>number of guests max</th>
+
+  </tr>
+  <tbody>
+  <tr *ngFor="let product of filteredProducts | filter: searchByKeyword: 'name'">
+    <td>{{ product.title}}</td>
+    <td>{{ product.property.zipCode}}</td>
+    <td>{{ product.property.size}}</td>
+    <td>{{ product.property.maxGuests}}</td>
+  </tr>
+  </tbody>
+</table>

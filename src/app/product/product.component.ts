@@ -34,6 +34,11 @@ import {ProductPicture} from '../interfaces/productPicture';
       overflow: hidden;
       color: red;
     }
+
+    #mapid {
+      width = "100%";
+      height: 500px;
+    }
   `],
   providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })

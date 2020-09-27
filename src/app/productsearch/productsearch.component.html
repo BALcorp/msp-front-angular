@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1 col-xs-12">
+    <h4>Trouvez dès maintenant un logement correspondant à vos envies :</h4>
+    <app-search (groupFilters)="filters = $event"></app-search>
+    <br/>
+    <app-product-list [groupFilters]="filters"
+                      [searchByKeyword]="searchText"></app-product-list>
+  </div>
+</div>
