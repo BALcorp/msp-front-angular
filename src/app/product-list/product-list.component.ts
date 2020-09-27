@@ -70,7 +70,7 @@ export class ProductListComponent implements OnChanges {
     const keys = Object.keys(filters);
     const filterProperty = property => {
       let result = keys.map(key => {
-        if (!~key.indexOf('age')) {
+        if (!~key.indexOf('dailyrate')) {
           if (property[key]) {
             return String(property[key]).toLowerCase().startsWith(String(filters[key]).toLowerCase());
           } else {
@@ -79,9 +79,9 @@ export class ProductListComponent implements OnChanges {
         }
       });
       result = result.filter(it => it !== undefined);
-      if (filters['ageto'] && filters['agefrom']) {
-        if (property['age']) {
-          if (+property['age'] >= +filters['agefrom'] && +property['age'] <= +filters['ageto']) {
+      if (filters['dailyrateMax'] && filters['dailyrateMin']) {
+        if (property['dailyrate']) {
+          if (+property['dailyrate'] >= +filters['dailyrateMin'] && +property['dailyrate'] <= +filters['dailyrateMax']) {
             result.push(true);
           } else {
             result.push(false);

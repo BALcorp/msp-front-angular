@@ -67,7 +67,12 @@
             <div class="input-group">
                               <span class="input-group-addon">
                                 <span><i class="fa fa-calculator"></i></span>
-                              </span><input class="form-control  bf-required" type="text"/>
+                              </span><input class="form-control  bf-required" class="form-control"
+                                            formControlName="dailyrateMin"
+                                            placeholder="Prix journalier minimum"
+                                            type="text"
+                                            value="0"
+            />
             </div>
           </div>
         </div>
@@ -76,7 +81,12 @@
           <div class="form-group ">
             <div class="input-group">
               <span class="input-group-addon"><span><i class="fa fa-calculator"></i></span></span>
-              <input class="form-control  bf-required" type="text"/>
+              <input class="form-control  bf-required" class="form-control"
+                     formControlName="dailyrateMax"
+                     placeholder="Prix journalier maximum"
+                     type="text"
+                     value="1000000"
+              />
             </div>
           </div>
         </div>

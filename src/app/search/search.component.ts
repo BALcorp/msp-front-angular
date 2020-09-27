@@ -43,7 +43,8 @@ export class SearchComponent implements OnInit {
       size: new FormControl(''),
       maxGuests: new FormControl(''),
       zipCode: new FormControl(''),
-      title: new FormControl('')
+      dailyrateMin: new FormControl(''),
+      dailyrateMax: new FormControl('')
 
     });
   }

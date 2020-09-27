@@ -4,6 +4,7 @@
     <th>Product zipcode</th>
     <th>size</th>
     <th>number of guests max</th>
+    <th>dailyrate</th>
 
   </tr>
   <tbody>
@@ -12,6 +13,77 @@
     <td>{{ property.zipCode}}</td>
     <td>{{ property.size}}</td>
     <td>{{ property.maxGuests}}</td>
+    <td>{{ property.dailyrate}}</td>
   </tr>
   </tbody>
 </table>
+
+<div class="panel-group ">
+  <div class="he-panel-main panel panel-default">
+    <div class="row">
+      <div class="he-padding-top-20 col-md-10 col-md-offset-1 col-xs-12 ">
+        <h1>Nos locations</h1>
+        <hr/>
+      </div>
+    </div>
+    <ul>
+      <ol *ngFor="let product of filteredProducts | filter: searchByKeyword: 'name'">
+        <div class="row">
+          <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
+            <div class="he-flex-parent he-flex-overflow-hidden he-top-1-rem">
+              <img alt="no picture found" height="280"
+                   src="../assets/pictures/homes_pictures/{{product.productPictures[0].picture}}"/>
+            </div>
+          </div>
+          <div class="he-padding-10 col-md-6 col-xs-12 ">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <h3>
+                  {{product.title}}
+                </h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <h4>
+                  {{product.description}}
+                </h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <h4>
+                  <br/>  {{product.property.dailyrate}} EUR par nuitée.
+                </h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <ng-template #t let-fill="fill">
+                  <span [class.full]="fill === 100" class="star">
+                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                  </span>
+                </ng-template>
+                <ngb-rating [max]="5" [rate]="getTotalAverage(product.evaluations)" [readonly]="true"
+                            [starTemplate]="t"></ngb-rating>
+                <hr>
+                <pre>Note moyenne : <b>{{getTotalAverage(product.evaluations)}}</b></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="he-txt-right col-md-12 col-xs-12 ">
+            <button class="btn btn-default he-btn-14" routerLink="/product/{{product.idProduct}}">Visiter</button>
+            <hr/>
+          </div>
+        </div>
+      </ol>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="he-padding-top-20 col-md-10 col-md-offset-1 col-xs-12 ">
+      <h2>{{message}}</h2>
+    </div>
+  </div>
+</div>
