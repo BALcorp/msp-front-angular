@@ -9,7 +9,6 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {WelcomeComponent} from './welcome/welcome.component';
-import {ProductsCatalogComponent} from './products-catalog/products-catalog.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -20,15 +19,11 @@ import {MyBookingsClientComponent} from './my-bookings-client/my-bookings-client
 import {PaymentComponent} from './payment/payment.component';
 import {ProductBackOfficeComponent} from './product-back-office/product-back-office.component';
 import {SimpleSearchComponent} from './simple-search/simple-search.component';
-import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria-search.component';
 import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {FilterPipe} from './filter.pipe';
-import {SearchComponent} from './search/search.component';
 import {ProductListComponent} from './product-list/product-list.component';
-import {ProductsearchComponent} from './productsearch/productsearch.component';
 import {ConvertorComponent} from './convertor/convertor.component';
 
 
@@ -39,7 +34,6 @@ import {ConvertorComponent} from './convertor/convertor.component';
     FooterComponent,
     NavbarComponent,
     WelcomeComponent,
-    ProductsCatalogComponent,
     LoginComponent,
     RegistrationComponent,
     ContactUsComponent,
@@ -49,12 +43,8 @@ import {ConvertorComponent} from './convertor/convertor.component';
     PaymentComponent,
     ProductBackOfficeComponent,
     SimpleSearchComponent,
-    MulticriteriaSearchComponent,
     LowerbarComponent,
-    FilterPipe,
-    SearchComponent,
     ProductListComponent,
-    ProductsearchComponent,
     ConvertorComponent,
   ],
   imports: [

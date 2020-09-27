@@ -96,6 +96,26 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  loadProducts(): void {
+    this.productService.getAllProducts()
+      .subscribe({
+        next: products => {
+          this.products = products;
+          this.filteredProducts = this.products;
+        },
+        error: err => this.message = err
+      });
+
+  }
+
+  getTotalAverage(evaluations: Evaluation[]): number {
+    let total = 0;
+    for (const evaluation of evaluations) {
+      total += (evaluation.valueForMoney + evaluation.residence + evaluation.location + evaluation.communication) / 4;
+    }
+    return Number((total / evaluations.length).toFixed(2));
+  }
+
   private doFilter(): Product[] {
     this.filteredProducts = this.products;
     if (this._filterZipCode !== undefined) {
@@ -119,28 +139,6 @@ export class ProductListComponent implements OnInit {
         product.property.petsAuthorized === this._filterPetsAuthorized);
     }
     return this.filteredProducts;
-  }
-
-
-  loadProducts(): void {
-    this.productService.getAllProducts()
-      .subscribe({
-        next: products => {
-          this.products = products;
-          this.filteredProducts = this.products;
-        },
-        error: err => this.message = err
-      });
-
-  }
-
-
-  getTotalAverage(evaluations: Evaluation[]): number {
-    let total = 0;
-    for (const evaluation of evaluations) {
-      total += (evaluation.valueForMoney + evaluation.residence + evaluation.location + evaluation.communication) / 4;
-    }
-    return Number((total / evaluations.length).toFixed(2));
   }
 
 

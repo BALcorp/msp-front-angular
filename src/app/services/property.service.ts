@@ -17,10 +17,9 @@ export class PropertyService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  private housingsUrl = 'http://localhost:8050/msp-product-housing/rest/housing-api';
-
   setGroupFilter$ = new Subject<any>();
   getGroupFilter = this.setGroupFilter$.asObservable();
+  private housingsUrl = 'http://localhost:8050/msp-product-housing/rest/housing-api';
 
   constructor(private http: HttpClient) {
   }
