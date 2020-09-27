@@ -31,9 +31,11 @@
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
     "leaflet": "^1.7.1",
+    "moment": "^2.29.0",
+    "ng2-date-picker": "^10.0.0",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.3",
-    "tslib": "^2.0.0",
+    "tslib": "^2.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

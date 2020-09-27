@@ -29,6 +29,16 @@ button:focus {
   border: 1px solid goldenrod !important;
 }
 
+.btn {
+  color: white !important;
+}
+
+.btn:hover {
+  color: black !important;
+  background-color: goldenrod !important;
+  border-color: goldenrod !important;
+}
+
 .btn-default {
   background-image: none !important;
   border-color: white !important;
@@ -72,7 +82,7 @@ header {
 }
 
 header img {
-  width: 190rem !important;
+  width: 119rem !important;
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
 }
@@ -84,7 +94,7 @@ footer {
 }
 
 footer img {
-  width: 190rem !important;
+  width: 119rem !important;
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
 }
@@ -136,7 +146,7 @@ hr {
 */
 
 .he-navbar-height {
-  height: 7rem !important;
+  height: 4.2rem !important;
 }
 
 .he-navbar-line-height {
@@ -322,6 +332,10 @@ hr {
   height: 2rem !important;
 }
 
+.he-height-3-rem {
+  height: 3rem !important;
+}
+
 .he-btn-14 {
   font-size: 14px !important;
 }
@@ -376,6 +390,10 @@ hr {
 
 .he-margin-5 {
   margin: 5px !important;
+}
+
+.he-margin-10 {
+  margin: 10px !important;
 }
 
 .he-margin-top-8 {
@@ -435,6 +453,11 @@ hr {
 .he-bottom-1-9-rem {
   position: relative !important;
   bottom: 1.9rem !important;
+}
+
+.he-bottom-0-8-rem {
+  position: relative !important;
+  bottom: 0.8rem !important;
 }
 
 .he-left-1-5-rem {

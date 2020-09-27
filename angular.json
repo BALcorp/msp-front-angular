@@ -24,8 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/leaflet/dist/leaflet.css",
               "src/slate.css",
               "src/tweaks.css"
             ],
@@ -128,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "msp-front-angular"
+  "defaultProject": "msp-front-angular",
+  "cli": {
+    "analytics": "176e4989-9e85-48b8-8690-21ed88be469b"
+  }
 }

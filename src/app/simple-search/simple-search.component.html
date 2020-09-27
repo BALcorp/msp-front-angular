@@ -1,13 +1,22 @@
-<div class="he-flex-parent he-flex-end he-margin-5 he-width">
-  <div class="form-group ">
-    <div class="input-group he-width-120 ">
-      <input class="form-control hasDatepicker" class="form-control " type="text" value=""/>
-      <div class="input-group he-width-120 ">
-        <input class="form-control hasDatepicker" class="form-control " type="text" value=""/>
-        <div class="he-padding-5">
-          <button class="btn btn-default he-btn-14" type="submit">Chercher</button>
-        </div>
-      </div>
+<div [formGroup]="filterForm" class="he-flex-parent he-flex-end he-margin-5 he-width">
+    <input type="text" class="he-padding-5 he-width-120 he-height-3-rem he-margin-5"
+       #dateFromDp="dpDayPicker"
+       [dpDayPicker]="dayPickerConfig"
+       [theme]="'dp-material'"
+       formControlName="dateFrom"
+       [mode]="'month'"
+       />
+
+    <input type="text" class="he-padding-5 he-width-120 he-height-3-rem he-margin-5"
+       #dateToDp="dpDayPicker"
+       [dpDayPicker]="dayPickerConfig"
+       [displayDate]="displayDate"
+       [theme]="'dp-material'"
+       formControlName="dateTo"
+       [mode]="'month'"
+        />
+
+    <div class="he-padding-5">
+      <button class="btn btn-default he-btn-14" type="submit">Chercher</button>
     </div>
-  </div>
 </div>
