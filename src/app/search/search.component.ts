@@ -42,6 +42,7 @@ export class SearchComponent implements OnInit {
     this.form = this.fb.group({
       size: new FormControl(''),
       maxGuests: new FormControl(''),
+      title: new FormControl(''),
       zipCode: new FormControl(''),
       dailyrateMin: new FormControl(''),
       dailyrateMax: new FormControl('')

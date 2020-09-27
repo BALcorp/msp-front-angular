@@ -29,6 +29,7 @@ import {FilterPipe} from './filter.pipe';
 import {SearchComponent} from './search/search.component';
 import {ProductListComponent} from './product-list/product-list.component';
 import {ProductsearchComponent} from './productsearch/productsearch.component';
+import {ConvertorComponent} from './convertor/convertor.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import {ProductsearchComponent} from './productsearch/productsearch.component';
     SearchComponent,
     ProductListComponent,
     ProductsearchComponent,
+    ConvertorComponent,
   ],
   imports: [
     BrowserModule,
