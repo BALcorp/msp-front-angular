@@ -1,24 +1,77 @@
 <form [formGroup]="form"
       novalidate>
-  <h3>Group Filter</h3>
-  <div class="row">
-    <div class="col-md-3">
-      <input class="form-control"
-             formControlName="title"
-             placeholder="titre"
-             type="text"
-      />
-    </div>
-    <div class="col-md-3">
-      <input class="form-control"
-             formControlName="description"
-             placeholder="description"
-             type="text"
-      />
-    </div>
-    <div class="col-md-3 col-sm-3">
-      <button (click)="search(form.value)"
-              class="btn btn-primary">Search
-      </button>
+  <div class="panel-group ">
+    <div class="he-margin-bottom-40 panel panel-default">
+      <div class="row">
+        <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-12">
+          <label>Quel arrondissement de Paris ?</label>
+          <div class="form-group ">
+            <select class="form-control form-control-lg" formControlName="city" ngDefaultControl>
+              <option value=""> veuillez sélectionner votre arrondissement</option>
+              <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="he-padding-10 col-md-3 col-xs-6 ">
+          <label>Nombre de personnes :</label>
+          <div class="form-group ">
+            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-group"></i>
+                                </span></span>
+              <input class="form-control"
+                     formControlName="guestNumber"
+                     placeholder="nombre de personnes"
+                     type="text"
+                     value="1"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="he-padding-10 col-md-3 col-xs-6 ">
+          <label>product title :</label>
+          <div class="form-group ">
+            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-group"></i>
+                                </span></span>
+              <input class="form-control"
+                     formControlName="title"
+                     placeholder="titre"
+                     type="text"
+                     value="test"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="he-padding-10 col-md-2 col-md-offset-1 col-xs-6 ">
+          <label>Taille minimum (m²):</label>
+          <div class="form-group ">
+            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-arrows-alt"></i></span></span>
+              <input class="form-control"
+                     formControlName="size"
+                     placeholder="taille"
+                     type="text"
+                     value="1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="he-txt-center col-md-12 col-xs-12 ">
+          <button (click)="search(form.value)"
+                  class="btn btn-default he-margin-top-22 he-width-20-rem he-margin-bottom-10" type="submit">
+            <span><i class="fa fa-search"></i></span> Rechercher
+          </button>
+          <br/>
+        </div>
+      </div>
     </div>
   </div>
+</form>
+
+
+

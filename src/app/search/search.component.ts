@@ -10,6 +10,8 @@ import {ProductService} from '../services/product.service';
 
 export class SearchComponent implements OnInit {
   form: FormGroup;
+
+  cities = ['75001', '75002', '75003', '75004', '75005'];
   @Output() autoSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() groupFilters: EventEmitter<any> = new EventEmitter<any>();
   searchText = '';
@@ -23,15 +25,13 @@ export class SearchComponent implements OnInit {
   }
 
   buildForm(): void {
+
     this.form = this.fb.group({
-      // size: new FormControl(''),
-      // guestNumber: new FormControl(''),
-      title: new FormControl(''),
-      description: new FormControl('')
-      // jobTitle: new FormControl(''),
-      // gender: new FormControl(''),
-      // agefrom: new FormControl(''),
-      // ageto: new FormControl('')
+      size: new FormControl(''),
+      guestNumber: new FormControl(''),
+      city: new FormControl(''),
+      title: new FormControl('')
+
     });
   }
 

@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnChanges} from '@angular/core';
 import {ProductService} from '../services/product.service';
 import {Product} from '../interfaces/product';
+import {Evaluation} from '../interfaces/evaluation';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,7 @@ export class ProductListComponent implements OnChanges {
   @Input() searchByKeyword: string;
   products: Product[];
   filteredProducts: Product[];
-  private errorMessage: any;
+  message: any;
 
   constructor(private productService: ProductService,
               private ref: ChangeDetectorRef) {
@@ -65,8 +66,16 @@ export class ProductListComponent implements OnChanges {
           this.products = products;
           this.filteredProducts = this.products;
         },
-        error: err => this.errorMessage = err
+        error: err => this.message = err
       });
 
+  }
+
+  getTotalAverage(evaluations: Evaluation[]): number {
+    let total = 0;
+    for (const evaluation of evaluations) {
+      total += (evaluation.valueForMoney + evaluation.residence + evaluation.location + evaluation.communication) / 4;
+    }
+    return Number((total / evaluations.length).toFixed(2));
   }
 }
