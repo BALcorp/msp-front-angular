@@ -1,1 +1,8 @@
-<p>convertor works!</p>
+<label>Convertir en ? </label>
+<div class="form-group ">
+  <select class="form-control form-control-lg" formControlName="devise" ngDefaultControl>
+    <option value=""> veuillez sélectionner votre devise</option>
+    <option *ngFor="let devise of devises" [ngValue]="devise">{{devise.nom}}</option>
+  </select>
+  {{result}}
+</div>

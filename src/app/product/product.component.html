@@ -63,6 +63,7 @@
           {{product.property.maxGuests}} personnes
           {{petsAuthorized}}
           {{product.property.dailyrate}} EUR par nuitée.
+          <app-convertor></app-convertor>
         </div>
       </div>
       <div class="row he-padding-top-20">
@@ -236,23 +237,23 @@
   var lon = 0;
 
   $.ajax({
-          url: geocodeRes,
-          type: "GET",
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          async: false,
-          success: function (e) {
-            lat = e[0]['lat'];
-            lon = e[0]['lon'];
-            console.log("latitude : " + e[0]['lat']);
-            console.log("longitude : " + e[0]['lon']);
-            /* alert("sucess"); */
-          }
-        })
+    url: geocodeRes,
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    async: false,
+    success: function (e) {
+      lat = e[0]['lat'];
+      lon = e[0]['lon'];
+      console.log("latitude : " + e[0]['lat']);
+      console.log("longitude : " + e[0]['lon']);
+      /* alert("sucess"); */
+    }
+  })
 
-        console.log(lat, lon);
+  console.log(lat, lon);
 
-        var mymap = L.map('mapid').setView([lat, lon], 15);
+  var mymap = L.map('mapid').setView([lat, lon], 15);
 
   L
     .tileLayer(
