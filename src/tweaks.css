@@ -439,6 +439,11 @@ hr {
   top: 2rem !important;
 }
 
+.he-top-6-6-rem {
+  position: relative !important;
+  top: 6.6rem !important;
+}
+
 .he-bottom-0-8-rem {
   position: relative !important;
   bottom: 0.7rem !important;

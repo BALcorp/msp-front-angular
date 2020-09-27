@@ -1,100 +1,7 @@
 <div class="container">
-  <div class="col-md-10 col-md-offset-1 col-xs-12">
-    <h4>Trouvez dès maintenant un logement correspondant à vos envies :</h4>
-    <div class="panel-group ">
-      <div class="he-margin-bottom-40 panel panel-default">
-        <div class="row">
-          <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-12">
-            <label>Quel arrondissement de Paris ?</label>
-            <div class="form-group ">
-              <div class="input-group">
-
-                <input [(ngModel)]="filterZipCode"
-                       class="form-control  bf-required"
-                       placeholder="code postal" type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="he-padding-10 col-md-3 col-xs-6 ">
-            <label>Nombre de personnes :</label>
-            <div class="form-group ">
-              <div class="input-group">
-                              <span class="input-group-addon">
-                                <span><i class="fa fa-group"></i>
-                                </span></span>
-                <input [(ngModel)]="filterMaxGuests"
-                       class="form-control"
-                       placeholder="nombre de personnes"
-                       type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="he-padding-10 col-md-2 col-xs-6 ">
-            <label>Date d'arrivée :</label>
-            <div class="input-group date" id="arrivaldate">
-              <input class="form-control  bf-required" id="arrivaldate_Input" name="arrivaldate" type="text" value=""/>
-              <span class="input-group-addon">
-                              <span><i class="glyphicon glyphicon-calendar" id="arrivaldate_icon"></i></span>
-                            </span>
-            </div>
-          </div>
-          <div class="he-padding-10 col-md-2 col-xs-6 ">
-            <label>Date de départ :</label>
-            <div class="input-group date">
-              <input class="form-control  bf-required" type="text"/>
-              <span class="input-group-addon">
-                              <span><i class="glyphicon glyphicon-calendar"></i></span>
-                            </span>
-            </div>
-          </div>
-          <div class="he-padding-10 col-md-2 col-md-offset-1 col-xs-6 ">
-            <label>Taille minimum (m²):</label>
-            <div class="form-group ">
-              <div class="input-group">
-                              <span class="input-group-addon">
-                                <span><i class="fa fa-arrows-alt"></i></span></span>
-                <input [(ngModel)]="filterSize"
-                       class="form-control"
-                       placeholder="taille"
-                       type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="he-padding-10 col-md-3 col-xs-6 ">
-            <label>Prix journalier maximum :</label>
-            <div class="form-group ">
-              <div class="input-group">
-                              <span class="input-group-addon">
-                                <span><i class="fa fa-calculator"></i></span>
-                              </span>
-                <input [(ngModel)]="filterDailyRate"
-                       class="form-control  bf-required"
-                       placeholder="Prix journalier maximum" type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="he-padding-10 he-top-2-rem col-md-2 col-xs-12 ">
-            <label>Animaux autorisés</label>
-            <div class="form-group ">
-              <div class="checkbox">
-                <input [(ngModel)]="filterPetsAuthorized" type="checkbox"/>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="panel-group ">
   <div class="he-panel-main panel panel-default">
     <div class="row">
-      <div class="he-padding-top-20 col-md-10 col-md-offset-1 col-xs-12 ">
+      <div class="he-margin-top-22 col-md-10 offset-md-1 col-xs-12 ">
         <h1>Nos locations</h1>
         <hr/>
       </div>
@@ -157,6 +64,98 @@
   <div class="row">
     <div class="he-padding-top-20 col-md-10 col-md-offset-1 col-xs-12 ">
       <h2>{{message}}</h2>
+    </div>
+  </div>
+</div>
+
+<div class="panel-group" style="position: fixed; top: 18.8rem; left: 2rem;">
+  <div class="he-margin-bottom-40 panel panel-default he-width-20-rem">
+    <div class="row">
+      <div class="col-md-12 col-xs-12 ">
+        <h3>Filtres</h3>
+        <hr/>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Date d'arrivée :</label>
+        <div class="input-group date" id="arrivaldate">
+          <input class="form-control  bf-required" id="arrivaldate_Input" name="arrivaldate" type="text" value=""/>
+          <span class="input-group-addon">
+                              <span><i class="glyphicon glyphicon-calendar" id="arrivaldate_icon"></i></span>
+                            </span>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Date de départ :</label>
+        <div class="input-group date">
+          <input class="form-control  bf-required" type="text"/>
+          <span class="input-group-addon">
+                              <span><i class="glyphicon glyphicon-calendar"></i></span>
+                            </span>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Arrondissement :</label>
+        <div class="form-group ">
+          <div class="input-group">
+
+            <input [(ngModel)]="filterZipCode"
+                   class="form-control  bf-required"
+                   placeholder="code postal" type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Taille minimum (m²):</label>
+        <div class="form-group ">
+          <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-arrows-alt"></i></span></span>
+            <input [(ngModel)]="filterSize"
+                   class="form-control"
+                   placeholder="taille"
+                   type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-12 col-xs-12">
+        <label>Prix journalier maximum :</label>
+        <div class="form-group ">
+          <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-calculator"></i></span>
+                              </span>
+            <input [(ngModel)]="filterDailyRate"
+                   class="form-control  bf-required"
+                   placeholder="prix" type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-7 col-xs-12">
+        <label>Nombre de personnes :</label>
+        <div class="form-group ">
+          <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-group"></i>
+                                </span></span>
+            <input [(ngModel)]="filterMaxGuests"
+                   class="form-control"
+                   placeholder="nombre"
+                   type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="he-top-1-rem he-padding-10 col-md-5 col-xs-12">
+        <label>Animaux autorisés</label>
+        <div class="form-group ">
+          <div class="checkbox">
+            <input [(ngModel)]="filterPetsAuthorized" type="checkbox"/>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
