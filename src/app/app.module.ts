@@ -26,6 +26,10 @@ import {LowerbarComponent} from './lowerbar/lowerbar.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ProductListComponent} from './product-list/product-list.component';
 import {ConvertorComponent} from './convertor/convertor.component';
+import {OsmService} from './services/osm.service';
+import {BookmarkService} from './services/bookmark.service';
+import {BookingService} from './services/booking.service';
+import {ConvertorService} from './services/convertor.service';
 
 
 @NgModule({
@@ -58,7 +62,7 @@ import {ConvertorComponent} from './convertor/convertor.component';
     FontAwesomeModule,
     DpDatePickerModule
   ],
-  providers: [AuthorizationService],
+  providers: [AuthorizationService, OsmService, AuthorizationService, BookmarkService, BookingService, ConvertorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

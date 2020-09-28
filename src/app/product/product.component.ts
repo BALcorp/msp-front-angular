@@ -11,6 +11,9 @@ import {UserService} from '../services/user.service';
 import {Observable} from 'rxjs';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ProductPicture} from '../interfaces/productPicture';
+import {OsmService} from '../services/osm.service';
+
+declare var ol: any;
 
 @Component({
   selector: 'app-product',
@@ -43,6 +46,13 @@ import {ProductPicture} from '../interfaces/productPicture';
   providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
 export class ProductComponent implements OnInit {
+
+  latitude = 18.5204;
+  longitude = 73.8567;
+
+  map: any;
+
+
   product: Product;
   booking: Booking;
   bookmark: Observable<Bookmark[]>;
@@ -61,7 +71,7 @@ export class ProductComponent implements OnInit {
   images: ProductPicture[];
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService,
+              private productService: ProductService, private osmService: OsmService,
               private location: Location, config: NgbCarouselConfig) {
 
     config.interval = 2000;
@@ -72,6 +82,23 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getProductPictures();
+
+    this.osmService.getLongLarge().subscribe(data => {
+      console.log(data);
+    });
+
+    this.map = new ol.Map({
+      target: 'map',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([73.8567, 18.5204]),
+        zoom: 8
+      })
+    });
 
     this.images = this.product.productPictures;
     // this.imagePath = '../assets/pictures/homes_pictures/';
