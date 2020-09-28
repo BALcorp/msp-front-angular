@@ -72,11 +72,11 @@ export class ProductService {
   }
 
   multisearchProducts(checkIn: Date, checkOut: Date, guestNumber: number, zipCode: string,
-                      size: number, dailyrateMin: number, dailyrateMax: number, petsAuthorized: boolean): Observable<Product[]> {
+                      size: number, dailyRateMin: number, dailyRateMax: number, petsAuthorized: boolean): Observable<Product[]> {
     return this.http.get<Product[]>(this.orchestratorUrl + '/public/products/' + checkIn + '/' + checkOut + '?guestNumber='
-      + guestNumber + '&zipCode=' + zipCode + '&size=' + size + '&dailyrateMin=' + dailyrateMin
-      + '&dailyrateMax='
-      + dailyrateMax
+      + guestNumber + '&zipCode=' + zipCode + '&size=' + size + '&dailyRateMin=' + dailyRateMin
+      + '&dailyRateMax='
+      + dailyRateMax
       + '&petsAuthorized='
       + petsAuthorized).pipe(
       tap(_ => this.log('fetched products after these following multi criteria search : ' +
@@ -85,8 +85,8 @@ export class ProductService {
         'guestNumber : ' + guestNumber +
         'zipCode : ' + zipCode +
         'size : ' + size +
-        'dailyrateMin :' + dailyrateMin +
-        'dailyrateMax : ' + dailyrateMax +
+        'dailyRateMin :' + dailyRateMin +
+        'dailyRateMax : ' + dailyRateMax +
         'petsAuthorized : ' + petsAuthorized)),
       catchError(this.handleError<Product[]>('multisearchProducts', []))
     );
