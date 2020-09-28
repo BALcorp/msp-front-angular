@@ -27,11 +27,9 @@ export class PaymentComponent implements OnInit {
 
   bookedProduct: Product;
 
-  bookingService: BookingService;
-
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService,
+              private productService: ProductService, private bookingService: BookingService,
               private location: Location) {
   }
 
@@ -67,7 +65,7 @@ export class PaymentComponent implements OnInit {
 
   book(): string {
     this.bookingService.createBooking(this.booking);
-    return '/welcome.html?faces-redirect=true';
+    return '/welcome';
   }
 
 }

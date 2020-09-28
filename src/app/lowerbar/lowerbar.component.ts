@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthorizationService} from '../services/authorization.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-lowerbar',
@@ -7,7 +9,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LowerbarComponent implements OnInit {
 
-  constructor() {
+  constructor(public _auth: AuthorizationService, private _router: Router) {
   }
 
   ngOnInit(): void {
