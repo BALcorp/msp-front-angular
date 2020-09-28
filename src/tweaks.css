@@ -62,6 +62,10 @@ button:focus {
   background-color: #3A3F44 !important;
 }
 
+.ng5-slider .ng5-slider-pointer {
+  background-color: goldenrod !important;
+}
+
 /*!
  * General
 */
