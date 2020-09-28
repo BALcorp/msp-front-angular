@@ -82,23 +82,29 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getProductPictures();
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.productService.findProduct(id)
+      .subscribe(
+        product => {
+          this.osmService.getLongLarge(product.property.address + ' ' + product.property.zipCode).subscribe(
+            data => {
+              console.log('=============');
+              console.log(data[0].lon + ', ' + data[0].lat);
+              this.map = new ol.Map({
+                target: 'map',
+                layers: [
+                  new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                  })
+                ],
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
+                  zoom: 18
+                })
+              });
+            });
+        });
 
-    this.osmService.getLongLarge().subscribe(data => {
-      console.log(data);
-    });
-
-    this.map = new ol.Map({
-      target: 'map',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: ol.proj.fromLonLat([73.8567, 18.5204]),
-        zoom: 8
-      })
-    });
 
     this.images = this.product.productPictures;
     // this.imagePath = '../assets/pictures/homes_pictures/';

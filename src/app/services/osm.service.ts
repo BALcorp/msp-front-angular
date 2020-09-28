@@ -6,16 +6,14 @@ import {HttpClient} from '@angular/common/http';
 })
 export class OsmService {
 
-  address = '65 quai du Halage 94290';
-  url = 'https://nominatim.openstreetmap.org/search/'
-    + this.address + '?format=json';
+  url = 'https://nominatim.openstreetmap.org/search/';
 
   constructor(private http: HttpClient) {
   }
 
-  getLongLarge() {
+  getLongLarge(address: string) {
     return this
       .http
-      .get(this.url);
+      .get(this.url + address + '?format=json');
   }
 }
