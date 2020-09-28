@@ -11,6 +11,9 @@ import {UserService} from '../services/user.service';
 import {Observable} from 'rxjs';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ProductPicture} from '../interfaces/productPicture';
+import {OsmService} from '../services/osm.service';
+
+declare var ol: any;
 
 @Component({
   selector: 'app-product',
@@ -34,10 +37,19 @@ import {ProductPicture} from '../interfaces/productPicture';
       overflow: hidden;
       color: red;
     }
+
+    #mapid {
+      width = "100%";
+      height: 500px;
+    }
   `],
-  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
+  providers: [NgbCarouselConfig]
 })
 export class ProductComponent implements OnInit {
+
+  map: any;
+
+
   product: Product;
   booking: Booking;
   bookmark: Observable<Bookmark[]>;
@@ -56,7 +68,7 @@ export class ProductComponent implements OnInit {
   images: ProductPicture[];
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService,
+              private productService: ProductService, private osmService: OsmService,
               private location: Location, config: NgbCarouselConfig) {
 
     config.interval = 2000;
@@ -67,6 +79,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getProductPictures();
+    this.getMap();
+
 
     this.images = this.product.productPictures;
     // this.imagePath = '../assets/pictures/homes_pictures/';
@@ -140,6 +154,32 @@ export class ProductComponent implements OnInit {
   getProductPictures(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.findAllProductPicturesByProductId(id).subscribe(images => this.product.productPictures = images);
+  }
+
+
+  getMap(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.productService.findProduct(id)
+      .subscribe(
+        product => {
+          this.osmService.getLongLarge(product.property.address + ' ' + product.property.zipCode).subscribe(
+            data => {
+              console.log('=============');
+              console.log(data[0].lon + ', ' + data[0].lat);
+              this.map = new ol.Map({
+                target: 'map',
+                layers: [
+                  new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                  })
+                ],
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
+                  zoom: 18
+                })
+              });
+            });
+        });
   }
 
 }

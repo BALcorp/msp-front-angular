@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {Product} from '../interfaces/product';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
@@ -14,9 +14,10 @@ export class ProductService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
+  setGroupFilter$ = new Subject<any>();
+  getGroupFilter = this.setGroupFilter$.asObservable();
   private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
   private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
-
 
   constructor(private http: HttpClient) {
   }
@@ -71,11 +72,11 @@ export class ProductService {
   }
 
   multisearchProducts(checkIn: Date, checkOut: Date, guestNumber: number, zipCode: string,
-                      size: number, dailyrateMin: number, dailyrateMax: number, petsAuthorized: boolean): Observable<Product[]> {
+                      size: number, dailyRateMin: number, dailyRateMax: number, petsAuthorized: boolean): Observable<Product[]> {
     return this.http.get<Product[]>(this.orchestratorUrl + '/public/products/' + checkIn + '/' + checkOut + '?guestNumber='
-      + guestNumber + '&zipCode=' + zipCode + '&size=' + size + '&dailyrateMin=' + dailyrateMin
-      + '&dailyrateMax='
-      + dailyrateMax
+      + guestNumber + '&zipCode=' + zipCode + '&size=' + size + '&dailyRateMin=' + dailyRateMin
+      + '&dailyRateMax='
+      + dailyRateMax
       + '&petsAuthorized='
       + petsAuthorized).pipe(
       tap(_ => this.log('fetched products after these following multi criteria search : ' +
@@ -84,8 +85,8 @@ export class ProductService {
         'guestNumber : ' + guestNumber +
         'zipCode : ' + zipCode +
         'size : ' + size +
-        'dailyrateMin :' + dailyrateMin +
-        'dailyrateMax : ' + dailyrateMax +
+        'dailyRateMin :' + dailyRateMin +
+        'dailyRateMax : ' + dailyRateMax +
         'petsAuthorized : ' + petsAuthorized)),
       catchError(this.handleError<Product[]>('multisearchProducts', []))
     );
@@ -97,6 +98,10 @@ export class ProductService {
       catchError(this.handleError<Product[]>('getBookmarkedProductsByUser', []))
     );
   }
+
+  // fetchProducts(): Observable<any> {
+  //   return this.http.get<Product[]>(this.productsUrl + '/public/product');
+  // }
 
 
   private handleError<T>(operation = 'operation', result?: T) {

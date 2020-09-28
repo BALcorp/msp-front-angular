@@ -24,12 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/slate.css",
               "src/tweaks.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/leaflet/dist/leaflet.js"
             ]
           },
           "configurations": {
@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "msp-front-angular"
+  "defaultProject": "msp-front-angular",
+  "cli": {
+    "analytics": "176e4989-9e85-48b8-8690-21ed88be469b"
+  }
 }

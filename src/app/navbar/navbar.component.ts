@@ -9,15 +9,16 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+
+
   constructor(public _auth: AuthorizationService, private _router: Router) {
   }
 
-  doLogout() {
+  doLogout(): void {
     this._auth.logOut();
     this._router.navigateByUrl('/welcome');
   }
 
   ngOnInit(): void {
   }
-
 }

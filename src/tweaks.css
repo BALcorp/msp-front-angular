@@ -29,6 +29,20 @@ button:focus {
   border: 1px solid goldenrod !important;
 }
 
+.btn {
+  color: white !important;
+}
+
+.btn:focus {
+  color: goldenrod !important;
+}
+
+.btn:hover {
+  color: black !important;
+  background-color: goldenrod !important;
+  border-color: goldenrod !important;
+}
+
 .btn-default {
   background-image: none !important;
   border-color: white !important;
@@ -46,6 +60,10 @@ button:focus {
 
 .select2-dropdown {
   background-color: #3A3F44 !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+  background-color: goldenrod !important;
 }
 
 /*!
@@ -69,10 +87,12 @@ body, h1, h2, h3, h4 {
 
 header {
   overflow: hidden !important;
+  position: relative !important;
+  top: 4.2rem !important;
 }
 
 header img {
-  width: 190rem !important;
+  width: 119rem !important;
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
 }
@@ -84,7 +104,7 @@ footer {
 }
 
 footer img {
-  width: 190rem !important;
+  width: 119rem !important;
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
 }
@@ -94,6 +114,11 @@ footer h4 {
   bottom: 5rem !important;
   text-align: center !important;
   font-style: italic !important;
+}
+
+.container {
+  position: relative !important;
+  top: 4.2rem !important;
 }
 
 .panel {
@@ -136,7 +161,7 @@ hr {
 */
 
 .he-navbar-height {
-  height: 7rem !important;
+  height: 4.2rem !important;
 }
 
 .he-navbar-line-height {
@@ -278,6 +303,10 @@ hr {
   width: 4rem !important;
 }
 
+.he-width-5-8-rem {
+  width: 5.8rem !important;
+}
+
 .he-width-12-rem {
   width: 12rem !important;
 }
@@ -320,6 +349,10 @@ hr {
 
 .he-height-2-rem {
   height: 2rem !important;
+}
+
+.he-height-3-rem {
+  height: 3rem !important;
 }
 
 .he-btn-14 {
@@ -378,12 +411,20 @@ hr {
   margin: 5px !important;
 }
 
+.he-margin-10 {
+  margin: 10px !important;
+}
+
 .he-margin-top-8 {
   margin-top: 8px !important;
 }
 
 .he-margin-top-10 {
   margin-top: 10px !important;
+}
+
+.he-margin-top-15 {
+  margin-top: 15px !important;
 }
 
 .he-margin-top-22 {
@@ -417,6 +458,11 @@ hr {
   top: 2rem !important;
 }
 
+.he-top-6-6-rem {
+  position: relative !important;
+  top: 6.6rem !important;
+}
+
 .he-bottom-0-8-rem {
   position: relative !important;
   bottom: 0.7rem !important;
@@ -432,9 +478,19 @@ hr {
   bottom: 2rem !important;
 }
 
+.he-bottom-4-4-rem {
+  position: relative !important;
+  bottom: 4rem !important;
+}
+
 .he-bottom-1-9-rem {
   position: relative !important;
   bottom: 1.9rem !important;
+}
+
+.he-bottom-0-8-rem {
+  position: relative !important;
+  bottom: 0.8rem !important;
 }
 
 .he-left-1-5-rem {

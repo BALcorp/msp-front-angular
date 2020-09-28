@@ -2,6 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DpDatePickerModule} from 'ng2-date-picker';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -9,7 +11,6 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {WelcomeComponent} from './welcome/welcome.component';
-import {ProductsCatalogComponent} from './products-catalog/products-catalog.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -20,11 +21,16 @@ import {MyBookingsClientComponent} from './my-bookings-client/my-bookings-client
 import {PaymentComponent} from './payment/payment.component';
 import {ProductBackOfficeComponent} from './product-back-office/product-back-office.component';
 import {SimpleSearchComponent} from './simple-search/simple-search.component';
-import {MulticriteriaSearchComponent} from './multicriteria-search/multicriteria-search.component';
 import {LoginComponent} from './login/login.component';
 import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {ProductListComponent} from './product-list/product-list.component';
+import {ConvertorComponent} from './convertor/convertor.component';
+import {OsmService} from './services/osm.service';
+import {BookmarkService} from './services/bookmark.service';
+import {BookingService} from './services/booking.service';
+import {ConvertorService} from './services/convertor.service';
 
 
 @NgModule({
@@ -34,7 +40,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     FooterComponent,
     NavbarComponent,
     WelcomeComponent,
-    ProductsCatalogComponent,
     LoginComponent,
     RegistrationComponent,
     ContactUsComponent,
@@ -44,8 +49,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     PaymentComponent,
     ProductBackOfficeComponent,
     SimpleSearchComponent,
-    MulticriteriaSearchComponent,
     LowerbarComponent,
+    ProductListComponent,
+    ConvertorComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +60,11 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DpDatePickerModule,
+    Ng5SliderModule
   ],
-  providers: [AuthorizationService],
+  providers: [AuthorizationService, OsmService, AuthorizationService, BookmarkService, BookingService, ConvertorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

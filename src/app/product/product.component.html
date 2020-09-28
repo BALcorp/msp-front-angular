@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="he-margin-bottom-10 col-md-9 col-md-offset-1 col-xs-12 ">
+        <div class="he-margin-bottom-10 col-md-9 offset-md-1 col-xs-12 ">
           <h2>
             {{product.title}}
           </h2>
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div class="row he-bottom-1-5-rem">
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="col-md-10 offset-md-1 col-xs-12">
           <h4>
             {{product.property.address}} - {{product.property.addressComplement}} - {{product.property.zipCode}} Paris
           </h4>
@@ -58,22 +58,23 @@
         </div>
       </div>
       <div class="row he-bottom-2-rem">
-        <div class="he-txt-right he-txt-20 col-md-10 col-md-offset-1 col-xs-12 ">
+        <div class="he-txt-right he-txt-20 col-md-10 offset-md-1 col-xs-12 ">
           {{product.property.size}}m² -
           {{product.property.maxGuests}} personnes
           {{petsAuthorized}}
-          {{product.property.dailyrate}} EUR par nuitée.
+          {{product.property.dailyRate}} EUR par nuitée.
+          <app-convertor></app-convertor>
         </div>
       </div>
       <div class="row he-padding-top-20">
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="col-md-10 offset-md-1 col-xs-12">
           <h4>
             {{product.description}}
           </h4>
         </div>
       </div>
       <div class="row he-padding-top-40">
-        <div class="he-margin-bottom-10 col-md-10 col-md-offset-1 col-xs-12 ">
+        <div class="he-margin-bottom-10 col-md-10 offset-md-1 col-xs-12 ">
           <h3 class="he-txt-italic">Les chambres et salles d'eau</h3>
           <hr/>
         </div>
@@ -141,33 +142,27 @@
       </div>
 
       <!-- Location content bloc: Start -->
-      <div class="row he-padding-top-40">
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
+      <div class="row he-padding-top-40" id="uneRow">
+        <div class="col-md-10 offset-md-1 col-xs-12" id="j_idt144">
           <h3 class="he-txt-italic">Localisation</h3>
           <hr/>
-
-          <div id="mapid"></div>
-          <input id="hiddenId" name="hiddenId" type="hidden"
-                 value="{{product.property.address}} {{product.property.zipCode}}"/>
-          <span id="fulladdr">{{product.property.address}} - {{product.property.zipCode}} Paris</span>
-        </div>
+          <div class="map" id="map"></div>
+          <span id="fulladdr">{{product.property.address}} {{product.property.zipCode}} Paris</span></div>
       </div>
-      <div class="row he-padding-top-20">
-        <div class="he-txt-18 col-md-5 col-md-offset-1 col-xs-12 ">
-
-        </div>
+      <div class="row he-padding-top-20" id="j_idt146">
+        <div class="he-txt-18 col-md-5 offset-md-1 col-xs-12 " id="j_idt147"></div>
       </div>
       <!-- Location content bloc: End -->
 
 
       <div class="row he-padding-top-40">
-        <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="col-md-10 offset-md-1 col-xs-12">
           <h3 class="he-txt-italic">Les appréciations</h3>
           <hr/>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 offset-md-1">
           <div class="panel-group ">
             <div class="panel panel-default">
               <div *ngFor='let evaluation of product.evaluations'>
@@ -225,48 +220,48 @@
             </div>
           </div>
         </div>
-          </div>
-        </div>
       </div>
-
-      <script>
-        var address = document.getElementById('hiddenId').value;
-        var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
-          + address + '?format=json';
-
-        console.log(geocodeRes);
-
-        var lat = 0;
-        var lon = 0;
-
-        $.ajax({
-          url: geocodeRes,
-          type: "GET",
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          async: false,
-          success: function (e) {
-            lat = e[0]['lat'];
-            lon = e[0]['lon'];
-            console.log("latitude : " + e[0]['lat']);
-            console.log("longitude : " + e[0]['lon']);
-            /* alert("sucess"); */
-          }
-        })
-
-        console.log(lat, lon);
-
-        var mymap = L.map('mapid').setView([lat, lon], 15);
-
-        L
-          .tileLayer(
-            '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-            {
-              attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
-              maxZoom: 18,
-              id: 'mapbox/streets-v11',
-            }).addTo(mymap);
-
-        var marker = L.marker([lat, lon]).addTo(mymap);
-      </script>
+    </div>
+  </div>
 </div>
+<script>
+  var address = document.getElementById('hiddenId').value;
+  var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
+    + address + '?format=json';
+
+  console.log(geocodeRes);
+
+  var lat = 0;
+  var lon = 0;
+
+  $.ajax({
+    url: geocodeRes,
+    type: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    async: false,
+    success: function (e) {
+      lat = e[0]['lat'];
+      lon = e[0]['lon'];
+      console.log("latitude : " + e[0]['lat']);
+      console.log("longitude : " + e[0]['lon']);
+      /* alert("sucess"); */
+    }
+  })
+
+  console.log(lat, lon);
+
+  var mymap = L.map('mapid').setView([lat, lon], 15);
+
+  L
+    .tileLayer(
+      '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+      {
+        attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+      }).addTo(mymap);
+
+  var marker = L.marker([lat, lon]).addTo(mymap)
+</script>
+

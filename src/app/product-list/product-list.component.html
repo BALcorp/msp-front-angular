@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="he-panel-main panel">
+    <div class="row">
+      <div class="he-margin-top-22 he-margin-bottom-22 col-md-10 offset-md-1 col-xs-12 ">
+        <h1>Nos locations</h1>
+        <hr/>
+      </div>
+    </div>
+    <ul>
+      <ol *ngFor="let product of filteredProducts">
+        <div class="row">
+          <div class="col-md-5 col-xs-12 ">
+            <div class="he-flex-parent he-flex-overflow-hidden he-margin-top-10">
+              <img alt="no picture found" height="280"
+                   src="../assets/pictures/homes_pictures/{{product.productPictures[0].picture}}"/>
+            </div>
+            <div class="offset-md-3 col-md-12 col-xs-12">
+              <ng-template #t let-fill="fill">
+                  <span [class.full]="fill === 100" class="star">
+                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                  </span>
+              </ng-template>
+              <ngb-rating [max]="5" [rate]="getTotalAverage(product.evaluations)" [readonly]="true"
+                          [starTemplate]="t"></ngb-rating>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-12 he-margin-top-10">
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <h3>
+                  {{product.title}}
+                </h3>
+                <h5>
+                  {{getShortDistrict(product.property.zipCode)}}
+                </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 he-margin-top-10">
+                <h5>
+                  {{product.description}}
+                </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 col-xs-12 he-margin-top-22">
+                <h4>
+                  - {{product.property.size}} m²
+                </h4>
+              </div>
+              <div class="col-md-5 col-xs-12 he-margin-top-22 he-txt-right">
+                <h4>
+                  - la nuit : {{product.property.dailyRate}} EUR
+                </h4>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="he-txt-right he-bottom-4-4-rem col-md-5 offset-md-3 col-xs-12 ">
+            <button class="btn btn-default he-btn-14" routerLink="/product/{{product.idProduct}}">Visiter</button>
+          </div>
+          <div class="he-txt-right he-bottom-4-4-rem col-md-7 offset-md-4 col-xs-12 ">
+            <hr/>
+          </div>
+        </div>
+      </ol>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="he-padding-top-20 col-md-10 offset-md-1 col-xs-12 ">
+      <h2>{{message}}</h2>
+    </div>
+  </div>
+</div>
+
+<div class="panel-group" style="position: fixed; top: 6.4rem; left: 2.2rem;">
+  <div class="he-margin-bottom-40 panel panel-default he-width-20-rem">
+    <div class="row">
+      <div class="col-md-12 col-xs-12 ">
+        <h3>Filtres</h3>
+        <hr/>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Date d'arrivée</label>
+        <div class="input-group date" id="arrivaldate">
+          <input class="form-control  bf-required" id="arrivaldate_Input" name="arrivaldate" type="text" value=""/>
+          <span class="input-group-addon">
+                              <span><i class="glyphicon glyphicon-calendar" id="arrivaldate_icon"></i></span>
+                            </span>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Date de départ</label>
+        <div class="input-group date">
+          <input class="form-control  bf-required" type="text"/>
+          <span class="input-group-addon">
+                              <span><i class="glyphicon glyphicon-calendar"></i></span>
+                            </span>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Arrondissement</label>
+        <div class="form-group ">
+          <div class="input-group">
+
+            <input [(ngModel)]="filterZipCode"
+                   class="form-control  bf-required"
+                   placeholder="code postal" type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="he-padding-10 col-md-6 col-xs-12">
+        <label>Nombre de personnes</label>
+        <div class="form-group ">
+          <div class="input-group">
+                              <span class="input-group-addon">
+                                <span><i class="fa fa-group"></i>
+                                </span></span>
+            <input type="number" [(ngModel)]="filterMaxGuests"
+                   class="form-control"
+                   min="1"
+                   max="8"
+
+            />
+          </div>
+        </div>
+      </div>
+      <div class="he-top-1-rem he-padding-10 col-md-1 offset-md-6 col-xs-12">
+        <div class="form-group ">
+          <div class="checkbox">
+            <input [(ngModel)]="filterPetsAuthorized" type="checkbox"/>
+          </div>
+        </div>
+      </div>
+      <div class="he-top-1-rem he-padding-10 col-md-5 col-xs-12">
+        <label>Animaux autorisés</label>
+      </div>
+      <div class="he-padding-10 col-md-12 col-xs-12">
+        <label>Taille minimum (m²)</label>
+        <ng5-slider  [(value)]="filterSize" [options]="sizeSliderOptions"></ng5-slider>
+      </div>
+      <div class="he-padding-10 col-md-12 col-xs-12">
+        <label>Prix journalier maximum</label>
+        <ng5-slider  [(value)]="filterDailyRate" [options]="dailyRateSliderOptions"></ng5-slider>
+      </div>
+    </div>
+  </div>
+</div>

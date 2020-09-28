@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AuthenticationDetails, CognitoUser, CognitoUserPool, CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import {AuthenticationDetails, CognitoUser, CognitoUserAttribute, CognitoUserPool} from 'amazon-cognito-identity-js';
 import {Observable} from 'rxjs';
 
 

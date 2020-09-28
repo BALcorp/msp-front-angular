@@ -5,7 +5,6 @@ import {PropertyType} from './propertyType';
 
 
 export interface Property {
-  idProperty: number;
   size: number;
   maxGuests: number;
   petsAuthorized: boolean;
