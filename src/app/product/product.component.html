@@ -153,7 +153,16 @@
         <div class="he-txt-18 col-md-5 offset-md-1 col-xs-12 " id="j_idt147"></div>
       </div>
       <!-- Location content bloc: End -->
-      <app-lowerbar></app-lowerbar>
+      <div>
+        <div *ngIf="!_auth.isLoggedIn()" class="he-padding-5">
+          <p>Veuillez vous inscrire afin de profiter de My Sweet Paris</p>
+        </div>
+        <div *ngIf="_auth.isLoggedIn()" class="he-padding-5">
+          <button (click)="bookProduct()"
+                  class="btn btn-default he-btn-14 he-btn-visibility">Réserver
+          </button>
+        </div>
+      </div>
 
       <div class="row he-padding-top-40">
         <div class="col-md-10 offset-md-1 col-xs-12">

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../interfaces/product';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {ProductService} from '../services/product.service';
 import {Booking} from '../interfaces/booking';
@@ -12,6 +12,7 @@ import {Observable} from 'rxjs';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ProductPicture} from '../interfaces/productPicture';
 import {OsmService} from '../services/osm.service';
+import {AuthorizationService} from '../services/authorization.service';
 
 declare var ol: any;
 
@@ -56,8 +57,6 @@ export class ProductComponent implements OnInit {
   bookingCheckInDate: Date;
   bookingCheckOutDate: Date;
   petsAuthorized: string;
-  productFullAddress: string;
-  productSimpleAddress: string;
   user: User;
   isBookmarked = 'none';
   isNotBookmarked = 'flex';
@@ -67,7 +66,7 @@ export class ProductComponent implements OnInit {
 
   images: ProductPicture[];
 
-  constructor(private route: ActivatedRoute,
+  constructor(private _router: Router, public _auth: AuthorizationService, private route: ActivatedRoute,
               private productService: ProductService, private osmService: OsmService,
               private location: Location, config: NgbCarouselConfig) {
 
@@ -83,22 +82,13 @@ export class ProductComponent implements OnInit {
 
 
     this.images = this.product.productPictures;
-    // this.imagePath = '../assets/pictures/homes_pictures/';
+
 
     if (this.product.property.petsAuthorized === true) {
       this.petsAuthorized = ' - Animaux autorisés';
     } else {
       this.petsAuthorized = ' - Animaux non autorisés';
     }
-
-    this.productFullAddress =
-      this.product.property.address
-      + ' - '
-      + this.product.property.zipCode
-      + ' Paris';
-
-    this.productSimpleAddress =
-      this.product.property.address + ' ' + this.product.property.zipCode;
 
     try {
       this.bookmark = this.bookmarkService.fetchBookmarkByProductAndUser(this.product, this.user);
@@ -116,16 +106,16 @@ export class ProductComponent implements OnInit {
 
   }
 
-  bookProduct(): string {
+  bookProduct(): void {
 
-    // this.booking.idProduct === this.product.idProduct;
+    // booking.idProduct === this.product.idProduct;
     // this.booking.bookingDate === Date.now();
     // this.booking.checkInDate === this.bookingCheckInDate;
     // this.booking.checkOutDate === this.bookingCheckOutDate;
     // this.booking.pets === this.product.property.petsAuthorized;
     // this.booking.canceled === false;
 
-    return '/payment';
+    this._router.navigateByUrl('/payment');
   }
 
   editProduct(): string {
