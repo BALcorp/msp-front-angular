@@ -21,6 +21,8 @@ export class AuthorizationService {
     Value: 'CLIENT',
   };
 
+  userAttributeList: any[];
+
   constructor() {
   }
 
@@ -55,7 +57,7 @@ export class AuthorizationService {
     attributeList.push(attributeRole);
     attributeList.push(attributePhone);
 
-    return new Observable<any>(observer => {
+    return new Observable<CognitoUser>(observer => {
       userPool.signUp(username, password, attributeList, null, (err, result) => {
         if (err) {
           console.log(JSON.stringify(err));
@@ -100,13 +102,51 @@ export class AuthorizationService {
     return userPool.getCurrentUser() != null;
   }
 
-  getAuthentificatedUser() {
+  getAuthenticatedUser() {
     return userPool.getCurrentUser();
   }
 
-  logOut() {
-    this.getAuthentificatedUser().signOut();
-    this.cognitoUser = null;
+  getAttr(): Observable<CognitoUserAttribute[]> {
+    const cognitoUser = this.getAuthenticatedUser();
+    return new Observable<any>(observer => {
+      cognitoUser.getSession(function (err, session) {
+        cognitoUser.getUserAttributes(function(err, result) {
+          if (err) {
+            alert(err);
+            return;
+          } else {
+            observer.next(result);
+            observer.complete();
+          }
+        });
+      });
+    });
   }
 
+  getUserAttributes(): any {
+    const cognitoUser = this.getAuthenticatedUser();
+
+    if (cognitoUser != null) {
+      cognitoUser.getSession(function (err, session) {
+
+        cognitoUser.getUserAttributes(function(err, result) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          for (let i = 0; i < result.length; i++) {
+            console.log('attribute ' + result[i].getName() + ' has value ' + result[i].getValue());
+          }
+          console.log('USER_ROLE : ' + result.find(attr => attr.getName() === 'custom:role').getValue());
+        });
+      });
+    }
+    console.log(cognitoUser);
+    return null;
+  }
+
+  logOut() {
+    this.getAuthenticatedUser().signOut();
+    this.cognitoUser = null;
+  }
 }
