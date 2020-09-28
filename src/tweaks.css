@@ -87,6 +87,8 @@ body, h1, h2, h3, h4 {
 
 header {
   overflow: hidden !important;
+  position: relative !important;
+  top: 4.2rem !important;
 }
 
 header img {
@@ -112,6 +114,11 @@ footer h4 {
   bottom: 5rem !important;
   text-align: center !important;
   font-style: italic !important;
+}
+
+.container {
+  position: relative !important;
+  top: 4.2rem !important;
 }
 
 .panel {
