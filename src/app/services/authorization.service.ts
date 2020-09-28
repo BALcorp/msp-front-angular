@@ -104,6 +104,10 @@ export class AuthorizationService {
     return userPool.getCurrentUser();
   }
 
+  isAdmin() {
+    return userPool.getCurrentUser().getUsername() === 'admin';
+  }
+
   logOut() {
     this.getAuthentificatedUser().signOut();
     this.cognitoUser = null;

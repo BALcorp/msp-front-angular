@@ -175,7 +175,7 @@ export class ProductComponent implements OnInit {
                 ],
                 view: new ol.View({
                   center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
-                  zoom: 18
+                  zoom: 18,
                 })
               });
             });

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import { IDayCalendarConfig, DatePickerComponent } from 'ng2-date-picker';
+import {DatePickerComponent, IDayCalendarConfig} from 'ng2-date-picker';
 
 import {Product} from '../interfaces/product';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
