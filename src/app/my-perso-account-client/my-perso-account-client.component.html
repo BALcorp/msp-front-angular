@@ -1,1 +1,396 @@
-<p>my-perso-account-client works!</p>
+<div class="container">
+  <div class="panel-group ">
+    <div class="he-panel-main panel panel-default">
+      <nav>
+        <div class="he-flex-start he-margin-5 he-padding-5" style="display: flex">
+          <div class="he-padding-5">
+            <button class="btn btn-default he-btn-14 he-btn-visibility" (click)="page='account'" >Mon Compte</button>
+          </div>
+          <div class="he-padding-5">
+            <button class="btn btn-default he-btn-14 he-btn-visibility" (click)="page='bookings'" >Mes Réservations</button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ################################### BOOKINGS ################################### -->
+
+      <div *ngIf="page === 'bookings'">
+        <h2>Hello bookings</h2>
+
+      </div>
+
+
+      <!--<ui:repeat var="b"-->
+      <!--           value="#{myBookingsClientManagedBean.bookingsWithEvaluationDetails}">-->
+      <!--  <b:panel>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="5" col-xs="6"-->
+      <!--                style-class="he-padding-top-20">-->
+      <!--        <h1>-->
+      <!--          <h:outputText-->
+      <!--            value="Réservation # #{myBookingsClientManagedBean.getCurrentBookingIndex()}"/>-->
+      <!--        </h1>-->
+      <!--      </b:column>-->
+      <!--      <b:column col-md="5" col-xs="6"-->
+      <!--                style-class="he-padding-top-20 he-txt-right he-top-1-rem">-->
+      <!--        <h3>-->
+      <!--          <h:outputText value="#{myBookingsClientManagedBean.getCorrectedBookingDate(b)}"/>-->
+      <!--        </h3>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12">-->
+      <!--        <hr/>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12">-->
+      <!--        <h3>-->
+      <!--          <h:outputText value="#{myBookingsClientManagedBean.getProductTitle(b)}"/>-->
+      <!--        </h3>-->
+      <!--        <h4 class="he-left-1-5-rem he-margin-top-22">-->
+      <!--          <h:outputText value="#{myBookingsClientManagedBean.getPropertyAddress(b)} "/>-->
+      <!--        </h4>-->
+      <!--        <h4 class="he-left-1-5-rem">-->
+      <!--          <h:outputText value="#{myBookingsClientManagedBean.getPropertyAddressComplement(b)} "/>-->
+      <!--        </h4>-->
+      <!--        <h4 class="he-left-1-5-rem">-->
+      <!--          <h:outputText value="#{myBookingsClientManagedBean.getPropertyZipCode(b)} Paris "/>-->
+      <!--        </h4>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="3" col-xs="12">-->
+      <!--        <hr/>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12">-->
+      <!--        <h4>-->
+      <!--          <h:outputText-->
+      <!--            value="#{myBookingsClientManagedBean.getStringpetsAuthorized(b)}"/>-->
+      <!--        </h4>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="3" col-xs="12">-->
+      <!--        <hr/>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12">-->
+      <!--        <h4>-->
+      <!--          <h:outputText-->
+      <!--            value="Date d'arrivée : #{myBookingsClientManagedBean.getCorrectedChekInDate(b)}"/>-->
+      <!--        </h4>-->
+      <!--        <h4>-->
+      <!--          <h:outputText-->
+      <!--            value="Date de départ : #{myBookingsClientManagedBean.getCorrectedChekOutDate(b)}"/>-->
+      <!--        </h4>-->
+      <!--        <h4>-->
+      <!--          <h:outputText value="Nombre de personnes : #{b.booking.guestsNumber}"/>-->
+      <!--        </h4>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12">-->
+      <!--        <hr/>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12" styleClass="he-margin-bottom-22 he-txt-center">-->
+      <!--        <h3>-->
+      <!--          <h:outputText-->
+      <!--            value="Montant total : #{myBookingsClientManagedBean.getCalculatedTotalToPay(b)} €"/>-->
+      <!--        </h3>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--    <b:row>-->
+      <!--      <b:column offset-md="1" col-md="10" col-xs="12" styleClass="he-margin-bottom-22">-->
+      <!--        <b:panel styleClass="he-bkg-medium"-->
+      <!--                 title="Mon évaluation"-->
+      <!--                 collapsed="true"-->
+      <!--                 titleClass="he-txt-center"-->
+      <!--                 style="display: #{myBookingsClientManagedBean.isBookingPassed(b)}">-->
+      <!--          <b:column col-md="5" col-xs="7">-->
+      <!--            <b:row>-->
+      <!--              <b:column col-md="8" col-xs="12">-->
+      <!--                <h4>-->
+      <!--                  <h:outputText value="Résidence :"/>-->
+      <!--                </h4>-->
+      <!--              </b:column>-->
+      <!--              <b:column col-md="4" col-xs="12" styleClass="he-padding-5">-->
+      <!--                <b:touchSpin value="#{b.evaluationDto.residence}"-->
+      <!--                             max="5" min="1"-->
+      <!--                             styleClass="he-font-14 he-border-light"/>-->
+      <!--              </b:column>-->
+      <!--            </b:row>-->
+      <!--            <b:row>-->
+      <!--              <b:column col-md="8" col-xs="12">-->
+      <!--                <h4>-->
+      <!--                  <h:outputText value="Emplacement :"/>-->
+      <!--                </h4>-->
+      <!--              </b:column>-->
+      <!--              <b:column col-md="4" col-xs="12" styleClass="he-padding-5">-->
+      <!--                <b:touchSpin value="#{b.evaluationDto.location}"-->
+      <!--                             max="5" min="1"-->
+      <!--                             styleClass="he-font-14 he-border-light"/>-->
+      <!--              </b:column>-->
+      <!--            </b:row>-->
+      <!--            <b:row>-->
+      <!--              <b:column col-md="8" col-xs="12">-->
+      <!--                <h4>-->
+      <!--                  <h:outputText value="Rapport qualité/prix :"/>-->
+      <!--                </h4>-->
+      <!--              </b:column>-->
+      <!--              <b:column col-md="4" col-xs="12" styleClass="he-padding-5">-->
+      <!--                <b:touchSpin value="#{b.evaluationDto.valueForMoney}"-->
+      <!--                             max="5" min="1"-->
+      <!--                             styleClass="he-font-14 he-border-light"/>-->
+      <!--              </b:column>-->
+      <!--            </b:row>-->
+      <!--            <b:row>-->
+      <!--              <b:column col-md="8" col-xs="12">-->
+      <!--                <h4>-->
+      <!--                  <h:outputText value="Communication :"/>-->
+      <!--                </h4>-->
+      <!--              </b:column>-->
+      <!--              <b:column col-md="4" col-xs="12" styleClass="he-padding-5">-->
+      <!--                <b:touchSpin value="#{b.evaluationDto.communication}"-->
+      <!--                             max="5" min="1"-->
+      <!--                             styleClass="he-font-14 he-border-light"/>-->
+      <!--              </b:column>-->
+      <!--            </b:row>-->
+      <!--          </b:column>-->
+      <!--          <b:column offset-md="1" col-md="6" col-xs="12" styleClass="he-flex-parent-column he-flex-between">-->
+      <!--            <h4>-->
+      <!--              <h:outputText value="Commentaires :"/>-->
+      <!--            </h4>-->
+      <!--            <h4>-->
+      <!--              <b:inputTextarea value="#{b.evaluationDto.commentary}"-->
+      <!--                               styleClass="he-font-14 he-bottom-1-5-rem he-border-light"/>-->
+      <!--            </h4>-->
+      <!--          </b:column>-->
+      <!--          <b:column offset-md="5" col-md="2" style-class="he-padding-10 he-padding-bottom-20">-->
+      <!--            <b:commandButton value="Valider"-->
+      <!--                             action="#{myBookingsClientManagedBean.updateEvaluationFromBooking(b)}"-->
+      <!--                             ajax="true"-->
+      <!--                             styleClass="he-btn-20 he-width-100"-->
+      <!--                             update="update-message"/>-->
+      <!--          </b:column>-->
+      <!--          <b:column offset-md="1" col-md="10" style-class="he-padding-10 he-padding-bottom-20 he-txt-center" autoUpdate="true">-->
+      <!--            <h4>-->
+      <!--              <h:outputText value="Evaluation enregistrée !" style="display: #{b.isEvaluationUpdated}" id="update-message"/>-->
+      <!--            </h4>-->
+      <!--          </b:column>-->
+      <!--        </b:panel>-->
+      <!--      </b:column>-->
+      <!--    </b:row>-->
+      <!--  </b:panel>-->
+      <!--</ui:repeat>-->
+
+
+      <!-- ################################### INFOS CLIENT ################################### -->
+
+      <div *ngIf="page === 'account'">
+        <div>
+          <div class="he-padding-top-20 col-md-10 col-md-offset-1 col-xs-12 ">
+            <h1>Vos informations</h1>
+            <hr/>
+          </div>
+          <div class="row">
+            <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-6 ">
+              Nom
+              <div class="form-group ">
+                <input class="form-control" [(ngModel)]="currentUser.username" type="text" name="lastName" id="lastName"/>
+              </div>
+              <div>
+
+              </div>
+            </div>
+            <div class="he-padding-10 col-md-3 col-xs-6 ">
+              Prénom
+              <div class="form-group ">
+                <input class="form-control" [(ngModel)]="userRole" type="text" name="firstName" id="firstName"/>
+              </div>
+            </div>
+            <div class="he-padding-10 col-md-2 col-xs-6 " (click)="displayRole()">
+              Date de naissance
+              <div class="input-group date">
+                <input class="form-control" type="text" [(ngModel)]="userAttributes"/>
+                <span class="input-group-addon">
+                  <span>
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+                </span>
+              </div>
+              <script>$(function () {
+                $('#j_idt88').datetimepicker({
+                  ignoreReadonly: false,
+                  collapse: true,
+                  dayViewHeaderFormat: 'MMMM YYYY',
+                  focusOnShow: true,
+                  calendarWeeks: true,
+                  stepping: 1,
+                  toolbarPlacement: 'default',
+                  viewMode: 'days',
+                  date: moment('null', 'DD/MM/YY'),
+                  locale: 'fr',
+                  format: 'DD/MM/YY'
+                });
+              });</script>
+            </div>
+          </div>
+          <div class="row">
+            <div class="he-padding-10 he-padding-top-20 he-txt-18 col-md-10 col-md-offset-1 col-xs-12 ">
+              Contact :
+            </div>
+          </div>
+          <div class="row">
+            <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
+              Email
+              <div class="form-group ">
+                <input class="form-control" [(ngModel)]="email" type="email" name="email" id="email" required="true"/>
+              </div>
+            </div>
+            <div class="he-padding-10 col-md-3 col-xs-6 ">
+              Téléphone
+              <div class="form-group ">
+                <input class="form-control" [(ngModel)]="telephone" type="text" name="phone" id="phone"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="he-padding-top-40 he-padding-bottom-40 col-md-7 col-md-offset-1 ">
+              <div class="he-border-light panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title"> Créez vos identifiants de compte</h4>
+                </div>
+                <div>
+                  <div class="panel-body ui-hidden-container">
+                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
+                      <div class="form-group ">
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                          <span><i class="glyphicon glyphicon-user"></i>
+                          </span>
+                        </span>
+                          <input class="form-control" [(ngModel)]="username" placeholder="Identifiant" type="text" name="username" id="username" required="true"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
+                      <div class="form-group ">
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                          <span><i class="fa fa-key"></i>
+                          </span>
+                        </span>
+                          <input class="form-control" [(ngModel)]="password" placeholder="Mot de passe" size="0" type="password" name="password" id="password" required minlength="4"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
+                      <div class="form-group ">
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                          <span><i class="fa fa-key"></i>
+                          </span>
+                        </span>
+                          <input class="form-control" [(ngModel)]="passwordConfirm" placeholder="Confirmer le mot de passe" size="0" type="password" name="passwordConfirm" id="passwordConfirm"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="he-padding-top-40 he-padding-bottom-40 col-md-2 col-md-offset-1 hidden-xs  hidden-sm ">
+              <button class="btn btn-default he-btn-20 he-width-100 he-top-10-rem" type="submit">
+                Valider
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<b:row>-->
+      <!--  <b:column offset-md="1" col-md="10" col-xs="12"-->
+      <!--            style-class="he-padding-top-20">-->
+      <!--    <h1>Mes informations personnelles</h1>-->
+      <!--    <hr/>-->
+      <!--  </b:column>-->
+      <!--</b:row>-->
+      <!--<b:row>-->
+      <!--  <b:column offset-md="1" col-md="10" col-xs="12" style-class="he-padding-10 he-padding-top-20 he-txt-18">-->
+      <!--  </b:column>-->
+      <!--</b:row>-->
+      <!--<b:row>-->
+      <!--  <b:column offset-md="1" col-md="3" col-xs="6" style-class="he-padding-10">-->
+      <!--    <h:outputText value="Nom"/>-->
+      <!--    <b:inputText value="#{myPersoAccountClientManagedBean.authBean.user.lastName}"/>-->
+      <!--    <b:message/>-->
+      <!--  </b:column>-->
+      <!--  <b:column col-md="3" col-xs="6" style-class="he-padding-10">-->
+      <!--    <h:outputText value="Prénom"/>-->
+      <!--    <b:inputText value="#{myPersoAccountClientManagedBean.authBean.user.firstName}"/>-->
+      <!--  </b:column>-->
+      <!--  <b:column col-md="2" col-xs="6"-->
+      <!--            style-class="he-padding-10">-->
+      <!--    <h:outputText value="Date de naissance"/>-->
+      <!--    <b:dateTimePicker mode="toggle-icon" show-time="false"-->
+      <!--                      showWeek="true" value="#{myPersoAccountClientManagedBean.dateBirthDate}"/>-->
+      <!--  </b:column>-->
+      <!--</b:row>-->
+      <!--<b:row>-->
+      <!--  <b:column offset-md="1" col-md="10" col-xs="12"-->
+      <!--            style-class="he-padding-10 he-padding-top-20 he-txt-18">-->
+      <!--    <h:outputText value="Contact :"/>-->
+      <!--  </b:column>-->
+      <!--</b:row>-->
+      <!--<b:row>-->
+      <!--  <b:column offset-md="1" col-md="4" col-xs="12" style-class="he-padding-10">-->
+      <!--    <h:outputText value="Email"/>-->
+      <!--    <b:inputText value="#{myPersoAccountClientManagedBean.authBean.user.email}"/>-->
+      <!--  </b:column>-->
+      <!--  <b:column col-md="3" col-xs="6" style-class="he-padding-10">-->
+      <!--    <h:outputText value="Téléphone"/>-->
+      <!--    <b:inputText value="#{myPersoAccountClientManagedBean.authBean.user.telephone}"/>-->
+      <!--  </b:column>-->
+      <!--</b:row>-->
+      <!--<b:row>-->
+      <!--  <b:column offset-md="1" col-md="7" style-class="he-padding-top-40 he-padding-bottom-40">-->
+      <!--    <b:panel title="Modifier votre mot de passe :" collapsible="false"-->
+      <!--             styleClass="he-border-light">-->
+      <!--      <b:column offset="1" medium-screen="10" styleClass="he-padding-10">-->
+      <!--        <b:inputSecret placeholder="Nouveau mot de passe"-->
+      <!--                       value="#{myPersoAccountClientManagedBean.newPassword}">-->
+      <!--          <f:facet name="prepend">-->
+      <!--            <b:iconAwesome name="key"/>-->
+      <!--          </f:facet>-->
+      <!--        </b:inputSecret>-->
+      <!--      </b:column>-->
+      <!--      <b:column offset="1" col-md="10" styleClass="he-padding-10">-->
+      <!--        <b:inputSecret placeholder="Confirmer mot de passe"-->
+      <!--                       value="#{myPersoAccountClientManagedBean.newPasswordConf}">-->
+      <!--          <f:facet name="prepend">-->
+      <!--            <b:iconAwesome name="key"/>-->
+      <!--          </f:facet>-->
+      <!--        </b:inputSecret>-->
+      <!--      </b:column>-->
+      <!--    </b:panel>-->
+      <!--  </b:column>-->
+      <!--  <b:column offset-md="1" col-md="2" hidden="xs...sm" style-class="he-padding-top-40 he-padding-bottom-40">-->
+      <!--    <b:commandButton value="Valider"-->
+      <!--                     action="#{myPersoAccountClientManagedBean.updateUser()}"-->
+      <!--                     styleClass="he-btn-20 he-width-100 he-top-10-rem"/>-->
+      <!--  </b:column>-->
+      <!--  <b:column offset-md="1" col-xs="12" hidden="md...lg" style-class="he-padding-top-40">-->
+      <!--    <b:commandButton value="Valider"-->
+      <!--                     styleClass="he-btn-20 he-width-100"/>-->
+      <!--  </b:column>-->
+      <!--</b:row>-->
+    </div>
+  </div>
+</div>
+
