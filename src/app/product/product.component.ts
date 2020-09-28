@@ -125,11 +125,11 @@ export class ProductComponent implements OnInit {
     // this.booking.pets === this.product.property.petsAuthorized;
     // this.booking.canceled === false;
 
-    return '/payment.html?faces-redirect=true';
+    return '/payment';
   }
 
   editProduct(): string {
-    return '/productBackOffice.xhtml?faces-redirect=true';
+    return '/product-back-office';
   }
 
   addBookmark(): void {
@@ -175,7 +175,7 @@ export class ProductComponent implements OnInit {
                 ],
                 view: new ol.View({
                   center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
-                  zoom: 18
+                  zoom: 18,
                 })
               });
             });

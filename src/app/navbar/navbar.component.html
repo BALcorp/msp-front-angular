@@ -5,32 +5,39 @@
       <div class="he-flex-start he-txt-light he-depth-top he-kebab-visibility" style="display: flex">
         <div class="he-padding-5">
           <button class="btn btn-default he-btn-14 he-btn-visibility"
-                  routerLink="/welcome">Accueil</button>
+                  routerLink="/welcome">Accueil
+          </button>
         </div>
         <div class="he-padding-5">
           <button class="btn btn-default he-btn-14 he-btn-visibility"
-                  routerLink="/product-list">Locations</button>
+                  routerLink="/product-list">Locations
+          </button>
         </div>
         <div *ngIf="!_auth.isLoggedIn()" class="he-padding-5">
           <button class="btn btn-default he-btn-14 he-btn-visibility"
-                  routerLink="/login">Connexion</button>
+                  routerLink="/login">Connexion
+          </button>
         </div>
         <div *ngIf="!_auth.isLoggedIn()" class="he-padding-5">
           <button class="btn btn-default he-btn-14 he-btn-visibility"
-                  routerLink="/registration">Inscription</button>
+                  routerLink="/registration">Inscription
+          </button>
         </div>
         <div *ngIf="_auth.isLoggedIn()" class="he-padding-5">
           <button class="btn btn-default he-btn-14 he-btn-visibility"
-                  routerLink="/my-perso-account-client">Espace perso</button>
+                  routerLink="/my-perso-account-client">Espace perso
+          </button>
         </div>
         <div *ngIf="_auth.isLoggedIn()" class="he-padding-5">
           <button (click)="doLogout()"
                   class="btn btn-default he-btn-14 he-btn-visibility"
-                  href="javascript:void(0)">Déconnexion</button>
+                  href="javascript:void(0)">Déconnexion
+          </button>
         </div>
         <div class="he-padding-5">
           <button class="btn btn-default he-btn-14 he-btn-visibility"
-                  routerLink="/contact-us">Nous contacter</button>
+                  routerLink="/contact-us">Nous contacter
+          </button>
         </div>
       </div>
     </div>

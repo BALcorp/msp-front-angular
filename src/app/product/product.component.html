@@ -153,7 +153,7 @@
         <div class="he-txt-18 col-md-5 offset-md-1 col-xs-12 " id="j_idt147"></div>
       </div>
       <!-- Location content bloc: End -->
-
+      <app-lowerbar></app-lowerbar>
 
       <div class="row he-padding-top-40">
         <div class="col-md-10 offset-md-1 col-xs-12">
@@ -224,44 +224,5 @@
     </div>
   </div>
 </div>
-<script>
-  var address = document.getElementById('hiddenId').value;
-  var geocodeRes = 'https://nominatim.openstreetmap.org/search/'
-    + address + '?format=json';
 
-  console.log(geocodeRes);
-
-  var lat = 0;
-  var lon = 0;
-
-  $.ajax({
-    url: geocodeRes,
-    type: "GET",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    async: false,
-    success: function (e) {
-      lat = e[0]['lat'];
-      lon = e[0]['lon'];
-      console.log("latitude : " + e[0]['lat']);
-      console.log("longitude : " + e[0]['lon']);
-      /* alert("sucess"); */
-    }
-  })
-
-  console.log(lat, lon);
-
-  var mymap = L.map('mapid').setView([lat, lon], 15);
-
-  L
-    .tileLayer(
-      '//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-      {
-        attribution: 'Map data © <a href=\'http://openstreetmap.org\'>OpenStreetMap</a> contributors,<a href=\'http://creativecommons.org/licenses/by-sa/2.0/\'>CC-BY-SA</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-      }).addTo(mymap);
-
-  var marker = L.marker([lat, lon]).addTo(mymap)
-</script>
 
