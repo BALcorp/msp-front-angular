@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthorizationService} from '../services/authorization.service';
-import {CognitoUser, CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import {CognitoUserAttribute} from 'amazon-cognito-identity-js';
 
 @Component({
   selector: 'app-my-perso-account-client',

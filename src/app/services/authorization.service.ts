@@ -109,7 +109,7 @@ export class AuthorizationService {
   getAttr(): Observable<CognitoUserAttribute[]> {
     const cognitoUser = this.getAuthenticatedUser();
     return new Observable<any>(observer => {
-      cognitoUser.getSession(function (err, session) {
+      cognitoUser.getSession(function(err, session) {
         cognitoUser.getUserAttributes(function(err, result) {
           if (err) {
             alert(err);
@@ -127,7 +127,7 @@ export class AuthorizationService {
     const cognitoUser = this.getAuthenticatedUser();
 
     if (cognitoUser != null) {
-      cognitoUser.getSession(function (err, session) {
+      cognitoUser.getSession(function(err, session) {
 
         cognitoUser.getUserAttributes(function(err, result) {
           if (err) {
