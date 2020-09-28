@@ -1,53 +1,75 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {User} from '../interfaces/user';
-import {Credentials} from '../interfaces/credentials';
-import {Role} from '../interfaces/role';
+import {AuthorizationService} from './authorization.service';
+import {CognitoUser, CognitoUserAttribute} from 'amazon-cognito-identity-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
-  private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
-  private usersUrl = 'http://localhost:8052/msp-users/rest/user-api';
-  private authUrl = 'http://localhost:8055/msp-auth/rest/auth-api';
-  private connectionUrl = this.orchestratorUrl + '/public/login';
-  private registerUserUrl = this.usersUrl + '/public/register';
-  private registerCredentialsUrl = this.authUrl + '/public/register';
-  private updateUserUrl = this.usersUrl + '/public/update';
-  private updateCredentialsUrl = this.authUrl + '/public/update';
+  // httpOptions = {
+  //   headers: new HttpHeaders({'Content-Type': 'application/json'})
+  // };
+  // private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
+  // private usersUrl = 'http://localhost:8052/msp-users/rest/user-api';
+  // private authUrl = 'http://localhost:8055/msp-auth/rest/auth-api';
+  // private connectionUrl = this.orchestratorUrl + '/public/login';
+  // private registerUserUrl = this.usersUrl + '/public/register';
+  // private registerCredentialsUrl = this.authUrl + '/public/register';
+  // private updateUserUrl = this.usersUrl + '/public/update';
+  // private updateCredentialsUrl = this.authUrl + '/public/update';
 
-  constructor(private http: HttpClient) {
+  currentUser: any;
+  userAttributes: CognitoUserAttribute[];
+
+  constructor(private auth: AuthorizationService) {
+    this.currentUser = this.auth.getAuthenticatedUser();
   }
 
-  connection(username: string, password: string): Observable<User> {
-    return null;
+  loadAttributes() {
+    this.auth.getAttr().subscribe({
+      next: attributeList => {
+        this.userAttributes = attributeList;
+        console.log(attributeList);
+        console.log(attributeList.find(attr => attr.getName() === 'custom:role').getValue());
+      }
+    });
   }
 
-  createAccount(user: User, credentials: Credentials): Observable<User> {
-    user.role = Role.CLIENT;
-    user.username = credentials.username;
-    credentials.email = user.email;
-    return null;
+  getCurrentUser(): CognitoUser {
+    return this.currentUser;
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
+  getUsername(): string {
+    return this.currentUser.username;
   }
 
-  private log(s: string) {
-
+  getUserAttributes(): CognitoUserAttribute[] {
+    return this.userAttributes;
   }
+
+  getEmail(): string {
+    return this.userAttributes.find(attr => attr.getName() === 'email').getValue();
+  }
+
+  getRole(): string {
+    return this.userAttributes.find(attr => attr.getName() === 'custom:role').getValue();
+  }
+
+  getFirstName(): string {
+    return this.userAttributes.find(attr => attr.getName() === 'given_name').getValue();
+  }
+
+  getLastName(): string {
+    return this.userAttributes.find(attr => attr.getName() === 'family_name').getValue();
+  }
+
+  getBirthDate(): string {
+    return this.userAttributes.find(attr => attr.getName() === 'birthdate').getValue();
+  }
+
+  getPhone(): string {
+    return this.userAttributes.find(attr => attr.getName() === 'phone_number').getValue();
+  }
+
 }

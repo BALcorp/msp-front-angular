@@ -202,7 +202,7 @@
             <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-6 ">
               Nom
               <div class="form-group ">
-                <input class="form-control" [(ngModel)]="currentUser.username" type="text" name="lastName" id="lastName"/>
+                <input class="form-control" value="{{displayLastName()}}" type="text" name="lastName" id="lastName"/>
               </div>
               <div>
 
@@ -211,34 +211,34 @@
             <div class="he-padding-10 col-md-3 col-xs-6 ">
               Prénom
               <div class="form-group ">
-                <input class="form-control" [(ngModel)]="userRole" type="text" name="firstName" id="firstName"/>
+                <input class="form-control" value="{{displayFirstName()}}" type="text" name="firstName" id="firstName"/>
               </div>
             </div>
-            <div class="he-padding-10 col-md-2 col-xs-6 " (click)="displayRole()">
+            <div class="he-padding-10 col-md-2 col-xs-6 ">
               Date de naissance
               <div class="input-group date">
-                <input class="form-control" type="text" [(ngModel)]="userAttributes"/>
+                <input class="form-control" value="{{displayRole()}}" type="text"/>
                 <span class="input-group-addon">
                   <span>
                     <i class="glyphicon glyphicon-calendar"></i>
                   </span>
                 </span>
               </div>
-              <script>$(function () {
-                $('#j_idt88').datetimepicker({
-                  ignoreReadonly: false,
-                  collapse: true,
-                  dayViewHeaderFormat: 'MMMM YYYY',
-                  focusOnShow: true,
-                  calendarWeeks: true,
-                  stepping: 1,
-                  toolbarPlacement: 'default',
-                  viewMode: 'days',
-                  date: moment('null', 'DD/MM/YY'),
-                  locale: 'fr',
-                  format: 'DD/MM/YY'
-                });
-              });</script>
+<!--              <script>$(function () {-->
+<!--                $('#j_idt88').datetimepicker({-->
+<!--                  ignoreReadonly: false,-->
+<!--                  collapse: true,-->
+<!--                  dayViewHeaderFormat: 'MMMM YYYY',-->
+<!--                  focusOnShow: true,-->
+<!--                  calendarWeeks: true,-->
+<!--                  stepping: 1,-->
+<!--                  toolbarPlacement: 'default',-->
+<!--                  viewMode: 'days',-->
+<!--                  date: moment('null', 'DD/MM/YY'),-->
+<!--                  locale: 'fr',-->
+<!--                  format: 'DD/MM/YY'-->
+<!--                });-->
+<!--              });</script>-->
             </div>
           </div>
           <div class="row">
@@ -247,70 +247,32 @@
             </div>
           </div>
           <div class="row">
+            <div class="he-padding-10 col-md-3 col-xs-6 ">
+              Identifiant
+              <div class="form-group ">
+                <input class="form-control" value="{{displayUsername()}}" type="text" name="username" id="username"/>
+              </div>
+            </div>
             <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
               Email
               <div class="form-group ">
-                <input class="form-control" [(ngModel)]="email" type="email" name="email" id="email" required="true"/>
+                <input class="form-control" value="{{displayEmail()}}" type="email" name="email" id="email" required="true"/>
               </div>
             </div>
             <div class="he-padding-10 col-md-3 col-xs-6 ">
               Téléphone
               <div class="form-group ">
-                <input class="form-control" [(ngModel)]="telephone" type="text" name="phone" id="phone"/>
+                <input class="form-control" value="{{displayPhone()}}" type="text" name="phone" id="phone"/>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="he-padding-top-40 he-padding-bottom-40 col-md-7 col-md-offset-1 ">
-              <div class="he-border-light panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title"> Créez vos identifiants de compte</h4>
-                </div>
-                <div>
-                  <div class="panel-body ui-hidden-container">
-                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
-                      <div class="form-group ">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <span><i class="glyphicon glyphicon-user"></i>
-                          </span>
-                        </span>
-                          <input class="form-control" [(ngModel)]="username" placeholder="Identifiant" type="text" name="username" id="username" required="true"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
-                      <div class="form-group ">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <span><i class="fa fa-key"></i>
-                          </span>
-                        </span>
-                          <input class="form-control" [(ngModel)]="password" placeholder="Mot de passe" size="0" type="password" name="password" id="password" required minlength="4"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
-                      <div class="form-group ">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <span><i class="fa fa-key"></i>
-                          </span>
-                        </span>
-                          <input class="form-control" [(ngModel)]="passwordConfirm" placeholder="Confirmer le mot de passe" size="0" type="password" name="passwordConfirm" id="passwordConfirm"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div class="he-padding-top-40 he-padding-bottom-40 col-md-2 col-md-offset-1 hidden-xs  hidden-sm ">
               <button class="btn btn-default he-btn-20 he-width-100 he-top-10-rem" type="submit">
                 Valider
               </button>
             </div>
-          </div>
+
         </div>
       </div>
 
