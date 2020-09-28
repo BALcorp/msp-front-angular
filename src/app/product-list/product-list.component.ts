@@ -4,8 +4,7 @@ import {Product} from '../interfaces/product';
 import {Evaluation} from '../interfaces/evaluation';
 import {ConvertorService} from '../services/convertor.service';
 import {Devise} from '../interfaces/devise';
-import {Observable} from 'rxjs';
-import { Options } from 'ng5-slider';
+import {Options} from 'ng5-slider';
 
 @Component({
   selector: 'app-product-list',
@@ -36,11 +35,6 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   filteredProducts: Product[];
   message: string;
-  devises: Devise[];
-  errorMessage: string;
-  result: Observable<any>;
-  devise: Devise;
-  price = 1300;
   _filterZipCode: string;
   _filterSize = '9';
   _filterMaxGuests = '1';
@@ -55,14 +49,11 @@ export class ProductListComponent implements OnInit {
     ceil: 250
   };
 
-  constructor(private productService: ProductService, private convertorService: ConvertorService) {
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit(): void {
     this.loadProducts();
-    this.getDevises();
-    this.devise = this.convertorService.getAllDevises()[0];
-    this.result = this.convertorService.convert(this.devise.code, this.price);
   }
 
   loadProducts(): void {
@@ -74,7 +65,6 @@ export class ProductListComponent implements OnInit {
         },
         error: err => this.message = err
       });
-
   }
 
   getTotalAverage(evaluations: Evaluation[]): number {
@@ -176,17 +166,6 @@ export class ProductListComponent implements OnInit {
         return '';
     }
   }
-
-  getDevises(): void {
-    this.convertorService.getAllDevises()
-      .subscribe({
-        next: devises => {
-          this.devises = devises;
-        },
-        error: err => this.errorMessage = err
-      });
-  }
-
 
   get filterZipCode(): string {
     return this._filterZipCode;

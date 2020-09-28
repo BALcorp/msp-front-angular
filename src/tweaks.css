@@ -66,6 +66,10 @@ button:focus {
   background-color: goldenrod !important;
 }
 
+.ng5-slider .ng5-slider-bubble {
+  color: white !important;
+}
+
 /*!
  * General
 */
