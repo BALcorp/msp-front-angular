@@ -18,7 +18,7 @@ export class AuthorizationService {
   cognitoUser: any;
   dataRole = {
     Name: 'custom:role',
-    Value: 'CLIENT',
+    Value: 'ADMIN',
   };
 
   userAttributeList: any[];

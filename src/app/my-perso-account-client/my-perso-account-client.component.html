@@ -4,11 +4,10 @@
       <nav>
         <div class="he-flex-start he-margin-5 he-padding-5" style="display: flex">
           <div class="he-padding-5">
-            <button (click)="page='account'" class="btn btn-default he-btn-14 he-btn-visibility">Mon Compte</button>
+            <button class="btn btn-default he-btn-14 he-btn-visibility" (click)="page='account'" >Mon Compte</button>
           </div>
           <div class="he-padding-5">
-            <button (click)="page='bookings'" class="btn btn-default he-btn-14 he-btn-visibility">Mes Réservations
-            </button>
+            <button class="btn btn-default he-btn-14 he-btn-visibility" (click)="page='bookings'" >Mes Réservations</button>
           </div>
         </div>
       </nav>
@@ -203,8 +202,7 @@
             <div class="he-padding-10 col-md-3 col-md-offset-1 col-xs-6 ">
               Nom
               <div class="form-group ">
-                <input [(ngModel)]="currentUser.username" class="form-control" id="lastName" name="lastName"
-                       type="text"/>
+                <input class="form-control" value="{{displayLastName()}}" type="text" name="lastName" id="lastName"/>
               </div>
               <div>
 
@@ -213,34 +211,34 @@
             <div class="he-padding-10 col-md-3 col-xs-6 ">
               Prénom
               <div class="form-group ">
-                <input [(ngModel)]="userRole" class="form-control" id="firstName" name="firstName" type="text"/>
+                <input class="form-control" value="{{displayFirstName()}}" type="text" name="firstName" id="firstName"/>
               </div>
             </div>
-            <div (click)="displayRole()" class="he-padding-10 col-md-2 col-xs-6 ">
+            <div class="he-padding-10 col-md-2 col-xs-6 ">
               Date de naissance
               <div class="input-group date">
-                <input [(ngModel)]="userAttributes" class="form-control" type="text"/>
+                <input class="form-control" value="{{displayRole()}}" type="text"/>
                 <span class="input-group-addon">
                   <span>
                     <i class="glyphicon glyphicon-calendar"></i>
                   </span>
                 </span>
               </div>
-              <script>$(function () {
-                $('#j_idt88').datetimepicker({
-                  ignoreReadonly: false,
-                  collapse: true,
-                  dayViewHeaderFormat: 'MMMM YYYY',
-                  focusOnShow: true,
-                  calendarWeeks: true,
-                  stepping: 1,
-                  toolbarPlacement: 'default',
-                  viewMode: 'days',
-                  date: moment('null', 'DD/MM/YY'),
-                  locale: 'fr',
-                  format: 'DD/MM/YY'
-                });
-              });</script>
+<!--              <script>$(function () {-->
+<!--                $('#j_idt88').datetimepicker({-->
+<!--                  ignoreReadonly: false,-->
+<!--                  collapse: true,-->
+<!--                  dayViewHeaderFormat: 'MMMM YYYY',-->
+<!--                  focusOnShow: true,-->
+<!--                  calendarWeeks: true,-->
+<!--                  stepping: 1,-->
+<!--                  toolbarPlacement: 'default',-->
+<!--                  viewMode: 'days',-->
+<!--                  date: moment('null', 'DD/MM/YY'),-->
+<!--                  locale: 'fr',-->
+<!--                  format: 'DD/MM/YY'-->
+<!--                });-->
+<!--              });</script>-->
             </div>
           </div>
           <div class="row">
@@ -249,75 +247,32 @@
             </div>
           </div>
           <div class="row">
+            <div class="he-padding-10 col-md-3 col-xs-6 ">
+              Identifiant
+              <div class="form-group ">
+                <input class="form-control" value="{{displayUsername()}}" type="text" name="username" id="username"/>
+              </div>
+            </div>
             <div class="he-padding-10 col-md-4 col-md-offset-1 col-xs-12 ">
               Email
               <div class="form-group ">
-                <input [(ngModel)]="email" class="form-control" id="email" name="email" required="true" type="email"/>
+                <input class="form-control" value="{{displayEmail()}}" type="email" name="email" id="email" required="true"/>
               </div>
             </div>
             <div class="he-padding-10 col-md-3 col-xs-6 ">
               Téléphone
               <div class="form-group ">
-                <input [(ngModel)]="telephone" class="form-control" id="phone" name="phone" type="text"/>
+                <input class="form-control" value="{{displayPhone()}}" type="text" name="phone" id="phone"/>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="he-padding-top-40 he-padding-bottom-40 col-md-7 col-md-offset-1 ">
-              <div class="he-border-light panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title"> Créez vos identifiants de compte</h4>
-                </div>
-                <div>
-                  <div class="panel-body ui-hidden-container">
-                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
-                      <div class="form-group ">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <span><i class="glyphicon glyphicon-user"></i>
-                          </span>
-                        </span>
-                          <input [(ngModel)]="username" class="form-control" id="username" name="username"
-                                 placeholder="Identifiant" required="true" type="text"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
-                      <div class="form-group ">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <span><i class="fa fa-key"></i>
-                          </span>
-                        </span>
-                          <input [(ngModel)]="password" class="form-control" id="password" minlength="4"
-                                 name="password" placeholder="Mot de passe" required size="0" type="password"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="he-padding-10 col-md-10 col-md-offset-1 ">
-                      <div class="form-group ">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                          <span><i class="fa fa-key"></i>
-                          </span>
-                        </span>
-                          <input [(ngModel)]="passwordConfirm" class="form-control"
-                                 id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe"
-                                 size="0"
-                                 type="password"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div class="he-padding-top-40 he-padding-bottom-40 col-md-2 col-md-offset-1 hidden-xs  hidden-sm ">
               <button class="btn btn-default he-btn-20 he-width-100 he-top-10-rem" type="submit">
                 Valider
               </button>
             </div>
-          </div>
+
         </div>
       </div>
 

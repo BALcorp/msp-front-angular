@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthorizationService} from '../services/authorization.service';
-import {CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import {CognitoUser, CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-my-perso-account-client',
@@ -10,37 +10,43 @@ import {CognitoUserAttribute} from 'amazon-cognito-identity-js';
 export class MyPersoAccountClientComponent implements OnInit {
 
   page: string;
-  currentUser: any;
-  userAttributes: CognitoUserAttribute[];
+  currentUser: CognitoUser;
 
+  username: string;
   userRole: string;
 
-  constructor(private auth: AuthorizationService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.page = 'bookings';
-    this.currentUser = this.auth.getAuthenticatedUser();
-
-    this.auth.getAttr().subscribe({
-      next: attributeList => {
-        this.userAttributes = attributeList;
-        console.log(attributeList);
-        console.log(attributeList.find(attr => attr.getName() === 'custom:role').getValue());
-      }
-    });
-
-    // this.userRole = this.userAttributes.find(attr => attr.getName() === 'custom:role').getValue();
-    // console.log(this.userAttributes);
-    // console.log('USER_ROLE : ' + this.userAttributes.find(attr => attr.getName() === 'custom:role').getValue());
+    this.page = 'account';
+    this.userService.loadAttributes();
+    this.currentUser = this.userService.getCurrentUser();
+    this.username = this.userService.getUsername();
   }
 
-  displayRole() {
-    console.log('USER_ROLE : ' + this.userAttributes.find(attr => attr.getName() === 'custom:role').getValue());
+  displayRole(): string {
+    return this.userService.getRole();
   }
 
-  getRole(): string {
-    return this.userAttributes.find(attr => attr.getName() === 'custom:role').getValue();
+  displayLastName(): string {
+    return this.userService.getLastName();
+  }
+
+  displayFirstName(): string {
+    return this.userService.getFirstName();
+  }
+
+  displayUsername(): string {
+    return this.userService.getUsername();
+  }
+
+  displayEmail(): string {
+    return this.userService.getEmail();
+  }
+
+  displayPhone(): string {
+    return this.userService.getPhone();
   }
 
 }
