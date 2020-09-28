@@ -43,23 +43,17 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4 col-xs-12 he-margin-top-22">
+              <div class="col-md-5 col-xs-12 he-margin-top-22">
                 <h4>
                   - {{product.property.size}} m²
                 </h4>
               </div>
-              <div class="col-md-4 col-xs-12 he-margin-top-22 he-txt-right">
+              <div class="col-md-5 col-xs-12 he-margin-top-22 he-txt-right">
                 <h4>
-                  - la nuit :
+                  - la nuit : {{product.property.dailyRate}} EUR
                 </h4>
               </div>
-              <div class="col-md-4 col-xs-12 he-margin-top-15 he-txt-right">
-                <div class="form-group he-width-5-8-rem">
-                  <select class="form-control form-control-lg" formControlName="devise" ngDefaultControl>
-                    <option *ngFor="let d of devises" [ngValue]="devise">{{d.code}}</option>
-                  </select>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
