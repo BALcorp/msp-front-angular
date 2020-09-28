@@ -5,6 +5,7 @@ import {Evaluation} from '../interfaces/evaluation';
 import {ConvertorService} from '../services/convertor.service';
 import {Devise} from '../interfaces/devise';
 import {Observable} from 'rxjs';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-product-list',
@@ -41,10 +42,18 @@ export class ProductListComponent implements OnInit {
   devise: Devise;
   price = 1300;
   _filterZipCode: string;
-  _filterSize: string;
-  _filterMaxGuests: string;
+  _filterSize = '9';
+  _filterMaxGuests = '1';
   _filterPetsAuthorized: boolean;
-  _filterDailyRate: string;
+  _filterDailyRate = '3200';
+  dailyRateSliderOptions: Options = {
+    floor: 110,
+    ceil: 3200
+  };
+  sizeSliderOptions: Options = {
+    floor: 9,
+    ceil: 250
+  };
 
   constructor(private productService: ProductService, private convertorService: ConvertorService) {
   }
