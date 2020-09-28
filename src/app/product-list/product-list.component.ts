@@ -132,7 +132,7 @@ export class ProductListComponent implements OnInit {
     }
     if (this._filterDailyRate !== undefined) {
       this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.dailyrate <= Number(this._filterDailyRate));
+        product.property.dailyRate <= Number(this._filterDailyRate));
     }
     if (this._filterPetsAuthorized !== undefined) {
       this.filteredProducts = this.filteredProducts.filter((product: Product) =>

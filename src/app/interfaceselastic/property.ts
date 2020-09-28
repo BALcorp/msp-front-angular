@@ -9,7 +9,7 @@ export interface Property {
   maxGuests: number;
   petsAuthorized: boolean;
   note: string;
-  dailyrate: number;
+  dailyRate: number;
   address: string;
   addressComplement: string;
   zipCode: string;
