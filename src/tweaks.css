@@ -292,6 +292,10 @@ hr {
   width: 4rem !important;
 }
 
+.he-width-5-8-rem {
+  width: 5.8rem !important;
+}
+
 .he-width-12-rem {
   width: 12rem !important;
 }
@@ -408,6 +412,10 @@ hr {
   margin-top: 10px !important;
 }
 
+.he-margin-top-15 {
+  margin-top: 15px !important;
+}
+
 .he-margin-top-22 {
   margin-top: 22px !important;
 }
@@ -457,6 +465,11 @@ hr {
 .he-bottom-2-rem {
   position: relative !important;
   bottom: 2rem !important;
+}
+
+.he-bottom-4-4-rem {
+  position: relative !important;
+  bottom: 4rem !important;
 }
 
 .he-bottom-1-9-rem {

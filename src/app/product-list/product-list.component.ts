@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
 import {Product} from '../interfaces/product';
 import {Evaluation} from '../interfaces/evaluation';
+import {ConvertorService} from '../services/convertor.service';
+import {Devise} from '../interfaces/devise';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -32,68 +35,25 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   filteredProducts: Product[];
   message: string;
+  devises: Devise[];
+  errorMessage: string;
+  result: Observable<any>;
+  devise: Devise;
+  price = 1300;
+  _filterZipCode: string;
+  _filterSize: string;
+  _filterMaxGuests: string;
+  _filterPetsAuthorized: boolean;
+  _filterDailyRate: string;
 
-  constructor(private productService: ProductService) {
-  }
-
-  private _filterZipCode: string;
-
-  get filterZipCode(): string {
-    return this._filterZipCode;
-  }
-
-  set filterZipCode(value: string) {
-    this._filterZipCode = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  private _filterSize: string;
-
-  get filterSize(): string {
-    return this._filterSize;
-  }
-
-  set filterSize(value: string) {
-    this._filterSize = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  private _filterMaxGuests: string;
-
-  get filterMaxGuests(): string {
-    return this._filterMaxGuests;
-  }
-
-  set filterMaxGuests(value: string) {
-    this._filterMaxGuests = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  private _filterPetsAuthorized: boolean;
-
-  get filterPetsAuthorized(): boolean {
-    return this._filterPetsAuthorized;
-  }
-
-  set filterPetsAuthorized(value: boolean) {
-    this._filterPetsAuthorized = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  private _filterDailyRate: string;
-
-  get filterDailyRate(): string {
-    return this._filterDailyRate;
-  }
-
-  set filterDailyRate(value: string) {
-    this._filterDailyRate = value;
-    this.filteredProducts = this.doFilter();
+  constructor(private productService: ProductService, private convertorService: ConvertorService) {
   }
 
   ngOnInit(): void {
     this.loadProducts();
-
+    this.getDevises();
+    this.devise = this.convertorService.getAllDevises()[0];
+    this.result = this.convertorService.convert(this.devise.code, this.price);
   }
 
   loadProducts(): void {
@@ -116,7 +76,7 @@ export class ProductListComponent implements OnInit {
     return Number((total / evaluations.length).toFixed(2));
   }
 
-  private doFilter(): Product[] {
+  doFilter(): Product[] {
     this.filteredProducts = this.products;
     if (this._filterZipCode !== undefined) {
       this.filteredProducts = this.filteredProducts.filter((product: Product) =>
@@ -141,5 +101,126 @@ export class ProductListComponent implements OnInit {
     return this.filteredProducts;
   }
 
+  getShortDistrict(zipCode: string): string {
+    switch (zipCode) {
+      case '75001':
+        return '- Paris 1 -';
+        break;
+      case '75002':
+        return '- Paris 2 -';
+        break;
+      case '75003':
+        return '- Paris 3 -';
+        break;
+      case '75004':
+        return '- Paris 4 -';
+        break;
+      case '75005':
+        return '- Paris 5 -';
+        break;
+      case '75006':
+        return '- Paris 6 -';
+        break;
+      case '75007':
+        return '- Paris 7 -';
+        break;
+      case '75008':
+        return '- Paris 8 -';
+        break;
+      case '75009':
+        return '- Paris 9 -';
+        break;
+      case '75010':
+        return '- Paris 10 -';
+        break;
+      case '75011':
+        return '- Paris 11 -';
+        break;
+      case '75012':
+        return '- Paris 12 -';
+        break;
+      case '75013':
+        return '- Paris 13 -';
+        break;
+      case '75014':
+        return '- Paris 14 -';
+        break;
+      case '75015':
+        return '- Paris 15 -';
+        break;
+      case '75016':
+        return '- Paris 16 -';
+        break;
+      case '75017':
+        return '- Paris 17 -';
+        break;
+      case '75018':
+        return '- Paris 18 -';
+        break;
+      case '75019':
+        return '- Paris 19 -';
+        break;
+      case '75020':
+        return '- Paris 20 -';
+        break;
+      default:
+        return '';
+    }
+  }
 
+  getDevises(): void {
+    this.convertorService.getAllDevises()
+      .subscribe({
+        next: devises => {
+          this.devises = devises;
+        },
+        error: err => this.errorMessage = err
+      });
+  }
+
+
+  get filterZipCode(): string {
+    return this._filterZipCode;
+  }
+
+  set filterZipCode(value: string) {
+    this._filterZipCode = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  get filterSize(): string {
+    return this._filterSize;
+  }
+
+  set filterSize(value: string) {
+    this._filterSize = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  get filterMaxGuests(): string {
+    return this._filterMaxGuests;
+  }
+
+  set filterMaxGuests(value: string) {
+    this._filterMaxGuests = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  get filterPetsAuthorized(): boolean {
+    return this._filterPetsAuthorized;
+  }
+
+  set filterPetsAuthorized(value: boolean) {
+    this._filterPetsAuthorized = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  get filterDailyRate(): string {
+    return this._filterDailyRate;
+  }
+
+  set filterDailyRate(value: string) {
+    this._filterDailyRate = value;
+    this.filteredProducts = this.doFilter();
+  }
 }
