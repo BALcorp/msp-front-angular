@@ -43,12 +43,9 @@ declare var ol: any;
       height: 500px;
     }
   `],
-  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
+  providers: [NgbCarouselConfig]
 })
 export class ProductComponent implements OnInit {
-
-  latitude = 18.5204;
-  longitude = 73.8567;
 
   map: any;
 
@@ -82,28 +79,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getProductPictures();
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.productService.findProduct(id)
-      .subscribe(
-        product => {
-          this.osmService.getLongLarge(product.property.address + ' ' + product.property.zipCode).subscribe(
-            data => {
-              console.log('=============');
-              console.log(data[0].lon + ', ' + data[0].lat);
-              this.map = new ol.Map({
-                target: 'map',
-                layers: [
-                  new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                  })
-                ],
-                view: new ol.View({
-                  center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
-                  zoom: 18
-                })
-              });
-            });
-        });
+    this.getMap();
 
 
     this.images = this.product.productPictures;
@@ -178,6 +154,32 @@ export class ProductComponent implements OnInit {
   getProductPictures(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.findAllProductPicturesByProductId(id).subscribe(images => this.product.productPictures = images);
+  }
+
+
+  getMap(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.productService.findProduct(id)
+      .subscribe(
+        product => {
+          this.osmService.getLongLarge(product.property.address + ' ' + product.property.zipCode).subscribe(
+            data => {
+              console.log('=============');
+              console.log(data[0].lon + ', ' + data[0].lat);
+              this.map = new ol.Map({
+                target: 'map',
+                layers: [
+                  new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                  })
+                ],
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
+                  zoom: 18
+                })
+              });
+            });
+        });
   }
 
 }
