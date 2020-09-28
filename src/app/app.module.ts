@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DpDatePickerModule} from 'ng2-date-picker';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -60,7 +61,8 @@ import {ConvertorService} from './services/convertor.service';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    Ng5SliderModule
   ],
   providers: [AuthorizationService, OsmService, AuthorizationService, BookmarkService, BookingService, ConvertorService],
   bootstrap: [AppComponent]
