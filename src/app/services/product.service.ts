@@ -17,7 +17,9 @@ export class ProductService {
   setGroupFilter$ = new Subject<any>();
   getGroupFilter = this.setGroupFilter$.asObservable();
   private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
-  private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
+  // private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
+
+  private orchestratorUrl = 'http://35.180.169.139:8054/msp-orchestrator/rest/orchestrator-api';
 
   constructor(private http: HttpClient) {
   }
