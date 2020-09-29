@@ -82,24 +82,6 @@
         <hr/>
       </div>
       <div class="he-padding-10 col-md-6 col-xs-12">
-        <label>Date d'arrivée</label>
-        <div class="input-group date" id="arrivaldate">
-          <input class="form-control  bf-required" id="arrivaldate_Input" name="arrivaldate" type="text" value=""/>
-          <span class="input-group-addon">
-                              <span><i class="glyphicon glyphicon-calendar" id="arrivaldate_icon"></i></span>
-                            </span>
-        </div>
-      </div>
-      <div class="he-padding-10 col-md-6 col-xs-12">
-        <label>Date de départ</label>
-        <div class="input-group date">
-          <input class="form-control  bf-required" type="text"/>
-          <span class="input-group-addon">
-                              <span><i class="glyphicon glyphicon-calendar"></i></span>
-                            </span>
-        </div>
-      </div>
-      <div class="he-padding-10 col-md-6 col-xs-12">
         <label>Arrondissement</label>
         <div class="form-group ">
           <div class="input-group">
@@ -115,9 +97,6 @@
         <label>Nombre de personnes</label>
         <div class="form-group ">
           <div class="input-group">
-                              <span class="input-group-addon">
-                                <span><i class="fa fa-group"></i>
-                                </span></span>
             <input [(ngModel)]="filterMaxGuests" class="form-control"
                    max="8"
                    min="1"
@@ -142,7 +121,7 @@
         <ng5-slider [(value)]="filterSize" [options]="sizeSliderOptions"></ng5-slider>
       </div>
       <div class="he-padding-10 col-md-12 col-xs-12">
-        <label>Prix journalier maximum</label>
+        <label>Tarif journalier maximum (€)</label>
         <ng5-slider [(value)]="filterDailyRate" [options]="dailyRateSliderOptions"></ng5-slider>
       </div>
     </div>
