@@ -62,10 +62,9 @@
           {{product.property.size}}m² -
           {{product.property.maxGuests}} personnes
           {{petsAuthorized}}
-          {{product.property.dailyRate}} EUR par nuitée.
-          <app-convertor></app-convertor>
         </div>
       </div>
+
       <div class="row he-padding-top-20">
         <div class="col-md-10 offset-md-1 col-xs-12">
           <h4>
@@ -73,6 +72,29 @@
           </h4>
         </div>
       </div>
+
+      <div class="row">
+        <div class="he-txt-right offset-md-8 col-md-2 col-xs-12 he-top-2-2-rem">
+          <h5 *ngIf="convertedResult !== undefined">Nuitée : {{convertedResult}}</h5>
+          <h5 *ngIf="convertedResult === undefined">Nuitée : {{product.property.dailyRate}}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-md-10 col-md-2 col-xs-12 he-right-1-5-rem">
+          <div class="form-group ">
+            <ng-select autofocus
+                       class="he-width-5-5-rem"
+                       [items]="devises | async"
+                       [(ngModel)]="codeDevise"
+                       appearance="outline"
+                       [searchable]="false"
+                       [clearable]="false"
+                       (change)="getConvertedPrice()"
+            ></ng-select>
+          </div>
+        </div>
+      </div>
+
       <div class="row he-padding-top-40">
         <div class="he-margin-bottom-10 col-md-10 offset-md-1 col-xs-12 ">
           <h3 class="he-txt-italic">Les chambres et salles d'eau</h3>

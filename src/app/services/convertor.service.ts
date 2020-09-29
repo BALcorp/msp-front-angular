@@ -23,18 +23,14 @@ export class ConvertorService {
 
   }
 
-  getAllCodes(): Observable<any> {
-    return this.http.get<any>(this.devisesUrl + '/public/devise/codes');
-  }
-
-  getAllDevises(): Observable<Devise[]> {
-    return this.http.get<Devise[]>(this.devisesUrl + '/public/devise').pipe(
+  getAllCodes(): Observable<string[]> {
+    return this.http.get<string[]>(this.devisesUrl + '/public/devise/codes').pipe(
       tap(_ => this.log('fetched currencies')),
-      catchError(this.handleError<Devise[]>('getAllDevises', []))
+      catchError(this.handleError<Devise[]>('getAllCodes', []))
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
 
       console.error(error); // log to console instead
@@ -45,8 +41,7 @@ export class ConvertorService {
     };
   }
 
-  private log(s: string) {
+  private log(s: string): void{
 
   }
-
 }
