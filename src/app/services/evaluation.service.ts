@@ -14,20 +14,21 @@ export class EvaluationService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
+  // private productsUrl = 'http://localhost:8050/msp-product-housing/rest/product-api';
+  private productsUrl = 'https://9f9rgakshg.execute-api.eu-west-3.amazonaws.com/dev/product-housing';
 
   constructor(private http: HttpClient) {
   }
 
-  getEvaluationFromProductAndClient(idProduct: number, idUser: number): Observable<Evaluation> {
-    return this.http.get<Evaluation>(this.productsUrl + '/public/evaluation/' + idProduct + '/' + idUser).pipe(
-      tap(_ => this.log('fetched evaluation for product ' + idProduct + ', from user ' + idUser)),
+  getEvaluationFromProductAndClient(idProduct: number, username: string): Observable<Evaluation> {
+    return this.http.get<Evaluation>(this.productsUrl + '/evaluation/' + idProduct + '/' + username).pipe(
+      tap(_ => this.log('fetched evaluation for product ' + idProduct + ', from user ' + username)),
       catchError(this.handleError<Evaluation>('getEvaluationFromProductAndClient'))
     );
   }
 
   updateEvaluation(evaluation: Evaluation): Observable<any> {
-    return this.http.put(this.productsUrl + '/private/evaluation', evaluation, this.httpOptions).pipe(
+    return this.http.put(this.productsUrl + '/evaluation', evaluation, this.httpOptions).pipe(
       tap(_ => this.log(`updated evaluation id=${evaluation.idEvaluation}`)),
       catchError(this.handleError<any>('updateEvaluation'))
     );

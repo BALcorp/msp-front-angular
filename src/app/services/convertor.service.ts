@@ -15,18 +15,20 @@ export class ConvertorService {
   };
   // private devisesUrl = 'http://localhost:8056/devise-api';
 
-  private devisesUrl = 'http://35.180.98.85:8056/devise-api';
+  // private devisesUrl = 'http://35.180.98.85:8056/devise-api';
+
+  private devisesUrl = 'https://9f9rgakshg.execute-api.eu-west-3.amazonaws.com/dev/devise';
 
   constructor(private http: HttpClient) {
   }
 
   convert(code: string, price: number): Observable<any> {
-    return this.http.get<any>(this.devisesUrl + '/public/devise/' + code + '/' + price);
+    return this.http.get<any>(this.devisesUrl + '/' + code + '/' + price);
 
   }
 
   getAllCodes(): Observable<string[]> {
-    return this.http.get<string[]>(this.devisesUrl + '/public/devise/codes').pipe(
+    return this.http.get<string[]>(this.devisesUrl + '/codes').pipe(
       tap(_ => this.log('fetched currencies')),
       catchError(this.handleError<Devise[]>('getAllCodes', []))
     );
