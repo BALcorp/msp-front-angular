@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthenticationDetails, CognitoUser, CognitoUserAttribute, CognitoUserPool} from 'amazon-cognito-identity-js';
+import {Auth} from 'aws-amplify';
 import {Observable} from 'rxjs';
 
 
@@ -149,8 +150,13 @@ export class AuthorizationService {
     return userPool.getCurrentUser().getUsername() === 'admin';
   }
 
-  logOut() {
+  async logOut() {
     this.getAuthenticatedUser().signOut();
+    try {
+      await Auth.signOut({ global: true });
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
     this.cognitoUser = null;
   }
 }

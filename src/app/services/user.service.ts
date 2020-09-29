@@ -37,6 +37,11 @@ export class UserService {
     });
   }
 
+  logOut() {
+    this.auth.logOut();
+    this.userAttributes = null;
+  }
+
   getCurrentUser(): CognitoUser {
     return this.currentUser;
   }
