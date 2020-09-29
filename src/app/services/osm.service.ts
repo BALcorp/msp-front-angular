@@ -6,7 +6,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class OsmService {
 
-  url = 'https://nominatim.openstreetmap.org/search/';
+  // url = 'https://nominatim.openstreetmap.org/search/';
+  url = 'https://9f9rgakshg.execute-api.eu-west-3.amazonaws.com/dev/osm/';
 
   constructor(private http: HttpClient) {
   }
