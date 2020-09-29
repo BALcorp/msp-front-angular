@@ -165,6 +165,11 @@ hr {
 
  */
 
+.he-evaluation-panel {
+  background-color: #272b30 !important;
+  margin: 10px;
+}
+
 /*!
  * Navbar
 */

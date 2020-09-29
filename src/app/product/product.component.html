@@ -30,24 +30,6 @@
             {{product.title}}
           </h2>
         </div>
-        <div class="he-top-1-rem col-md-1 col-xs-12 ">
-          <!--    <b:commandButton action="#{productManagedBean.addBookmark()}"-->
-          <!--                     ajax="true"-->
-          <!--                     autoUpdate="true"-->
-          <!--                     icon-awesome="star-o"-->
-          <!--                     iconSize="2x"-->
-          <!--                     style="display: #{productManagedBean.isNotBookmarked}"-->
-          <!--                     style-class="he-margin-5 he-bkg-dark"-->
-          <!--                     tooltip="Ajouter aux Favoris"/>-->
-          <!--    <b:commandButton action="#{productManagedBean.removeBookmark()}"-->
-          <!--                     ajax="true"-->
-          <!--                     autoUpdate="true"-->
-          <!--                     icon-awesome="star"-->
-          <!--                     iconSize="2x"-->
-          <!--                     style="display: #{productManagedBean.isBookmarked}"-->
-          <!--                     style-class="he-margin-5 he-bkg-dark he-txt-gold"-->
-          <!--                     tooltip="Retirer des Favoris"/>-->
-        </div>
       </div>
       <div class="row he-bottom-1-5-rem">
         <div class="col-md-10 offset-md-1 col-xs-12">
@@ -102,65 +84,18 @@
         </div>
       </div>
       <div class="row">
-        <div col-md="1" style-class="he-margin-bottom-10">
+        <div class="he-margin-bottom-10 col-md-1 ">
+        </div>
+      </div>
+      <div class="row he-padding-top-40">
+        <div class="he-margin-bottom-10 col-md-10 offset-md-1 col-xs-12 ">
+          <h3 class="he-txt-italic">Les équipements</h3>
+          <hr/>
         </div>
       </div>
       <div class="row">
         <div class="he-margin-bottom-10 col-md-1 ">
         </div>
-        <!--          <div col-md="10" col-xs="12"-->
-        <!--                    style-class="he-margin-bottom-10 he-flex-parent he-flex-start he-wrap">-->
-        <!--            <ui:repeat value="{{product.property.bedrooms}}"-->
-        <!--                       var="b">-->
-        <!--              <b:panel-->
-        <!--                collapsible="false"-->
-        <!--                style-class="he-margin-5 he-border-light he-border-radius-0 he-txt-center he-min-width-15-rem"-->
-        <!--                title="Chambre">-->
-        <!--                <ui:repeat value="#{b.bedroomBedTypes}" var="bbt">-->
-        <!--                  <b:image height="32"-->
-        <!--                           value="..assets/pictures/icons/#{bbt.bedType.icon}"/>-->
-        <!--                  <h4>-->
-        <!--                    <h:outputText value="#{bbt.bedType.name}"/>-->
-        <!--                  </h4>-->
-        <!--                </ui:repeat>-->
-        <!--              </b:panel>-->
-        <!--            </ui:repeat>-->
-        <!--            <ui:repeat value="#{productManagedBean.product.property.bathrooms}"-->
-        <!--                       var="ba">-->
-        <!--              <b:panel-->
-        <!--                collapsible="false"-->
-        <!--                style-class="he-margin-5 he-border-light he-border-radius-0 he-txt-center he-min-width-15-rem"-->
-        <!--                title="Salle d'eau">-->
-        <!--                <ui:repeat value="#{ba.bathroomItemBathrooms}" var="bib">-->
-        <!--                  <b:image height="32"-->
-        <!--                           value="./resources/pictures/icons/#{bib.bathroomItem.icon}"/>-->
-        <!--                  <h4>-->
-        <!--                    <h:outputText value="#{bib.bathroomItem.name}"/>-->
-        <!--                  </h4>-->
-        <!--                </ui:repeat>-->
-        <!--              </b:panel>-->
-        <!--            </ui:repeat>-->
-        <!--          </div>-->
-      </div>
-      <div class="row he-padding-top-40">
-        <div col-md="10" col-xs="12" offset-md="1"
-             style-class="he-margin-bottom-10">
-          <h3 class="he-txt-italic">Les équipements</h3>
-          <hr/>
-        </div>
-        <!--          <div col-md="10" col-xs="12" offset-md="1"-->
-        <!--                    style-class="he-margin-bottom-10 he-flex-parent-column he-flex-start he-wrap">-->
-        <!--            <div class="row">-->
-        <!--              <ui:repeat value="#{productManagedBean.product.property.propertyState.propertyStateAmenities}"-->
-        <!--                         var="psa">-->
-        <!--                <div col-md="3" col-xs="6">-->
-        <!--                  <h4>-->
-        <!--                    <h:outputText value="- #{psa.amenity.name} (#{psa.quantity})"/>-->
-        <!--                  </h4>-->
-        <!--                </div>-->
-        <!--              </ui:repeat>-->
-        <!--            </div>-->
-        <!--          </div>-->
       </div>
 
       <!-- Location content bloc: Start -->
@@ -193,63 +128,62 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 offset-md-1">
-          <div class="panel-group ">
-            <div class="panel panel-default">
-              <div *ngFor='let evaluation of product.evaluations'>
-                <div class="col-md-4 col-md-offset-2 col-xs-7">
+        <div class="col-md-10 offset-md-1 he-flex-parent-column">
 
-                  <h4>
-                    Résidence :
-                    <ng-template #t let-fill="fill">
-                  <span [class.full]="fill === 100" class="star">
-                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
-                  </span>
-                    </ng-template>
-                    <ngb-rating [max]="5" [rate]="evaluation.residence" [readonly]="true"
-                                [starTemplate]="t"></ngb-rating>
-                  </h4>
-                  <h4>
-                    Emplacement :
-                    <ng-template #t let-fill="fill">
-                  <span [class.full]="fill === 100" class="star">
-                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
-                  </span>
-                    </ng-template>
-                    <ngb-rating [max]="5" [rate]="evaluation.location" [readonly]="true"
-                                [starTemplate]="t"></ngb-rating>
-                  </h4>
-                  <h4>
-                    Rapport qualité/prix :
-                    <ng-template #t let-fill="fill">
-                  <span [class.full]="fill === 100" class="star">
-                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
-                  </span>
-                    </ng-template>
-                    <ngb-rating [max]="5" [rate]="evaluation.valueForMoney" [readonly]="true"
-                                [starTemplate]="t"></ngb-rating>
-                  </h4>
-                  <h4>
-                    Communication :
-                    <ng-template #t let-fill="fill">
-                  <span [class.full]="fill === 100" class="star">
-                    <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
-                  </span>
-                    </ng-template>
-                    <ngb-rating [max]="5" [rate]="evaluation.communication" [readonly]="true"
-                                [starTemplate]="t"></ngb-rating>
-                  </h4>
-                </div>
-                <div col-md="4" col-xs="12" styleClass="he-flex-parent-column he-flex-between">
-                  <h4>"{{evaluation.commentary}}"
-                  </h4>
-                  <h4 class="he-txt-right">
-                    <em> - {{evaluation.username}}</em>
-                  </h4>
-                </div>
+          <div *ngFor='let evaluation of product.evaluations'>
+            <div class="row he-evaluation-panel">
+              <div class="offset-md-1 col-md-6">
+                <h4>
+                  Résidence :
+                  <ng-template #t let-fill="fill">
+                    <span [class.full]="fill === 100" class="star he-top-0-5-rem">
+                      <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                    </span>
+                  </ng-template>
+                  <ngb-rating [max]="5" [rate]="evaluation.residence" [readonly]="true"
+                              [starTemplate]="t"></ngb-rating>
+                </h4>
+                <h4>
+                  Emplacement :
+                  <ng-template #t let-fill="fill">
+                    <span [class.full]="fill === 100" class="star he-top-0-5-rem">
+                      <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                    </span>
+                  </ng-template>
+                  <ngb-rating [max]="5" [rate]="evaluation.location" [readonly]="true"
+                              [starTemplate]="t"></ngb-rating>
+                </h4>
+                <h4>
+                  Rapport qualité/prix :
+                  <ng-template #t let-fill="fill">
+                    <span [class.full]="fill === 100" class="star he-top-0-5-rem">
+                      <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                    </span>
+                  </ng-template>
+                  <ngb-rating [max]="5" [rate]="evaluation.valueForMoney" [readonly]="true"
+                              [starTemplate]="t"></ngb-rating>
+                </h4>
+                <h4>
+                  Communication :
+                  <ng-template #t let-fill="fill">
+                    <span [class.full]="fill === 100" class="star he-top-0-5-rem">
+                      <span [style.width.%]="fill" class="half">&hearts;</span>&hearts;
+                    </span>
+                  </ng-template>
+                  <ngb-rating [max]="5" [rate]="evaluation.communication" [readonly]="true"
+                              [starTemplate]="t"></ngb-rating>
+                </h4>
+              </div>
+
+              <div class="col-md-4 he-flex-parent-column he-flex-between he-padding-top-40 he-padding-bottom-40">
+                <h4>"{{evaluation.commentary}}"
+                </h4>
+                <h4 class="he-txt-right">
+                  <em> - {{evaluation.username}}</em>
+                </h4>
               </div>
             </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
