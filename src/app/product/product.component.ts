@@ -12,6 +12,8 @@ import {Observable} from 'rxjs';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ProductPicture} from '../interfaces/productPicture';
 import {OsmService} from '../services/osm.service';
+import {Devise} from '../interfaces/devise';
+import {ConvertorService} from '../services/convertor.service';
 
 declare var ol: any;
 
@@ -64,12 +66,19 @@ export class ProductComponent implements OnInit {
   bookmarkService: BookmarkService;
   userService: UserService;
   imagePath = '../assets/pictures/homes_pictures/';
+  devises: Observable<string[]>;
+  codeDevise: string;
+  convertedResult: number;
+  errorMessage: string;
 
   images: ProductPicture[];
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService, private osmService: OsmService,
-              private location: Location, config: NgbCarouselConfig) {
+              private productService: ProductService,
+              private osmService: OsmService,
+              private location: Location,
+              private convertorService: ConvertorService,
+              config: NgbCarouselConfig) {
 
     config.interval = 2000;
     config.keyboard = true;
@@ -80,7 +89,8 @@ export class ProductComponent implements OnInit {
     this.getProduct();
     this.getProductPictures();
     this.getMap();
-
+    this.devises = this.convertorService.getAllCodes();
+    this.codeDevise = 'EUR';
 
     this.images = this.product.productPictures;
     // this.imagePath = '../assets/pictures/homes_pictures/';
@@ -113,7 +123,6 @@ export class ProductComponent implements OnInit {
       this.isBookmarked = 'none';
       this.isNotBookmarked = 'none';
     }
-
   }
 
   bookProduct(): string {
@@ -156,6 +165,9 @@ export class ProductComponent implements OnInit {
     this.productService.findAllProductPicturesByProductId(id).subscribe(images => this.product.productPictures = images);
   }
 
+  getConvertedPrice(): void {
+    this.convertorService.convert(this.codeDevise, this.product.property.dailyRate).subscribe(price => this.convertedResult = price);
+  }
 
   getMap(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -181,5 +193,4 @@ export class ProductComponent implements OnInit {
             });
         });
   }
-
 }

@@ -30,9 +30,14 @@
                 <h3>
                   {{product.title}}
                 </h3>
+                <div class="he-flex-parent he-flex-between">
                 <h5>
                   {{getShortDistrict(product.property.zipCode)}}
                 </h5>
+                <h5>
+                  - {{product.property.size}} m² -
+                </h5>
+                </div>
               </div>
             </div>
             <div class="row">
@@ -43,15 +48,10 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4 offset-md-1 col-xs-12 he-margin-top-22 he-txt-center">
-                <h3>
-                  * {{product.property.size}} m² *
-                </h3>
-              </div>
-              <div class="col-md-6 col-xs-12 he-margin-top-22 he-txt-center">
-                <h3>
-                  * la nuit : {{product.property.dailyRate}} € *
-                </h3>
+              <div class="col-md-6 col-xs-12 he-margin-top-22">
+                <h5>
+                  - La nuit : {{product.property.dailyRate}} € -
+                </h5>
               </div>
             </div>
           </div>

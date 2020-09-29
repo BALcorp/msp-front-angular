@@ -1,3 +1,5 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 /*!
  * Fonts import
 */
@@ -6,7 +8,6 @@
   font-family: 'Constantia';
   src: url('./assets/fonts/Constantia.ttf');
 }
-
 
 #mapid {
   height: 180px;
@@ -143,6 +144,10 @@ hr {
 
 .he-border-radius-0 {
   border-radius: 0 !important;
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+  border-color: goldenrod !important;
 }
 
 /*!
@@ -307,8 +312,8 @@ hr {
   width: 4rem !important;
 }
 
-.he-width-5-8-rem {
-  width: 5.8rem !important;
+.he-width-5-5-rem {
+  width: 5.5rem !important;
 }
 
 .he-width-12-rem {
@@ -452,6 +457,11 @@ hr {
   top: 10rem !important;
 }
 
+.he-top-0-5-rem {
+  position: relative !important;
+  top: 0.5rem !important;
+}
+
 .he-top-1-rem {
   position: relative !important;
   top: 1rem !important;
@@ -460,6 +470,11 @@ hr {
 .he-top-2-rem {
   position: relative !important;
   top: 2rem !important;
+}
+
+.he-top-2-2-rem {
+  position: relative !important;
+  top: 2.2rem !important;
 }
 
 .he-top-6-6-rem {
@@ -475,6 +490,11 @@ hr {
 .he-bottom-1-5-rem {
   position: relative !important;
   bottom: 1.5rem !important;
+}
+
+.he-bottom-1-8-rem {
+  position: relative !important;
+  bottom: 1.8rem !important;
 }
 
 .he-bottom-2-rem {

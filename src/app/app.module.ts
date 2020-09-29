@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { Ng5SliderModule } from 'ng5-slider';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -26,7 +27,6 @@ import {AuthorizationService} from './services/authorization.service';
 import {LowerbarComponent} from './lowerbar/lowerbar.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ProductListComponent} from './product-list/product-list.component';
-import {ConvertorComponent} from './convertor/convertor.component';
 import {OsmService} from './services/osm.service';
 import {BookmarkService} from './services/bookmark.service';
 import {BookingService} from './services/booking.service';
@@ -50,8 +50,7 @@ import {ConvertorService} from './services/convertor.service';
     ProductBackOfficeComponent,
     SimpleSearchComponent,
     LowerbarComponent,
-    ProductListComponent,
-    ConvertorComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +61,8 @@ import {ConvertorService} from './services/convertor.service';
     FormsModule,
     FontAwesomeModule,
     DpDatePickerModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    NgSelectModule
   ],
   providers: [AuthorizationService, OsmService, AuthorizationService, BookmarkService, BookingService, ConvertorService],
   bootstrap: [AppComponent]
