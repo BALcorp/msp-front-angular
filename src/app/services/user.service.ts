@@ -11,6 +11,7 @@ export class UserService {
   //   headers: new HttpHeaders({'Content-Type': 'application/json'})
   // };
   // private orchestratorUrl = 'http://localhost:8054/msp-orchestrator/rest/orchestrator-api';
+  // private orchestratorUrl = 'http://35.180.169.139:8054/msp-orchestrator/rest/orchestrator-api';
   // private usersUrl = 'http://localhost:8052/msp-users/rest/user-api';
   // private authUrl = 'http://localhost:8055/msp-auth/rest/auth-api';
   // private connectionUrl = this.orchestratorUrl + '/public/login';
