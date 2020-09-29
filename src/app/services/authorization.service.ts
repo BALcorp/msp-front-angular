@@ -18,7 +18,7 @@ export class AuthorizationService {
   cognitoUser: any;
   dataRole = {
     Name: 'custom:role',
-    Value: 'CLIENT',
+    Value: 'ADMIN',
   };
 
   userAttributeList: any[];
@@ -109,7 +109,7 @@ export class AuthorizationService {
   getAttr(): Observable<CognitoUserAttribute[]> {
     const cognitoUser = this.getAuthenticatedUser();
     return new Observable<any>(observer => {
-      cognitoUser.getSession(function (err, session) {
+      cognitoUser.getSession(function(err, session) {
         cognitoUser.getUserAttributes(function(err, result) {
           if (err) {
             alert(err);
@@ -127,7 +127,7 @@ export class AuthorizationService {
     const cognitoUser = this.getAuthenticatedUser();
 
     if (cognitoUser != null) {
-      cognitoUser.getSession(function (err, session) {
+      cognitoUser.getSession(function(err, session) {
 
         cognitoUser.getUserAttributes(function(err, result) {
           if (err) {
@@ -143,6 +143,10 @@ export class AuthorizationService {
     }
     console.log(cognitoUser);
     return null;
+  }
+
+  isAdmin() {
+    return userPool.getCurrentUser().getUsername() === 'admin';
   }
 
   logOut() {

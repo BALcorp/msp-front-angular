@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../interfaces/product';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {ProductService} from '../services/product.service';
 import {Booking} from '../interfaces/booking';
@@ -14,6 +14,7 @@ import {ProductPicture} from '../interfaces/productPicture';
 import {OsmService} from '../services/osm.service';
 import {Devise} from '../interfaces/devise';
 import {ConvertorService} from '../services/convertor.service';
+import {AuthorizationService} from '../services/authorization.service';
 
 declare var ol: any;
 
@@ -58,8 +59,6 @@ export class ProductComponent implements OnInit {
   bookingCheckInDate: Date;
   bookingCheckOutDate: Date;
   petsAuthorized: string;
-  productFullAddress: string;
-  productSimpleAddress: string;
   user: User;
   isBookmarked = 'none';
   isNotBookmarked = 'flex';
@@ -73,13 +72,14 @@ export class ProductComponent implements OnInit {
 
   images: ProductPicture[];
 
-  constructor(private route: ActivatedRoute,
+  constructor(private _router: Router,
+              public _auth: AuthorizationService,
+              private route: ActivatedRoute,
               private productService: ProductService,
               private osmService: OsmService,
               private location: Location,
               private convertorService: ConvertorService,
               config: NgbCarouselConfig) {
-
     config.interval = 2000;
     config.keyboard = true;
     config.pauseOnHover = true;
@@ -93,22 +93,13 @@ export class ProductComponent implements OnInit {
     this.codeDevise = 'EUR';
 
     this.images = this.product.productPictures;
-    // this.imagePath = '../assets/pictures/homes_pictures/';
+
 
     if (this.product.property.petsAuthorized === true) {
       this.petsAuthorized = ' - Animaux autorisés';
     } else {
       this.petsAuthorized = ' - Animaux non autorisés';
     }
-
-    this.productFullAddress =
-      this.product.property.address
-      + ' - '
-      + this.product.property.zipCode
-      + ' Paris';
-
-    this.productSimpleAddress =
-      this.product.property.address + ' ' + this.product.property.zipCode;
 
     try {
       this.bookmark = this.bookmarkService.fetchBookmarkByProductAndUser(this.product, this.user);
@@ -125,20 +116,20 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  bookProduct(): string {
+  bookProduct(): void {
 
-    // this.booking.idProduct === this.product.idProduct;
+    // booking.idProduct === this.product.idProduct;
     // this.booking.bookingDate === Date.now();
     // this.booking.checkInDate === this.bookingCheckInDate;
     // this.booking.checkOutDate === this.bookingCheckOutDate;
     // this.booking.pets === this.product.property.petsAuthorized;
     // this.booking.canceled === false;
 
-    return '/payment.html?faces-redirect=true';
+    this._router.navigateByUrl('/payment');
   }
 
   editProduct(): string {
-    return '/productBackOffice.xhtml?faces-redirect=true';
+    return '/product-back-office';
   }
 
   addBookmark(): void {
@@ -187,7 +178,7 @@ export class ProductComponent implements OnInit {
                 ],
                 view: new ol.View({
                   center: ol.proj.fromLonLat([parseFloat(data[0].lon), parseFloat(data[0].lat)]),
-                  zoom: 18
+                  zoom: 18,
                 })
               });
             });

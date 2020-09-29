@@ -118,10 +118,10 @@
                               <span class="input-group-addon">
                                 <span><i class="fa fa-group"></i>
                                 </span></span>
-            <input type="number" [(ngModel)]="filterMaxGuests"
-                   class="form-control"
-                   min="1"
+            <input [(ngModel)]="filterMaxGuests" class="form-control"
                    max="8"
+                   min="1"
+                   type="number"
 
             />
           </div>
@@ -139,12 +139,14 @@
       </div>
       <div class="he-padding-10 col-md-12 col-xs-12">
         <label>Taille minimum (m²)</label>
-        <ng5-slider  [(value)]="filterSize" [options]="sizeSliderOptions"></ng5-slider>
+        <ng5-slider [(value)]="filterSize" [options]="sizeSliderOptions"></ng5-slider>
       </div>
       <div class="he-padding-10 col-md-12 col-xs-12">
         <label>Prix journalier maximum</label>
-        <ng5-slider  [(value)]="filterDailyRate" [options]="dailyRateSliderOptions"></ng5-slider>
+        <ng5-slider [(value)]="filterDailyRate" [options]="dailyRateSliderOptions"></ng5-slider>
       </div>
     </div>
   </div>
 </div>
+
+

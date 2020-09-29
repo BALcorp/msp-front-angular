@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
 import {Product} from '../interfaces/product';
 import {Evaluation} from '../interfaces/evaluation';
-import {ConvertorService} from '../services/convertor.service';
-import {Devise} from '../interfaces/devise';
 import {Options} from 'ng5-slider';
 
 @Component({
@@ -35,11 +33,6 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   filteredProducts: Product[];
   message: string;
-  _filterZipCode: string;
-  _filterSize = '9';
-  _filterMaxGuests = '1';
-  _filterPetsAuthorized: boolean;
-  _filterDailyRate = '3200';
   dailyRateSliderOptions: Options = {
     floor: 110,
     ceil: 3200
@@ -50,6 +43,61 @@ export class ProductListComponent implements OnInit {
   };
 
   constructor(private productService: ProductService) {
+  }
+
+  _filterZipCode: string;
+
+  get filterZipCode(): string {
+    return this._filterZipCode;
+  }
+
+  set filterZipCode(value: string) {
+    this._filterZipCode = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  _filterSize = '9';
+
+  get filterSize(): string {
+    return this._filterSize;
+  }
+
+  set filterSize(value: string) {
+    this._filterSize = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  _filterMaxGuests = '1';
+
+  get filterMaxGuests(): string {
+    return this._filterMaxGuests;
+  }
+
+  set filterMaxGuests(value: string) {
+    this._filterMaxGuests = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  _filterPetsAuthorized: boolean;
+
+  get filterPetsAuthorized(): boolean {
+    return this._filterPetsAuthorized;
+  }
+
+  set filterPetsAuthorized(value: boolean) {
+    this._filterPetsAuthorized = value;
+    this.filteredProducts = this.doFilter();
+  }
+
+  _filterDailyRate = '3200';
+
+  get filterDailyRate(): string {
+    return this._filterDailyRate;
+  }
+
+  set filterDailyRate(value: string) {
+    this._filterDailyRate = value;
+    this.filteredProducts = this.doFilter();
   }
 
   ngOnInit(): void {
@@ -165,50 +213,5 @@ export class ProductListComponent implements OnInit {
       default:
         return '';
     }
-  }
-
-  get filterZipCode(): string {
-    return this._filterZipCode;
-  }
-
-  set filterZipCode(value: string) {
-    this._filterZipCode = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  get filterSize(): string {
-    return this._filterSize;
-  }
-
-  set filterSize(value: string) {
-    this._filterSize = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  get filterMaxGuests(): string {
-    return this._filterMaxGuests;
-  }
-
-  set filterMaxGuests(value: string) {
-    this._filterMaxGuests = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  get filterPetsAuthorized(): boolean {
-    return this._filterPetsAuthorized;
-  }
-
-  set filterPetsAuthorized(value: boolean) {
-    this._filterPetsAuthorized = value;
-    this.filteredProducts = this.doFilter();
-  }
-
-  get filterDailyRate(): string {
-    return this._filterDailyRate;
-  }
-
-  set filterDailyRate(value: string) {
-    this._filterDailyRate = value;
-    this.filteredProducts = this.doFilter();
   }
 }
