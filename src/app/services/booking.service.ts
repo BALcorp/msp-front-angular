@@ -13,20 +13,21 @@ export class BookingService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  private bookingsUrl = 'http://localhost:8051/msp-order/rest/booking-api';
+  // private bookingsUrl = 'http://localhost:8051/msp-order/rest/booking-api';
+  private bookingsUrl = 'https://9f9rgakshg.execute-api.eu-west-3.amazonaws.com/dev/booking';
 
   constructor(private http: HttpClient) {
   }
 
   createBooking(booking: Booking): Observable<Booking> {
-    return this.http.post<Booking>(this.bookingsUrl + '/private/bookings/', booking, this.httpOptions).pipe(
+    return this.http.post<Booking>(this.bookingsUrl, booking, this.httpOptions).pipe(
       tap((newBooking: Booking) => this.log(`added booking with id=${newBooking.idBooking}`)),
       catchError(this.handleError<Booking>('createBooking'))
     );
   }
 
   getBookingsByClient(user: User): Observable<Booking[]> {
-    return this.http.get<Booking[]>(this.bookingsUrl + '/private/bookings/' + user.username).pipe(
+    return this.http.get<Booking[]>(this.bookingsUrl + '/' + user.username).pipe(
       tap(_ => this.log('fetched bookings by client ' + user.firstname + user.lastname)),
       catchError(this.handleError<Booking[]>('getBookingsByClient', []))
     );
