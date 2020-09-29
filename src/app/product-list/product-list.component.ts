@@ -125,27 +125,31 @@ export class ProductListComponent implements OnInit {
 
   doFilter(): Product[] {
     this.filteredProducts = this.products;
-    if (this._filterZipCode !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.zipCode.toLocaleLowerCase().lastIndexOf(this._filterZipCode) !== -1);
+    if (this.filteredProducts !== undefined) {
+      if (this._filterZipCode !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.zipCode.toLocaleLowerCase().lastIndexOf(this._filterZipCode) !== -1);
+      }
+      if (this._filterSize !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.size >= Number(this._filterSize));
+      }
+      if (this._filterMaxGuests !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.maxGuests >= Number(this._filterMaxGuests));
+      }
+      if (this._filterDailyRate !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.dailyRate <= Number(this._filterDailyRate));
+      }
+      if (this._filterPetsAuthorized !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.petsAuthorized === this._filterPetsAuthorized);
+      }
+      return this.filteredProducts;
+    } else {
+      return this.products;
     }
-    if (this._filterSize !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.size >= Number(this._filterSize));
-    }
-    if (this._filterMaxGuests !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.maxGuests >= Number(this._filterMaxGuests));
-    }
-    if (this._filterDailyRate !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.dailyRate <= Number(this._filterDailyRate));
-    }
-    if (this._filterPetsAuthorized !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.petsAuthorized === this._filterPetsAuthorized);
-    }
-    return this.filteredProducts;
   }
 
   getShortDistrict(zipCode: string): string {

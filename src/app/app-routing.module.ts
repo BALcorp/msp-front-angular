@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'my-bookings-client', component: MyBookingsClientComponent},
   {path: 'my-perso-account-client', component: MyPersoAccountClientComponent},
-  {path: 'payment', component: PaymentComponent},
+  {path: 'payment/:idProduct/:checkInDate/:checkOutDate/:guestsNumber', component: PaymentComponent},
   {path: 'product-back-office', component: ProductBackOfficeComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
