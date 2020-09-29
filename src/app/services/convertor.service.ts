@@ -13,7 +13,9 @@ export class ConvertorService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  private devisesUrl = 'http://localhost:8056/devise-api';
+  // private devisesUrl = 'http://localhost:8056/devise-api';
+
+  private devisesUrl = 'http://35.180.98.85:8056/devise-api';
 
   constructor(private http: HttpClient) {
   }
