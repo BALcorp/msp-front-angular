@@ -32,6 +32,14 @@ export class ProductService {
     );
   }
 
+  getAvailableProducts(checkInDate: string, checkOutDate: string): Observable<Product[]> {
+    const url = `${this.orchestratorUrl + '/public/product'}/${checkInDate}/${checkOutDate}`;
+    return this.http.get<Product[]>(url).pipe(
+      tap(_ => this.log('fetched products')),
+      catchError(this.handleError<Product[]>('getAvailableProducts', []))
+    );
+  }
+
   findProduct(id: number): Observable<Product> {
     const url = `${this.productsUrl + '/product'}/${id}`;
     return this.http.get<Product>(url).pipe(
@@ -109,7 +117,7 @@ export class ProductService {
   // }
 
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
 
       console.error(error); // log to console instead

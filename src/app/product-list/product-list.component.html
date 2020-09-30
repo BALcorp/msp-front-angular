@@ -2,7 +2,7 @@
   <div class="he-panel-main panel">
     <div class="row">
       <div class="he-margin-top-22 he-margin-bottom-22 col-md-10 offset-md-1 col-xs-12 ">
-        <h1>Nos locations ({{filteredProducts.length}})</h1>
+        <h1 *ngIf="filteredProducts">Nos locations ({{filteredProducts.length}})</h1>
         <hr/>
       </div>
     </div>
@@ -76,6 +76,19 @@
 
 <div class="panel-group" style="position: fixed; top: 6.4rem; left: 2.2rem;">
   <div class="he-margin-bottom-40 panel panel-default he-width-20-rem">
+    <div class="row">
+      <div class="col-md-12 col-xs-12 ">
+        <h3>Recherche</h3>
+        <hr/>
+      </div>
+      <div class="he-padding-10 col-md-12 col-xs-12 he-margin-bottom-40">
+        <div class="form-group ">
+          <div class="input-group">
+            <input type="text" (keyup)="search($event)" placeholder="Recherche" class="input form-control">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12 col-xs-12 ">
         <h3>Filtres</h3>
