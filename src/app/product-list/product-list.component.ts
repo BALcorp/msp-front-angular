@@ -35,6 +35,7 @@ import {forkJoin, Observable, throwError} from 'rxjs';
 export class ProductListComponent implements OnInit {
 
   products: Product[];
+  searchedProducts: Product[];
   filteredProducts: Product[];
   message: string;
   dailyRateSliderOptions: Options = {
@@ -135,6 +136,7 @@ export class ProductListComponent implements OnInit {
       .subscribe({
         next: products => {
           this.products = products;
+          this.searchedProducts = this.products;
           this.filteredProducts = this.products;
         },
         error: err => this.message = err
@@ -152,11 +154,17 @@ export class ProductListComponent implements OnInit {
           this.queryText).then(products => {
             forkJoin(products).subscribe(productsArray => {
               console.log(productsArray);
+              this.searchedProducts = productsArray;
               this.filteredProducts = productsArray;
             });
           });
     }
+    if ($event.target.value === '') {
+      this.searchedProducts = this.products;
+      this.filteredProducts = this.products;
+    }
     this.lastKeypress = $event.timeStamp;
+    this.doFilter();
   }
 
   getTotalAverage(evaluations: Evaluation[]): number {
@@ -168,7 +176,7 @@ export class ProductListComponent implements OnInit {
   }
 
   doFilter(): Product[] {
-    this.filteredProducts = this.products;
+    this.filteredProducts = this.searchedProducts;
     if (this.filteredProducts !== undefined) {
       if (this._filterZipCode !== undefined) {
         this.filteredProducts = this.filteredProducts.filter((product: Product) =>
