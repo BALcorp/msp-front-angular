@@ -1,22 +1,9 @@
-<div [formGroup]="filterForm" class="he-flex-parent he-flex-end he-margin-5 he-width">
-  <input #dateFromDp="dpDayPicker" [dpDayPicker]="dayPickerConfig"
-         [mode]="'month'"
-         [theme]="'dp-material'"
-         class="he-padding-5 he-width-120 he-height-3-rem he-margin-5"
-         formControlName="dateFrom"
-         type="text"
-  />
-
-  <input #dateToDp="dpDayPicker" [displayDate]="displayDate"
-         [dpDayPicker]="dayPickerConfig"
-         [mode]="'month'"
-         [theme]="'dp-material'"
-         class="he-padding-5 he-width-120 he-height-3-rem he-margin-5"
-         formControlName="dateTo"
-         type="text"
-  />
-
+<div class="form-group he-flex-parent he-flex-end he-margin-5 he-width">
+  <h6 class="he-top-0-777-rem">Arrivée :</h6>
+  <input type="date" class="he-height-2-rem he-margin-10" [(ngModel)]="checkInDate"/>
+  <h6 class="he-top-0-777-rem">Départ :</h6>
+  <input type="date" class="he-height-2-rem he-margin-10" [(ngModel)]="checkOutDate"/>
   <div class="he-padding-5">
-    <button class="btn btn-default he-btn-14" type="submit">Chercher</button>
+    <button class="btn btn-default he-btn-14" type="submit" routerLink="/product-list/{{checkInDate}}/{{checkOutDate}}">Chercher</button>
   </div>
 </div>

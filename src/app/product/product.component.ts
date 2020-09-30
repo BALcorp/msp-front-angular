@@ -3,7 +3,6 @@ import {Product} from '../interfaces/product';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {ProductService} from '../services/product.service';
-import {Booking} from '../interfaces/booking';
 import {Bookmark} from '../interfaces/bookmark';
 import {User} from '../interfaces/user';
 import {BookmarkService} from '../services/bookmark.service';
@@ -12,7 +11,6 @@ import {Observable} from 'rxjs';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ProductPicture} from '../interfaces/productPicture';
 import {OsmService} from '../services/osm.service';
-import {Devise} from '../interfaces/devise';
 import {ConvertorService} from '../services/convertor.service';
 import {AuthorizationService} from '../services/authorization.service';
 
@@ -51,13 +49,11 @@ declare var ol: any;
 export class ProductComponent implements OnInit {
 
   map: any;
-
-
   product: Product;
-  booking: Booking;
   bookmark: Observable<Bookmark[]>;
-  bookingCheckInDate: Date;
-  bookingCheckOutDate: Date;
+  checkInDate = '30/09/20';
+  checkOutDate: '6/10/20';
+  guestsNumber = 1;
   petsAuthorized: string;
   user: User;
   isBookmarked = 'none';
@@ -92,57 +88,33 @@ export class ProductComponent implements OnInit {
     this.devises = this.convertorService.getAllCodes();
     this.codeDevise = 'EUR';
 
-    this.images = this.product.productPictures;
+    if (this.product !== undefined) {
+      this.images = this.product.productPictures;
 
-
-    if (this.product.property.petsAuthorized === true) {
-      this.petsAuthorized = ' - Animaux autorisés';
-    } else {
-      this.petsAuthorized = ' - Animaux non autorisés';
-    }
-
-    try {
-      this.bookmark = this.bookmarkService.fetchBookmarkByProductAndUser(this.product, this.user);
-      if (null != this.bookmark) {
-        this.isBookmarked = 'flex';
-        this.isNotBookmarked = 'none';
+      if (this.product.property.petsAuthorized === true) {
+        this.petsAuthorized = ' - Animaux autorisés';
       } else {
-        this.isBookmarked = 'none';
-        this.isNotBookmarked = 'flex';
+        this.petsAuthorized = ' - Animaux non autorisés';
       }
-    } catch (Error) {
-      this.isBookmarked = 'none';
-      this.isNotBookmarked = 'none';
+
+      try {
+        this.bookmark = this.bookmarkService.fetchBookmarkByProductAndUser(this.product, this.user);
+        if (null != this.bookmark) {
+          this.isBookmarked = 'flex';
+          this.isNotBookmarked = 'none';
+        } else {
+          this.isBookmarked = 'none';
+          this.isNotBookmarked = 'flex';
+        }
+      } catch (Error) {
+        this.isBookmarked = 'none';
+        this.isNotBookmarked = 'none';
+      }
     }
   }
 
-  bookProduct(): void {
-
-    // booking.idProduct === this.product.idProduct;
-    // this.booking.bookingDate === Date.now();
-    // this.booking.checkInDate === this.bookingCheckInDate;
-    // this.booking.checkOutDate === this.bookingCheckOutDate;
-    // this.booking.pets === this.product.property.petsAuthorized;
-    // this.booking.canceled === false;
-
-    this._router.navigateByUrl('/payment');
-  }
-
-  editProduct(): string {
-    return '/product-back-office';
-  }
-
-  addBookmark(): void {
-    this.isBookmarked = 'flex';
-    this.isNotBookmarked = 'none';
-    // this.bookmark = new Bookmark(Date.now(), this.product.idProduct, this.user);
-    // bookmarkService.addBookmark(this.bookmark);
-  }
-
-  removeBookmark(): void {
-    this.isBookmarked = 'none';
-    this.isNotBookmarked = 'flex';
-    // this.bookmarkService.removeBookmark(this.bookmark);
+  goToRegistration(): void {
+    this._router.navigateByUrl('/registration');
   }
 
   getProduct(): void {

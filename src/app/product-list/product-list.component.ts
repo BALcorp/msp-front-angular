@@ -1,8 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
 import {Product} from '../interfaces/product';
 import {Evaluation} from '../interfaces/evaluation';
 import {Options} from 'ng5-slider';
+import {ActivatedRoute} from '@angular/router';
+import {ElasticsearchService} from '../services/elasticsearch.service';
+import {catchError, map} from 'rxjs/operators';
+import {forkJoin, Observable, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -31,6 +35,7 @@ import {Options} from 'ng5-slider';
 export class ProductListComponent implements OnInit {
 
   products: Product[];
+  searchedProducts: Product[];
   filteredProducts: Product[];
   message: string;
   dailyRateSliderOptions: Options = {
@@ -42,7 +47,16 @@ export class ProductListComponent implements OnInit {
     ceil: 250
   };
 
-  constructor(private productService: ProductService) {
+  private queryText: any;
+  isConnected = false;
+  status: string;
+  lastKeypress = 0;
+
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute,
+              private es: ElasticsearchService,
+              private cd: ChangeDetectorRef) {
+    this.isConnected = false;
   }
 
   _filterZipCode: string;
@@ -102,17 +116,55 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
+    this.es.isAvailable().then(() => {
+      this.status = 'OK';
+      this.isConnected = true;
+    }, error => {
+      this.status = 'ERROR';
+      this.isConnected = false;
+      console.error('Server is down', error);
+    }).then(() => {
+      this.cd.detectChanges();
+    });
   }
 
   loadProducts(): void {
+    const checkInDate = this.route.snapshot.paramMap.get('checkInDate');
+    const checkOutDate = this.route.snapshot.paramMap.get('checkOutDate');
+    // this.productService.getAvailableProducts(checkInDate, checkOutDate)
     this.productService.getAllProducts()
       .subscribe({
         next: products => {
           this.products = products;
+          this.searchedProducts = this.products;
           this.filteredProducts = this.products;
         },
         error: err => this.message = err
       });
+  }
+
+  search($event): void {
+    if ($event.timeStamp - this.lastKeypress > 100) {
+      this.queryText = $event.target.value;
+      this.es.fullTextSearch(
+          'products',
+          '_doc',
+          'title',
+          'description',
+          this.queryText).then(products => {
+            forkJoin(products).subscribe(productsArray => {
+              console.log(productsArray);
+              this.searchedProducts = productsArray;
+              this.filteredProducts = productsArray;
+            });
+          });
+    }
+    if ($event.target.value === '') {
+      this.searchedProducts = this.products;
+      this.filteredProducts = this.products;
+    }
+    this.lastKeypress = $event.timeStamp;
+    this.doFilter();
   }
 
   getTotalAverage(evaluations: Evaluation[]): number {
@@ -124,28 +176,32 @@ export class ProductListComponent implements OnInit {
   }
 
   doFilter(): Product[] {
-    this.filteredProducts = this.products;
-    if (this._filterZipCode !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.zipCode.toLocaleLowerCase().lastIndexOf(this._filterZipCode) !== -1);
+    this.filteredProducts = this.searchedProducts;
+    if (this.filteredProducts !== undefined) {
+      if (this._filterZipCode !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.zipCode.toLocaleLowerCase().lastIndexOf(this._filterZipCode) !== -1);
+      }
+      if (this._filterSize !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.size >= Number(this._filterSize));
+      }
+      if (this._filterMaxGuests !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.maxGuests >= Number(this._filterMaxGuests));
+      }
+      if (this._filterDailyRate !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.dailyRate <= Number(this._filterDailyRate));
+      }
+      if (this._filterPetsAuthorized !== undefined) {
+        this.filteredProducts = this.filteredProducts.filter((product: Product) =>
+          product.property.petsAuthorized === this._filterPetsAuthorized);
+      }
+      return this.filteredProducts;
+    } else {
+      return this.products;
     }
-    if (this._filterSize !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.size >= Number(this._filterSize));
-    }
-    if (this._filterMaxGuests !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.maxGuests >= Number(this._filterMaxGuests));
-    }
-    if (this._filterDailyRate !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.dailyRate <= Number(this._filterDailyRate));
-    }
-    if (this._filterPetsAuthorized !== undefined) {
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-        product.property.petsAuthorized === this._filterPetsAuthorized);
-    }
-    return this.filteredProducts;
   }
 
   getShortDistrict(zipCode: string): string {

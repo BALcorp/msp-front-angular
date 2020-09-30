@@ -1,10 +1,12 @@
 <div class="row">
   <div class="he-padding-top-20 col-md-5 col-xs-6 offset-md-1">
     <h1>Réservation</h1>
+    {{booking.idProduct}}
+    {{booking.guestsNumber}}
   </div>
   <div class="col-md-5 col-xs-6 he-padding-top-20 he-txt-right he-top-1-rem">
     <h3>
-      {{bookingDate}}
+
     </h3>
   </div>
 </div>
@@ -37,10 +39,10 @@
 <div class="row">
   <div class="col-md-10 col-xs-12 offset-md-1 he-txt-center">
     <h4>
-      Date d'arrivée : {{checkInDate}}
+      Date d'arrivée : {{booking.checkInDate}}
     </h4>
     <h4>
-      Date de départ : {{checkOutDate}}
+      Date de départ : {{booking.checkOutDate}}
     </h4>
     <h4>
       Nombre de personnes : {{booking.guestsNumber}}
@@ -55,7 +57,7 @@
 <div class="row">
   <div class="col-md-10 col-xs-12 offset-md-1 he-txt-right he-right-1-5-rem">
     <h4>
-      {{petsAuthorized}}
+      {{bookedProduct.property.petsAuthorized}}
     </h4>
   </div>
 </div>

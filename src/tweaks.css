@@ -167,7 +167,12 @@ hr {
 
 .he-evaluation-panel {
   background-color: #272b30 !important;
-  margin: 10px;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 /*!
@@ -321,6 +326,10 @@ hr {
   width: 5.5rem !important;
 }
 
+.he-width-9-rem {
+  width: 9rem !important;
+}
+
 .he-width-12-rem {
   width: 12rem !important;
 }
@@ -425,6 +434,10 @@ hr {
   margin: 5px !important;
 }
 
+.he-margin-6 {
+  margin: 5px !important;
+}
+
 .he-margin-10 {
   margin: 10px !important;
 }
@@ -465,6 +478,11 @@ hr {
 .he-top-0-5-rem {
   position: relative !important;
   top: 0.5rem !important;
+}
+
+.he-top-0-777-rem {
+  position: relative !important;
+  top: 0.777rem !important;
 }
 
 .he-top-1-rem {
