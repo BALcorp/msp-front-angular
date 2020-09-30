@@ -10,6 +10,7 @@ import {MyPersoAccountClientComponent} from './my-perso-account-client/my-perso-
 import {PaymentComponent} from './payment/payment.component';
 import {ProductBackOfficeComponent} from './product-back-office/product-back-office.component';
 import {ProductListComponent} from './product-list/product-list.component';
+import {StatisticsComponent} from './statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'payment/:idProduct/:checkInDate/:checkOutDate/:guestsNumber', component: PaymentComponent},
   {path: 'product-back-office', component: ProductBackOfficeComponent},
   {path: 'welcome', component: WelcomeComponent},
+  {path: 'statistics', component: StatisticsComponent},
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
   {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
 ];

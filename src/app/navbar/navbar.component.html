@@ -29,6 +29,11 @@
           </button>
         </div>
         <div *ngIf="_auth.isLoggedIn()" class="he-padding-5">
+          <button class="btn btn-default he-btn-14 he-btn-visibility"
+                  routerLink="/statistics">Statistiques
+          </button>
+        </div>
+        <div *ngIf="_auth.isLoggedIn()" class="he-padding-5">
           <button (click)="doLogout()"
                   class="btn btn-default he-btn-14 he-btn-visibility"
                   href="javascript:void(0)">Déconnexion

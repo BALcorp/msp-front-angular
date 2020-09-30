@@ -31,6 +31,7 @@ import {OsmService} from './services/osm.service';
 import {BookmarkService} from './services/bookmark.service';
 import {BookingService} from './services/booking.service';
 import {ConvertorService} from './services/convertor.service';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {ConvertorService} from './services/convertor.service';
     ProductBackOfficeComponent,
     SimpleSearchComponent,
     LowerbarComponent,
-    ProductListComponent
+    ProductListComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

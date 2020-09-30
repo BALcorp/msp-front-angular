@@ -1,0 +1,12 @@
+<button *ngIf="productDashboard" (click)="onClick()" class="btn btn-default he-btn-20 he-width-100 he he-margin-top-60 he-txt-center">
+  Voir les statistiques des réservations
+</button>
+<button *ngIf="!productDashboard" (click)="onClick()" class="btn btn-default he-btn-20 he-width-100 he he-margin-top-60 he-txt-center">
+  Voir les statistiques des produits
+</button>
+<div *ngIf="productDashboard">
+  <iframe src="http://localhost:5601/app/dashboards#/view/9734ced0-fc38-11ea-bcf2-7f88c4b919b8?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'2017-09-25T07%3A10%3A42.391Z'%2Cto%3Anow))&hide-filter-bar=true" height="1080" width="1920"></iframe>
+</div>
+<div *ngIf="!productDashboard">
+  <iframe src="http://localhost:5601/app/dashboards#/view/cc88db40-ff02-11ea-8a55-a70bc52c2a98?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'2017-09-25T07%3A10%3A42.391Z'%2Cto%3Anow))&hide-filter-bar=true" height="1080" width="1920"></iframe>
+</div>
